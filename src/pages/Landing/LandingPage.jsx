@@ -12,7 +12,7 @@ function LandingPage({ onEnterDashboard }) {
           <div className="brand__mark">A</div>
           <div>
             <strong>Ayedous SACCO</strong>
-            <span>Savings and Credit Cooperative</span>
+            <span>Savings and Credit Cooperatives</span>
           </div>
         </div>
 
