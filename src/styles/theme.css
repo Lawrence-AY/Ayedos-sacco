@@ -1,0 +1,13 @@
+:root {
+  --color-primary: #0a2a43;
+  --color-secondary: #1e88e5;
+  --color-accent: #00a86b;
+  --color-background: #f5f7fa;
+  --color-text: #1a1a1a;
+  --color-muted: #607082;
+  --color-white: #ffffff;
+  --shadow-soft: 0 18px 45px rgba(15, 34, 58, 0.08);
+  --shadow-elevated: 0 24px 60px rgba(15, 34, 58, 0.14);
+  --font-body: Aptos, "Segoe UI Variable", "Segoe UI", Tahoma, sans-serif;
+  --font-heading: Aptos Display, Aptos, "Trebuchet MS", sans-serif;
+}
