@@ -6,7 +6,7 @@ import { ROLES } from '../../utils/constants'
 
 function LandingPage({ onEnterDashboard }) {
   return (
-    <div className="landing-shell">
+    <div className="landing">
       <header className="landing-navbar">
         <div className="brand brand--dark">
           <div className="brand__mark">A</div>
