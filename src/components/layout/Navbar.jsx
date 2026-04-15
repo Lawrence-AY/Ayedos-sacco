@@ -5,7 +5,7 @@ function Navbar({ title, userName, userRole, userInitials }) {
   return (
     <header className="topbar">
       <div>
-        <p className="eyebrow">Ayedous SACCO Dashboard</p>
+        <p className="eyebrow">Ayedos SACCO Dashboard</p>
         <h1>{title}</h1>
       </div>
 
