@@ -3,6 +3,7 @@ import { HiShieldCheck, HiArrowRight, HiBars3, HiXMark } from 'react-icons/hi2'
 import Card from '../../components/ui/Card'
 import Button from '../../components/ui/Button'
 import { saccoHighlights } from '../../data/dashboardData'
+ 
 
 function LandingPage({ onNavigate }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -45,7 +46,7 @@ function LandingPage({ onNavigate }) {
           <div className="brand__mark">A</div>
           <div>
             <strong>Ayedous SACCO</strong>
-            <span>Savings and Credit Cooperative</span>
+            <span>Savings and Credit Cooperatives</span>
           </div>
         </div>
 
@@ -200,7 +201,7 @@ function LandingPage({ onNavigate }) {
         <section className="cta-section" id="contact">
           <div className="cta-content">
             <h2>Ready to get started?</h2>
-            <p>Join Ayedous SACCO today and experience modern cooperative management</p>
+            <p>Join Ayedous SACCO today anfffffffffffd experience modern cooperative management</p>
             <div className="cta-actions">
               <Button type="button" className="btn-primary-animated" onClick={() => onNavigate('register')}>
                 Create Account
@@ -210,7 +211,13 @@ function LandingPage({ onNavigate }) {
           </div>
         </section>
       </main>
-
+<details className="dropdown">
+  <summary className="btn m-1">open or close</summary>
+  <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+    <li><a>Item 1</a></li>
+    <li><a>Item 2</a></li>
+  </ul>
+</details>
       <footer className="landing-footer">
         <div className="footer-content">
           <div className="footer-brand">
