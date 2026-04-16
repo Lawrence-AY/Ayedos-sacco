@@ -53,6 +53,10 @@ function LandingPage({ onNavigate }) {
             </div>
           </div>
         </div>
+        <div className='hero-image'>
+          <img src="/hero-aye.png"/>
+        </div>
+
       </section>
 
       {/* ABOUT */}

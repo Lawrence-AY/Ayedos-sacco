@@ -43,11 +43,7 @@ function Navbar({ onNavigate }) {
         onClick={() => onNavigate && onNavigate('')}
         style={{ cursor: 'pointer' }}
       >
-        <div className="brand__mark">A</div>
-        <div>
-          <strong>AYEDOS SACCO</strong>
-          <span>Savings and Credit Cooperatives</span>
-        </div>
+        <img  width="130" src="/logos/logo-light.png" />
       </div>
 
       <button
