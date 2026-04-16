@@ -1,262 +1,131 @@
-import { useState, useEffect } from 'react'
-import { HiShieldCheck, HiArrowRight, HiBars3, HiXMark } from 'react-icons/hi2'
-import Card from '../../components/ui/Card'
-import Button from '../../components/ui/Button'
-import { saccoHighlights } from '../../data/dashboardData'
- 
+import { HiArrowRight } from 'react-icons/hi2'
+import Navbar from '../../components/layout/Navbar'
+import Footer from '../../components/ui/Footer'
 
 function LandingPage({ onNavigate }) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const [dropdownOpen, setDropdownOpen] = useState(null)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const handleNavClick = (e, targetId) => {
-    e.preventDefault()
-    const element = document.getElementById(targetId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-    setMobileMenuOpen(false)
-    setDropdownOpen(null)
-  }
-
-  const handleNavLink = (e, route) => {
-    e.preventDefault()
-    onNavigate(route)
-    setMobileMenuOpen(false)
-    setDropdownOpen(null)
-  }
-
-  const toggleDropdown = (menu) => {
-    setDropdownOpen(dropdownOpen === menu ? null : menu)
+  const navigate = (route) => {
+    if (onNavigate) onNavigate(route)
   }
 
   return (
-    <div className="landing-shell">
-      <header className={`landing-navbar ${scrolled ? 'scrolled' : ''}`}>
-        <div className="brand brand--dark" onClick={() => onNavigate('')} style={{ cursor: 'pointer' }}>
-          <div className="brand__mark">A</div>
+    <div className="min-h-screen flex flex-col">
+
+      <Navbar onNavigate={onNavigate} />
+
+      {/* HERO */}
+      <section className="hero min-h-screen bg-base-200 px-4">
+        <div className="hero-content text-center max-w-3xl bg-">
           <div>
-            <strong>Ayedous SACCO</strong>
-            <span>Savings and Credit Cooperatives</span>
-          </div>
-        </div>
+            <h1 className="text-4xl md:text-5xl font-bold">
+              Ayedos SACCO
+            </h1>
 
-        <button 
-          className="mobile-menu-toggle" 
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <HiXMark /> : <HiBars3 />}
-        </button>
-
-        <nav className={`landing-links ${mobileMenuOpen ? 'open' : ''}`} aria-label="Landing navigation">
-          <div className="nav-dropdown">
-            <button className="nav-dropdown-toggle" onClick={() => toggleDropdown('about')}>
-              About Us
-            </button>
-            {dropdownOpen === 'about' && (
-              <div className="nav-dropdown-menu">
-                <a href="#about" onClick={(e) => handleNavClick(e, 'about')}>Overview</a>
-                <a href="#" onClick={(e) => handleNavLink(e, 'our-story')}>Our Story</a>
-                <a href="#" onClick={(e) => handleNavLink(e, 'team')}>Team</a>
-              </div>
-            )}
-          </div>
-          
-          <div className="nav-dropdown">
-            <button className="nav-dropdown-toggle" onClick={() => toggleDropdown('services')}>
-              Services
-            </button>
-            {dropdownOpen === 'services' && (
-              <div className="nav-dropdown-menu">
-                <a href="#services" onClick={(e) => handleNavClick(e, 'services')}>All Services</a>
-                <a href="#" onClick={(e) => handleNavLink(e, 'products')}>Products</a>
-                <a href="#" onClick={(e) => handleNavLink(e, 'pricing')}>Pricing</a>
-              </div>
-            )}
-          </div>
-
-          <div className="nav-dropdown">
-            <button className="nav-dropdown-toggle" onClick={() => toggleDropdown('resources')}>
-              Resources
-            </button>
-            {dropdownOpen === 'resources' && (
-              <div className="nav-dropdown-menu">
-                <a href="#" onClick={(e) => handleNavLink(e, 'faq')}>FAQ</a>
-                <a href="#" onClick={(e) => handleNavLink(e, 'guides')}>Guides</a>
-                <a href="#" onClick={(e) => handleNavLink(e, 'blog')}>Blog</a>
-              </div>
-            )}
-          </div>
-
-          <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact</a>
-
-          <div className="nav-auth-buttons">
-            <Button type="button" variant="ghost" className="nav-login-btn" onClick={() => onNavigate('login')}>
-              Login
-            </Button>
-            <Button type="button" className="nav-register-btn" onClick={() => onNavigate('register')}>
-              Register
-            </Button>
-          </div>
-        </nav>
-      </header>
-
-      <main className="landing-content">
-        <section className="landing-hero">
-          <div className="landing-copy">
-            <p className="eyebrow">Secure Financial Platform</p>
-            <h1>Professional SACCO operations for administrators, finance officers, and members</h1>
-            <p className="muted-copy">
-              Ayedous SACCO is designed as a modern office-based financial system for savings, shares, dividends,
-              and member administration with a clean banking-grade experience.
+            <p className="py-6 text-base-content/70">
+              Ayedous SACCO is designed as a modern office-based
+               financial system for savings, shares, dividends, 
+               and member administration with a clean banking-grade experience.
             </p>
 
-            <div className="hero-actions">
-              <Button type="button" className="btn-primary-animated" onClick={() => onNavigate('login')}>
-                Login to Dashboard
-                <HiArrowRight className="btn-arrow" />
-              </Button>
-              <Button type="button" variant="ghost" onClick={() => onNavigate('register')}>
-                Register Account
-              </Button>
-            </div>
+            <div className="flex flex-col md:flex-row gap-3 justify-center">
+              <button
+                className="btn bg-[#8cc63f]"
+                onClick={() => navigate('login')}
+              >
+                Get Started <HiArrowRight className="ml-1" />
+                
+              </button>
+               <button
+                className="btn  btn-accent"
+                onClick={() => navigate('login')}
+              >
+                Get Started <HiArrowRight className="ml-1" />
+                
+              </button>
 
-            <div className="landing-meta" id="about">
-              <div>
-                <span>Head Office</span>
-                <strong>Nairobi Financial Centre</strong>
-              </div>
-              <div>
-                <span>Membership</span>
-                <strong>Employees and Non-Employees</strong>
-              </div>
-              <div>
-                <span>Core Services</span>
-                <strong>Savings, Shares, Loans, Dividends</strong>
-              </div>
-            </div>
-          </div>
-
-          <Card className="landing-panel" id="security">
-            <div className="section-heading">
-              <div>
-                <h2>Why stakeholders trust Ayedous</h2>
-                <p>Operational confidence for office teams and members</p>
-              </div>
-              <HiShieldCheck className="feature-icon" aria-hidden="true" />
-            </div>
-
-            <div className="trust-metrics">
-              {saccoHighlights.map((item, index) => (
-                <div key={index} className="trust-metric-item">
-                  <span>Control</span>
-                  <strong>{item}</strong>
-                </div>
-              ))}
-            </div>
-          </Card>
-        </section>
-
-        <section className="services-section" id="services">
-          <div className="services-heading">
-            <p className="eyebrow">Our Services</p>
-            <h2>Comprehensive SACCO Management</h2>
-            <p>Everything you need to manage your cooperative efficiently</p>
-          </div>
-
-          <div className="services-grid">
-            <div className="service-card">
-              <div className="service-icon">💰</div>
-              <h3>Savings Management</h3>
-              <p>Track member deposits, withdrawals, and savings accounts with real-time updates</p>
-            </div>
-            <div className="service-card">
-              <div className="service-icon">📊</div>
-              <h3>Share Capital</h3>
-              <p>Manage share purchases and ownership records with transparent reporting</p>
-            </div>
-            <div className="service-card">
-              <div className="service-icon">📈</div>
-              <h3>Dividend Distribution</h3>
-              <p>Calculate and distribute dividends accurately based on performance</p>
-            </div>
-            <div className="service-card">
-              <div className="service-icon">🏦</div>
-              <h3>Loan Management</h3>
-              <p>Process loan applications, approvals, and track repayment schedules</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="cta-section" id="contact">
-          <div className="cta-content">
-            <h2>Ready to get started?</h2>
-            <p>Join Ayedous SACCO today anfffffffffffd experience modern cooperative management</p>
-            <div className="cta-actions">
-              <Button type="button" className="btn-primary-animated" onClick={() => onNavigate('register')}>
-                Create Account
-                <HiArrowRight className="btn-arrow" />
-              </Button>
-            </div>
-          </div>
-        </section>
-      </main>
-<details className="dropdown">
-  <summary className="btn m-1">open or close</summary>
-  <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-    <li><a>Item 1</a></li>
-    <li><a>Item 2</a></li>
-  </ul>
-</details>
-      <footer className="landing-footer">
-        <div className="footer-content">
-          <div className="footer-brand">
-            <div className="brand__mark">A</div>
-            <div>
-              <strong>Ayedous SACCO</strong>
-              <span>Savings and Credit Cooperative</span>
-            </div>
-          </div>
-          
-          <div className="footer-links">
-            <div className="footer-column">
-              <h4>Platform</h4>
-              <a href="#" onClick={(e) => handleNavLink(e, 'products')}>Products</a>
-              <a href="#services" onClick={(e) => handleNavClick(e, 'services')}>Services</a>
-              <a href="#security">Security</a>
-            </div>
-            <div className="footer-column">
-              <h4>Company</h4>
-              <a href="#" onClick={(e) => handleNavLink(e, 'our-story')}>Our Story</a>
-              <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact</a>
-              <a href="#" onClick={(e) => handleNavLink(e, 'team')}>Team</a>
-            </div>
-            <div className="footer-column">
-              <h4>Resources</h4>
-              <a href="#" onClick={(e) => handleNavLink(e, 'faq')}>FAQ</a>
-              <a href="#" onClick={(e) => handleNavLink(e, 'guides')}>Guides</a>
-              <a href="#" onClick={(e) => handleNavLink(e, 'blog')}>Blog</a>
-            </div>
-          </div>
-
-          <div className="footer-bottom">
-            <p>&copy; 2026 Ayedous SACCO. All rights reserved.</p>
-            <div className="footer-social">
-              <span>Nairobi, Kenya</span>
+             <button
+                className="btn bg-[#003a16]"
+                onClick={() => navigate('login')}
+              >
+                Get Started <HiArrowRight className="ml-1" />
+                
+              </button>
             </div>
           </div>
         </div>
-      </footer>
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="py-16 px-4 bg-base-100">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6 text-center">
+          <div className="card bg-base-200 shadow">
+            <div className="card-body">
+              <h3 className="font-semibold">Head Office</h3>
+              <p>Nairobi Financial Centre</p>
+            </div>
+          </div>
+
+          <div className="card bg-base-200 shadow">
+            <div className="card-body">
+              <h3 className="font-semibold">Membership</h3>
+              <p>Employees & Non-Employees</p>
+            </div>
+          </div>
+
+          <div className="card bg-base-200 shadow">
+            <div className="card-body">
+              <h3 className="font-semibold">Core Services</h3>
+              <p>Savings, Shares, Loans, Dividends</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section id="services" className="py-16 px-4 bg-base-200">
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <h2 className="text-3xl font-bold">Our Services</h2>
+          <p className="text-base-content/70">
+            Everything you need to run a SACCO efficiently
+          </p>
+        </div>
+
+        <div className="max-w-6xl mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { title: "Savings", icon: "💰", desc: "Track deposits & withdrawals" },
+            { title: "Shares", icon: "📊", desc: "Manage ownership records" },
+            { title: "Dividends", icon: "📈", desc: "Distribute profits easily" },
+            { title: "Loans", icon: "🏦", desc: "Handle loans & repayments" },
+          ].map((service, i) => (
+            <div key={i} className="card bg-base-100 shadow hover:shadow-lg transition">
+              <div className="card-body text-center">
+                <div className="text-3xl">{service.icon}</div>
+                <h3 className="font-semibold">{service.title}</h3>
+                <p className="text-sm text-base-content/70">{service.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section id="contact" className="py-16 px-4 bg-primary text-primary-content text-center">
+        <div className="max-w-xl mx-auto">
+          <h2 className="text-3xl font-bold">Ready to get started?</h2>
+          <p className="py-4">
+            Join Ayedous SACCO and experience modern cooperative management
+          </p>
+
+          <button
+            className="btn btn-secondary"
+            onClick={() => navigate('register')}
+          >
+            Create Account
+          </button>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   )
 }
