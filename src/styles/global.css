@@ -1,18 +1,18 @@
 /*global.css*/
+
 @import "tailwindcss";
 @plugin "daisyui";
 :root {
   font-family: var(--font-body);
   line-height: 1.5;
   font-weight: 400;
-  color: var(--color-text);
-  background: var(--color-background);
+   
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+ 
 * {
   box-sizing: border-box;
 }
@@ -25,7 +25,7 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(circle at top left, rgba(30, 136, 229, 0.08), transparent 24%),
+    radial-gradient(circle at top left,  transparent 24%),
     linear-gradient(180deg, #f8fafc 0%, var(--color-background) 100%);
 }
 
@@ -82,30 +82,102 @@ a {
   right: 0;
   z-index: 100;
   transition: all 300ms ease;
+  background: transparent;
 }
 
-/* Light mode */
-@media (prefers-color-scheme: light) {
-  .landing-navbar.scrolled {
-    background: rgba(255, 255, 255, 0.95);
-    color: #0f2b3d;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+/* Light mode scroll */
+[data-theme="light"] .landing-navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  color: #0f2b3d;
+  backdrop-filter: blur(10px);
+}
+
+/* Dark mode scroll */
+[data-theme="dark"] .landing-navbar.scrolled {
+  background: rgba(11, 30, 45, 0.95);
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+}
+/* Search & theme toggle styles */
+.nav-search-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-search-icon,
+.nav-theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 9999px;
+  transition: background 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+}
+
+.nav-search-icon:hover,
+.nav-theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.nav-search-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  padding: 4px 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-search-input {
+  border: none;
+  background: transparent;
+  padding: 8px 0;
+  font-size: 0.9rem;
+  outline: none;
+  min-width: 180px;
+  color: var(--color-text);
+}
+
+.nav-search-submit,
+.nav-search-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 9999px;
+  color: var(--color-muted);
+  transition: color 0.2s;
+}
+
+.nav-search-submit:hover,
+.nav-search-close:hover {
+  color: var(--color-secondary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .nav-search-form {
+    width: 100%;
+  }
+  .nav-search-input {
+    flex: 1;
+  }
+  .nav-search-wrapper,
+  .nav-theme-toggle {
+    margin: 8px 0;
   }
 }
-
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  .landing-navbar.scrolled {
-    background: rgba(15, 43, 61, 0.9); /* dark glass */
-    color: #ffffff;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  }
-}
-
 .mobile-menu-toggle {
-  display: none;
+  display: none; 
   position: absolute;    
   right: 24px;          
   top: 50%;            
