@@ -40,7 +40,7 @@ function LandingPage({ onNavigate }) {
               <button
                 className="btn bg-[#8cc63f]"
                 onClick={() => navigate('login')}
-              >
+                >
                 Get Started <HiArrowRight className="ml-1" />
                 
               </button>
@@ -55,8 +55,17 @@ function LandingPage({ onNavigate }) {
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="py-16 px-4 bg-base-100">
+      <section id="about" className="h-screen py-16 px-4 bg-base-100 flex flex-col">
+        
+        {/* WHY CHOOSE US */}
         <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6 text-center">
+          <h2 className="text-3xl font-bold">Why Choose Us</h2>
+            <p className="text-base-content/70">
+            Join a financial community built on trust, transparency, and shared prosperity.
+          </p>
+        
+         
+         {/* CARDS */}
           <div className="card bg-base-200 shadow">
             <div className="card-body">
               <h3 className="font-semibold">Head Office</h3>
@@ -81,7 +90,7 @@ function LandingPage({ onNavigate }) {
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="py-16 px-4 bg-base-200">
+      <section id="services" className="h-screen py-16 px-4 bg-base-100 flex flex-col">
         <div className="text-center max-w-3xl mx-auto mb-10">
           <h2 className="text-3xl font-bold">Our Services</h2>
           <p className="text-base-content/70">
@@ -91,10 +100,10 @@ function LandingPage({ onNavigate }) {
 
         <div className="max-w-6xl mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { title: "Savings", icon: "💰", desc: "Track deposits & withdrawals" },
-            { title: "Shares", icon: "📊", desc: "Manage ownership records" },
-            { title: "Dividends", icon: "📈", desc: "Distribute profits easily" },
-            { title: "Loans", icon: "🏦", desc: "Handle loans & repayments" },
+            { title: "Savings", icon: "💰", desc: "Start building discipline and wealth through structured savings plans." },
+            { title: "Loans & Credit Facilities", icon: "📊", desc: "Access personal, emergency, development, and business loans with friendly repayment terms" },
+            { title: "Investment Opportunities", icon: "📈", desc: "Grow your income through collective investments and long-term wealth creation." },
+            { title: "Financial Education", icon: "🏦", desc: "We equip members with knowledge to make smarter financial decisions." },
           ].map((service, i) => (
             <div key={i} className="card bg-base-100 shadow hover:shadow-lg transition">
               <div className="card-body text-center">
@@ -112,7 +121,7 @@ function LandingPage({ onNavigate }) {
         <div className="max-w-xl mx-auto">
           <h2 className="text-3xl font-bold">Ready to get started?</h2>
           <p className="py-4">
-            Join Ayedous SACCO and experience modern cooperative management
+            Join Ayedos SACCO and experience modern cooperative management
           </p>
 
           <button
