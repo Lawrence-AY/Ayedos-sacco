@@ -1,49 +1,45 @@
-import { useState, useEffect } from 'react'
-import { HiBell, HiChevronDown, HiBars3, HiXMark } from 'react-icons/hi2'
-import Button from '../ui/Button'
+import { useState, useEffect } from 'react';
+import { HiChevronDown, HiBars3, HiXMark } from 'react-icons/hi2';
+import '../../styles.css'
 
 function Navbar({ onNavigate }) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const [dropdownOpen, setDropdownOpen] = useState(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleNavClick = (e, targetId) => {
-    e.preventDefault()
-    const element = document.getElementById(targetId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-    setMobileMenuOpen(false)
-    setDropdownOpen(null)
-  }
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
+    setMobileMenuOpen(false);
+    setDropdownOpen(null);
+  };
 
   const handleNavLink = (e, route) => {
-    e.preventDefault()
-    if (onNavigate) onNavigate(route)
-    setMobileMenuOpen(false)
-    setDropdownOpen(null)
-  }
+    e.preventDefault();
+    if (onNavigate) onNavigate(route);
+    setMobileMenuOpen(false);
+    setDropdownOpen(null);
+  };
 
   const toggleDropdown = (menu) => {
-    setDropdownOpen(dropdownOpen === menu ? null : menu)
-  }
+    setDropdownOpen(dropdownOpen === menu ? null : menu);
+  };
+ 
+  const logoSrc = scrolled ? '/logos/logo-light.png' : '/logos/logo-dark.png';
 
   return (
     <header className={`landing-navbar ${scrolled ? 'scrolled' : ''}`}>
-      <div
-        className="brand brand--dark"
-        onClick={() => onNavigate && onNavigate('')}
-        style={{ cursor: 'pointer' }}
-      >
-        <img  width="130" src="/logos/logo-light.png" />
+      <div className="brand" onClick={() => onNavigate && onNavigate('')}>
+        <img src={logoSrc} alt="AYEDOS SACCO" width="130" />
       </div>
 
       <button
@@ -55,10 +51,10 @@ function Navbar({ onNavigate }) {
       </button>
 
       <nav className={`landing-links ${mobileMenuOpen ? 'open' : ''}`}>
-        {/* About */}
-        <div className="nav-dropdown">
-          <button onClick={() => toggleDropdown('about')}>
-            About Us
+        {/* About Dropdown */}
+       <div className={`nav-dropdown ${scrolled ? 'color: var(--color-muted);' : 'text-white'}`}>
+          <button className="nav-dropdown-toggle" onClick={() => toggleDropdown('about')}>
+            About Us <HiChevronDown />
           </button>
           {dropdownOpen === 'about' && (
             <div className="nav-dropdown-menu">
@@ -69,10 +65,10 @@ function Navbar({ onNavigate }) {
           )}
         </div>
 
-        {/* Services */}
+        {/* Services Dropdown */}
         <div className="nav-dropdown">
-          <button onClick={() => toggleDropdown('services')}>
-            Services
+          <button className="nav-dropdown-toggle" onClick={() => toggleDropdown('services')}>
+            Services <HiChevronDown />
           </button>
           {dropdownOpen === 'services' && (
             <div className="nav-dropdown-menu">
@@ -83,10 +79,10 @@ function Navbar({ onNavigate }) {
           )}
         </div>
 
-        {/* Resources */}
+        {/* Resources Dropdown */}
         <div className="nav-dropdown">
-          <button onClick={() => toggleDropdown('resources')}>
-            Resources
+          <button className="nav-dropdown-toggle" onClick={() => toggleDropdown('resources')}>
+            Resources <HiChevronDown />
           </button>
           {dropdownOpen === 'resources' && (
             <div className="nav-dropdown-menu">
@@ -97,18 +93,19 @@ function Navbar({ onNavigate }) {
           )}
         </div>
 
-        <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>
-          Contact
-        </a>
+        <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact</a>
 
         <div className="nav-auth-buttons">
-         <button className="btn btn-outline btn-accent" onClick={() => onNavigate && onNavigate('register')}>
-           Get started
+          <button
+            className="btn btn-outline btn-accent"
+            onClick={() => onNavigate && onNavigate('register')}
+          >
+            Get started
           </button>
         </div>
       </nav>
     </header>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

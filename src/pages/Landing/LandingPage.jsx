@@ -14,11 +14,20 @@ function LandingPage({ onNavigate }) {
       <Navbar onNavigate={onNavigate} />
 
       {/* HERO */}
-      <section className="hero min-h-screen bg-base-200 px-4">
-        <div className="hero-content text-center max-w-3xl bg-">
+      <section className="hero min-h-screen  px-4  "
+      style={{backgroundImage:"url(/hero-aye.png)",
+        backgroundSize: "cover",
+    backgroundPosition: "center",
+    
+      }}>
+       <div className="absolute inset-0 bg-black/35 h-screen"></div>
+
+           
+        <div className="hero-content text-center max-w-3xl ">
           <div>
+       
             <h1 className="text-4xl md:text-5xl font-bold">
-              Ayedos SACCO
+              AYEDOS SACCO
             </h1>
 
             <p className="py-6 text-base-content/70">
@@ -35,27 +44,13 @@ function LandingPage({ onNavigate }) {
                 Get Started <HiArrowRight className="ml-1" />
                 
               </button>
-               <button
-                className="btn  btn-accent"
-                onClick={() => navigate('login')}
-              >
-                Get Started <HiArrowRight className="ml-1" />
-                
-              </button>
-
-             <button
-                className="btn bg-[#003a16]"
-                onClick={() => navigate('login')}
-              >
-                Get Started <HiArrowRight className="ml-1" />
-                
-              </button>
+               
             </div>
           </div>
+       
+        
         </div>
-        <div className='hero-image'>
-          <img src="/hero-aye.png"/>
-        </div>
+       
 
       </section>
 

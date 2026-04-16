@@ -1,1 +1,256 @@
 @plugin "daisyui";
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* ===== DESIGN SYSTEM TOKENS ===== */
+:root {
+  --color-primary: #0f2b3d;
+  --color-primary-light: #1e3a5f;
+  --color-secondary: #2c7da0;
+  --color-secondary-light: #61a5c2;
+  --color-accent: #2ecc71;
+  --color-accent-dark: #27ae60;
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-text: #1e293b;
+  --color-text-light: #475569;
+  --color-muted: #64748b;
+  --color-border: #e2e8f0;
+  --color-white: #ffffff;
+
+  --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+  --gradient-hero: radial-gradient(circle at 30% 20%, rgba(44, 125, 160, 0.12), transparent 40%),
+                   linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
+  --shadow-elevated: 0 20px 35px -8px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== GLOBAL ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-background);
+  background-image: radial-gradient(circle at 0% 0%, rgba(44, 125, 160, 0.03), transparent 40%),
+                    radial-gradient(circle at 100% 100%, rgba(46, 204, 113, 0.03), transparent 40%);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--color-border); border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: var(--color-secondary); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; letter-spacing: -0.03em; }
+h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: var(--space-4); }
+h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
+p { color: var(--color-text-light); line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+
+/* Buttons (DaisyUI compatible) */
+.btn-primary {
+  background: var(--gradient-secondary);
+  border: none;
+  color: white;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  filter: brightness(1.05);
+}
+
+/* ===== NAVBAR ===== */
+.landing-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: all var(--transition-base);
+  background: transparent;
+}
+.landing-navbar.scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-3) var(--space-8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: pointer;
+}
+.brand__mark {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-xl);
+  display: grid;
+  place-items: center;
+  background: var(--gradient-secondary);
+  color: white;
+  font-weight: 700;
+}
+.landing-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+.nav-dropdown {
+  position: relative;
+}
+.nav-dropdown-toggle {
+  background: none;
+  border: none;
+  font-weight: 500;
+  color: var(--color-text-light);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+}
+.nav-dropdown-toggle:hover {
+  color: var(--color-secondary);
+}
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-elevated);
+  min-width: 180px;
+  padding: 8px 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+}
+.nav-dropdown-menu a {
+  padding: 10px 16px;
+  color: var(--color-text);
+  transition: background 0.15s;
+}
+.nav-dropdown-menu a:hover {
+  background: var(--color-background);
+}
+.nav-auth-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .landing-navbar { padding-left: var(--space-5); padding-right: var(--space-5); }
+  .mobile-menu-toggle { display: block; z-index: 101; }
+  .landing-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: var(--color-surface);
+    flex-direction: column;
+    padding: 100px var(--space-6) var(--space-6);
+    box-shadow: var(--shadow-xl);
+    transition: right var(--transition-base);
+    z-index: 101;
+    gap: 0;
+  }
+  .landing-links.open { right: 0; }
+  .landing-links a, .nav-dropdown {
+    width: 100%;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .nav-dropdown-toggle { width: 100%; justify-content: space-between; padding: var(--space-3) 0; }
+  .nav-dropdown-menu {
+    position: static;
+    box-shadow: none;
+    padding-left: var(--space-4);
+  }
+  .nav-auth-buttons { margin-top: var(--space-4); flex-direction: column; width: 100%; }
+}
+
+/* ===== HERO SECTION (example for your background image) ===== */
+.hero-bg-image {
+  background-image: url('/hero-aye.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
