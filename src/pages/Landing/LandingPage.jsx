@@ -23,14 +23,14 @@ function LandingPage({ onNavigate }) {
        <div className="absolute inset-0 bg-black/35 h-screen"></div>
 
            
-        <div className="hero-content text-center max-w-3xl ">
+        <div className=" text-center text-white   hero-content ">
           <div>
        
-            <h1 className="text-4xl md:text-5xl font-bold">
+            <div className="text-4xl md:text-5xl font-bold text-white">
               AYEDOS SACCO
-            </h1>
+            </div>
 
-            <p className="py-6 text-base-content/70">
+            <p className="py-6  text-white">
               Ayedous SACCO is designed as a modern office-based
                financial system for savings, shares, dividends, 
                and member administration with a clean banking-grade experience.
