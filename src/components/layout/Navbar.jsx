@@ -127,7 +127,9 @@ function Navbar({ onNavigate }) {
 
    
   return (
+    
     <header ref={navbarRef} className={`landing-navbar ${scrolled ? 'scrolled' : ''}`}>
+      
       <div className="brand" onClick={() => onNavigate && onNavigate('')}>
         <img src={logoSrc} alt="AYEDOS SACCO" width="130" />
       </div>
@@ -146,14 +148,22 @@ function Navbar({ onNavigate }) {
          style={{
     color:
       theme === 'dark'
-        ? '#ffffff'   // blue
+        ? '#ffffff'    
         : scrolled
-          ? '#0f2b3d' // yellow
-          : '#ffffff' // red
+          ? '#0f2b3d'  
+          : '#ffffff'  
   }}>
           {searchOpen ? (
             <form onSubmit={handleSearch} className="nav-search-form">
               <input
+                    style={{
+    color:
+      theme === 'dark'
+        ? '#ffffff'    
+        : scrolled
+          ? '#0f2b3d' 
+          : '#ffffff'  
+  }}
                 ref={searchInputRef}
                 type="text"
                 placeholder="Search..."
@@ -177,13 +187,51 @@ function Navbar({ onNavigate }) {
               className="nav-search-icon"
               onClick={() => setSearchOpen(true)}
               aria-label="Search"
+                    style={{
+    color:
+      theme === 'dark'
+        ? '#ffffff'   
+        : scrolled
+          ? '#0f2b3d'  
+          : '#ffffff' 
+  }}
             >
-              <HiMagnifyingGlass />
+              <HiMagnifyingGlass
+                    style={{
+    color:
+      theme === 'dark'
+        ? '#ffffff'   
+        : scrolled
+          ? '#0f2b3d'  
+          : '#ffffff'  
+  }} />
             </button>
           )}
         </div>
 
         
+ <div
+  className="nav-dropdown"
+ style={{
+    color:
+      theme === 'dark'
+        ? '#ffffff'   
+        : scrolled
+          ? '#0f2b3d'  
+          : '#ffffff'  
+  }}
+>
+          <a href="#contact"
+           style={{
+    color:
+      theme === 'dark'
+        ? '#ffffff'   
+        : scrolled
+          ? '#0f2b3d'  
+          : '#ffffff'  
+  }}
+           onClick={() => onNavigate && onNavigate('')}>Home</a>
+        </div>
 
         {/* About Dropdown */}
       <div
@@ -191,10 +239,10 @@ function Navbar({ onNavigate }) {
   style={{
     color:
       theme === 'dark'
-        ? '#ffffff'   // blue
+        ? '#ffffff'  
         : scrolled
-          ? '#0f2b3d' // yellow
-          : '#ffffff' // red
+          ? '#0f2b3d'  
+          : '#ffffff' 
   }}
 >
           <button className="nav-dropdown-toggle" onClick={() => toggleDropdown('about')}>
@@ -215,10 +263,10 @@ function Navbar({ onNavigate }) {
   style={{
     color:
       theme === 'dark'
-        ? '#ffffff'   // blue
+        ? '#ffffff'    
         : scrolled
-          ? '#0f2b3d' // yellow
-          : '#ffffff' // red
+          ? '#0f2b3d'  
+          : '#ffffff'  
   }}
 >
           <button className="nav-dropdown-toggle" onClick={() => toggleDropdown('services')}>
@@ -228,7 +276,7 @@ function Navbar({ onNavigate }) {
             <div className="nav-dropdown-menu">
               <a href="#services" onClick={(e) => handleNavClick(e, 'services')}>All Services</a>
               <a href="#" onClick={(e) => handleNavLink(e, 'products')}>Products</a>
-              <a href="#" onClick={(e) => handleNavLink(e, 'pricing')}>Pricing</a>
+        
             </div>
           )}
         </div>
@@ -239,10 +287,10 @@ function Navbar({ onNavigate }) {
   style={{
     color:
       theme === 'dark'
-        ? '#ffffff'   // blue
+        ? '#ffffff'    
         : scrolled
-          ? '#0f2b3d' // yellow
-          : '#ffffff' // red
+          ? '#0f2b3d'  
+          : '#ffffff'  
   }}
 >
           <button className="nav-dropdown-toggle" onClick={() => toggleDropdown('resources')}>
@@ -259,36 +307,53 @@ function Navbar({ onNavigate }) {
 
      <div
   className="nav-dropdown"
-  style={{
+ style={{
     color:
       theme === 'dark'
-        ? '#ffffff'   // blue
+        ? '#ffffff'   
         : scrolled
-          ? '#0f2b3d' // yellow
-          : '#ffffff' // red
+          ? '#0f2b3d'  
+          : '#ffffff'  
   }}
 >
-          <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>Contact</a>
+          <a href="#contact"
+           style={{
+    color:
+      theme === 'dark'
+        ? '#ffffff'   
+        : scrolled
+          ? '#0f2b3d'  
+          : '#ffffff'  
+  }}
+           onClick={(e) => handleNavClick(e, 'contact')}>Contact</a>
         </div>
 
         <div className="nav-auth-buttons"
          style={{
     color:
       theme === 'dark'
-        ? '#ffffff'   // blue
+        ? '#ffffff'   
         : scrolled
-          ? '#0f2b3d' // yellow
-          : '#ffffff' // red
+          ? '#0f2b3d'  
+          : '#ffffff'  
   }}>
           <button
-            className="btn btn-outline border-[#8cc63f]"
+            className="btn btn-outline border-[#8cc63f] p-4"
             onClick={() => onNavigate && onNavigate('register')}
           >
             Get started
           </button>
         </div>
         {/* Custom Theme Toggle */}
-        <label className="toggle text-base-content">
+        <label className="toggle text-base-content ml-3"
+              style={{
+    color:
+      theme === 'dark'
+        ? '#ffffff'   
+        : scrolled
+          ? '#0f2b3d'  
+          : '#ffffff'  
+  }}>
           <input
             type="checkbox"
             checked={theme === 'dark'}
@@ -298,6 +363,7 @@ function Navbar({ onNavigate }) {
          <HiMoon />
         </label>
       </nav>
+      
     </header>
   );
 }

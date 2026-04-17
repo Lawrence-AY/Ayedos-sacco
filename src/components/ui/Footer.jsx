@@ -1,62 +1,71 @@
+ 
+const Footer = ({ onNavigate }) => {
+ 
 
+  
+  const logoSrc =
+   '/logos/logo-dark.png'
+  
 
-const Footer = () => {
-    return (
-        <footer className="bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 text-white py-12 border-t border-[#8cc63f]/20 dark:border-[#8cc63f]/30 transition-colors duration-300">    
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto px-4">
-                {/* Brand Section */}
-                <div className="footer-brand space-y-3">
-                    <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-full bg-[#8cc63f] text-slate-900 flex items-center justify-center font-bold text-xl">A</div>
-                        <div>
-                            <strong className="block text-lg text-white">Ayedos SACCO</strong>
-                            <span className="text-sm text-white/70">Savings and Credit Cooperative</span>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <footer className="text-base-content py-10 bg-black">
+      <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto px-6">
 
-                {/* Platform Links */}
-                <div className="footer-column space-y-3">
-                    <h4 className="font-semibold text-white text-sm uppercase tracking-wide">Platform</h4>
-                    <div className="space-y-2 flex flex-col">
-                        <a href="#" className="text-white/70 hover:text-[#8cc63f] transition-colors duration-300">Products</a>
-                        <a href="#services" className="text-white/70 hover:text-[#8cc63f] transition-colors duration-300">Services</a>
-                        <a href="#security" className="text-white/70 hover:text-[#8cc63f] transition-colors duration-300">Security</a>
-                    </div>
-                </div>
+        {/* Brand + Contact */}
+        <div>
+          <div
+            className="brand cursor-pointer mb-4"
+            onClick={() => onNavigate && onNavigate('')}
+          >
+            <img src={logoSrc} alt="AYEDOS SACCO" width="130" />
+          </div>
 
-                {/* Company Links */}
-                <div className="footer-column space-y-3">
-                    <h4 className="font-semibold text-white text-sm uppercase tracking-wide">Company</h4>
-                    <div className="space-y-2 flex flex-col">
-                        <a href="#" className="text-white/70 hover:text-[#8cc63f] transition-colors duration-300">Our Story</a>
-                        <a href="#contact" className="text-white/70 hover:text-[#8cc63f] transition-colors duration-300">Contact</a>
-                        <a href="#" className="text-white/70 hover:text-[#8cc63f] transition-colors duration-300">Team</a>
-                    </div>
-                </div>
+          <div className="text-sm text-white/70 leading-6 ">
+            Reach us <br />
+            Monday – Friday <br />
+            8am - 5pm (GMT +3) <br /> 
 
-                {/* Resources Links */}
-                <div className="footer-column space-y-3">
-                    <h4 className="font-semibold text-white text-sm uppercase tracking-wide">Resources</h4>
-                    <div className="space-y-2 flex flex-col">
-                        <a href="#" className="text-white/70 hover:text-[#8cc63f] transition-colors duration-300">FAQ</a>
-                        <a href="#" className="text-white/70 hover:text-[#8cc63f] transition-colors duration-300">Guides</a>
-                        <a href="#" className="text-white/70 hover:text-[#8cc63f] transition-colors duration-300">Blog</a>
-                    </div>
-                </div>
-            </div>
+            Call: +254733556617 <br /><br />
 
-            {/* Footer Bottom */}
-            <div className="border-t border-white/10 dark:border-white/5 mt-8 pt-8 max-w-6xl mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                    <p className="text-white/60">© 2026 Ayedos SACCO. All rights reserved.</p>
-                    <div className="flex gap-6 justify-start md:justify-end">
-                        <a href="#" className="text-white/60 hover:text-[#8cc63f] transition-colors duration-300">Privacy Policy</a>
-                        <a href="#" className="text-white/60 hover:text-[#8cc63f] transition-colors duration-300">Terms of Service</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    );
-}
+            1st Floor Africa Reit House, Karen <br />
+            Nairobi, Kenya <br />
+
+            Email: info@cowrie.io
+          </div>
+        </div>
+
+        {/* Links */}
+        <div className="md:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-6">
+
+          <div>
+            <div className="text-white font-semibold mb-2">Platform</div>
+            <div className="h-px bg-[#8cc63f] w-10 mb-3" />
+            
+            <a href="#" className="block py-1 text-white">Products</a>
+            <a href="#services" className="block py-1">Services</a>
+            <a href="#security" className="block py-1">Security</a>
+          </div>
+
+          <div>
+            <div className="text-white font-semibold mb-2">Company</div>
+           <div className="h-px bg-[#8cc63f] w-10 mb-3" />
+            <a href="#">Our Story</a>
+            <a href="#contact" className="block py-1">Contact</a>
+            <a href="#" className="block py-1">Team</a>
+          </div>
+
+          <div>
+            <div className="text-white font-semibold mb-2">Resources</div>
+             <div className="h-px bg-[#8cc63f] w-10 mb-3" />
+            <a href="#" className="block py-1">FAQ</a>
+            <a href="#" className="block py-1">Guides</a>
+            <a href="#" className="block py-1">Blog</a>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+  );
+};
+
 export default Footer;
