@@ -252,8 +252,7 @@ function Navbar({ onNavigate }) {
             <div className="nav-dropdown-menu">
               <a href="#about" onClick={(e) => handleNavClick(e, 'about')}>Overview</a>
               <a href="#" onClick={(e) => handleNavLink(e, 'our-story')}>Our Story</a>
-              <a href="#" onClick={(e) => handleNavLink(e, 'team')}>Team</a>
-            </div>
+             </div>
           )}
         </div>
 
