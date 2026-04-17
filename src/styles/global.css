@@ -183,11 +183,11 @@ a {
   right: 24px;          
   top: 50%;            
   transform: translateY(-50%);
-  
-  background: none;
+  color:var(--inherent);
+   
   border: none;
   font-size: 1.8rem;
-  color: 'white';
+ 
   cursor: pointer;
   padding: 8px;
   z-index: 200;         
@@ -1082,18 +1082,19 @@ tbody tr:last-child td {
     transition: right 300ms ease;
   }
   
-  .landing-links.open {
-    right: 0;
-  }
+ .landing-links.open {
+  right: 0;
+  background: var(--color-white);  /* or your preferred background */
+  gap: 24px;   /* large gap between menu item groups */
+}
   
   .landing-links a {
-    display: block;
-    padding: 16px 0;
-    border-bottom: 1px solid rgba(10, 42, 67, 0.08);
-    font-size: 1.1rem;
-    color: var(--color-text);
-  }
-  
+  display: block;
+  padding: 12px 0;   /* increase vertical padding inside each link */
+  border-bottom: 1px solid rgba(10, 42, 67, 0.08);
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
     padding: 0 22px;
@@ -1167,7 +1168,7 @@ tbody tr:last-child td {
 }
 
 .nav-dropdown-toggle:hover {
-  color: var(--color-text);
+   
 }
 
 .nav-dropdown-menu {

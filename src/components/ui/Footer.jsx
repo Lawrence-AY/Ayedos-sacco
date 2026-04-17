@@ -8,7 +8,7 @@ const Footer = ({ onNavigate }) => {
   
 
   return (
-    <footer className="text-base-content py-10 bg-black">
+    <footer className="text-base-content py-10 bg-black border border-[#8cc63f]/40 ">
       <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto px-6">
 
         {/* Brand + Contact */}
@@ -25,7 +25,7 @@ const Footer = ({ onNavigate }) => {
             Monday – Friday <br />
             8am - 5pm (GMT +3) <br /> 
 
-            Call: +254733556617 <br /><br />
+            Call: +254 733 556 617 <br /><br />
 
             1st Floor Africa Reit House, Karen <br />
             Nairobi, Kenya <br />
