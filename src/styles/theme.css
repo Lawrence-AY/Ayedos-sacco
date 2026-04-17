@@ -2,9 +2,9 @@
 @import "tailwindcss";
 @plugin "daisyui";
 :root {
-  --color-primary: #0a2a43;
-  --color-secondary: #1e88e5;
-  --color-accent: #00a86b;
+  --color-primary: #003a16;
+  --color-secondary: #828385;
+  --color-accent: #8cc63f;
   --color-background: #f5f7fa;
   --color-text: #0f2b3d;
   --color-muted: #607082;
@@ -13,4 +13,18 @@
   --shadow-elevated: 0 24px 60px rgba(15, 34, 58, 0.14);
   --font-body: Aptos, "Segoe UI Variable", "Segoe UI", Tahoma, sans-serif;
   --font-heading: Aptos Display, Aptos, "Trebuchet MS", sans-serif;
+}
+
+@layer theme {
+  :where(:root) {
+    color-scheme: light;
+  }
+
+  @supports (color: hsl(from var(--color-primary) h s l)) {
+    :where(:root) {
+      --primary: hsl(from var(--color-primary) h s l);
+      --secondary: hsl(from var(--color-secondary) h s l);
+      --accent: hsl(from var(--color-accent) h s l);
+    }
+  }
 }
