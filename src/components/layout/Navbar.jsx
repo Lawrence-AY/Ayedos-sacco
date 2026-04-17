@@ -212,23 +212,28 @@ function Navbar({ onNavigate }) {
           )}
         </div>
 
-        <div
-          className="nav-dropdown"
-          style={{
-            color:
-              theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
-          }}
-        >
-          <a
-            href="#contact"
-            style={{
-              color:
-                theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
-            }}
-            onClick={() => onNavigate && onNavigate("")}
-          >
-            Home
-          </a>
+        
+ <div
+  className="nav-dropdown mr-5"
+ style={{
+    color:
+      theme === 'dark'
+        ? '#ffffff'   
+        : scrolled
+          ? '#0f2b3d'  
+          : '#ffffff'  
+  }}
+>
+          <a href="#contact"
+           style={{
+    color:
+      theme === 'dark'
+        ? '#ffffff'   
+        : scrolled
+          ? '#0f2b3d'  
+          : '#ffffff'  
+  }}
+           onClick={() => onNavigate && onNavigate('')}>Home</a>
         </div>
 
         {/* About Dropdown */}

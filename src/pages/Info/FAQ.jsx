@@ -1,7 +1,35 @@
-import { HiArrowLeft, HiQuestionMarkCircle, HiChevronDown } from 'react-icons/hi2'
-import { useState } from 'react'
+import { HiChevronDown } from 'react-icons/hi2'
+import { useState, useEffect } from 'react'
+import Navbar from '../../components/layout/Navbar'
+import Footer from '../../components/ui/Footer'
+import '../../styles.css'
 
-function FAQ() {
+function FAQ({ onNavigate }) {
+  const navigate = (route) => {
+    if (onNavigate) onNavigate(route)
+  }
+
+  const [theme, setTheme] = useState(() => {
+    return document.documentElement.getAttribute('data-theme') || 'light'
+  })
+
+  useEffect(() => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'data-theme') {
+          const newTheme = document.documentElement.getAttribute('data-theme') || 'light'
+          setTheme(newTheme)
+        }
+      })
+    })
+    observer.observe(document.documentElement, { attributes: true })
+    return () => observer.disconnect()
+  }, [])
+
+  const bgClass = (lightClass, darkClass) => {
+    return theme === 'dark' ? darkClass : lightClass
+  }
+
   const faqs = [
     {
       category: 'General',
@@ -52,46 +80,70 @@ function FAQ() {
   }
 
   return (
-    <div className="info-page-container">
-      <div className="info-hero">
-        <a href="/" className="back-link"><HiArrowLeft /> Back to Home</a>
-        <h1>Frequently Asked Questions</h1>
-        <p>Find answers to common questions about Ayedous SACCO</p>
-      </div>
+    <div className="min-h-screen flex flex-col">
+      <Navbar onNavigate={onNavigate} />
 
-      <section className="info-section">
-        <div className="faq-categories">
-          {faqs.map((category, catIndex) => (
-            <div key={catIndex} className="faq-category">
-              <h2>{category.category}</h2>
-              <div className="faq-list">
-                {category.questions.map((item, qIndex) => {
-                  const globalIndex = catIndex * 10 + qIndex
-                  return (
-                    <div key={qIndex} className={`faq-item-wrapper ${openIndex === globalIndex ? 'open' : ''}`}>
-                      <button className="faq-question" onClick={() => toggleFaq(globalIndex)}>
-                        <span>{item.q}</span>
-                        <HiChevronDown className="faq-chevron" />
-                      </button>
-                      <div className="faq-answer">
-                        <p>{item.a}</p>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
+      <main className={`flex-1 ${bgClass('bg-gray-50', 'bg-black')}`}>
+        <div className="info-page-container">
+          <div className={`info-hero ${bgClass('bg-white', 'bg-gray-900')}`}>
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about Ayedous SACCO</p>
+          </div>
+
+          <section className="info-section">
+            <div className="faq-categories">
+              {faqs.map((category, catIndex) => (
+                <div key={catIndex} className="faq-category">
+                  <h2 className={theme === 'dark' ? 'text-blue-400' : 'text-blue-700'}>
+                    {category.category}
+                  </h2>
+                  <div className="faq-list">
+                    {category.questions.map((item, qIndex) => {
+                      const globalIndex = catIndex * 10 + qIndex
+                      return (
+                        <div
+                          key={qIndex}
+                          className={`faq-item-wrapper ${openIndex === globalIndex ? 'open' : ''} ${
+                            theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white'
+                          }`}
+                        >
+                          <button
+                            className={`faq-question ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}
+                            onClick={() => toggleFaq(globalIndex)}
+                          >
+                            <span>{item.q}</span>
+                            <HiChevronDown className="faq-chevron" />
+                          </button>
+                          <div className="faq-answer">
+                            <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>
+                              {item.a}
+                            </p>
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
+          </section>
 
-      <section className="info-cta">
-        <h2>Still Have Questions?</h2>
-        <p>Can't find what you're looking for? Our support team is here to help.</p>
-        <div className="cta-buttons">
-          <a href="/contact" className="btn-primary">Contact Support</a>
+          <section className={`info-cta ${theme === 'dark' ? 'bg-gray-800' : 'bg-blue-900'}`}>
+            <h2>Still Have Questions?</h2>
+            <p>Can't find what you're looking for? Our support team is here to help.</p>
+            <div className="cta-buttons">
+              <button
+                onClick={() => navigate('contact')}
+                className="btn-primary"
+              >
+                Contact Support
+              </button>
+            </div>
+          </section>
         </div>
-      </section>
+      </main>
+
+      <Footer />
     </div>
   )
 }

@@ -18,13 +18,11 @@ function AppRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPageWrapper />} />
-        <Route path="/login" element={<LoginWrapper />} />
-        <Route path="/register" element={<RegisterWrapper />} />
-        <Route path="/our-story" element={<PageWrapper><OurStory /></PageWrapper>} />
+        <Route path="/our-story" element={<OurStory />} />
         <Route path="/team" element={<PageWrapper><Team /></PageWrapper>} />
         <Route path="/products" element={<PageWrapper><Products /></PageWrapper>} />
         <Route path="/pricing" element={<PageWrapper><Pricing /></PageWrapper>} />
-        <Route path="/faq" element={<PageWrapper><FAQ /></PageWrapper>} />
+        <Route path="/faq" element={<FAQWrapper/>} />
         <Route path="/guides" element={<PageWrapper><Guides /></PageWrapper>} />
         <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
         <Route path="/dashboard/:role" element={<DashboardWrapper />} />
@@ -41,14 +39,14 @@ function PageWrapper({ children }) {
   return <InfoPageLayout onNavigate={navigate}>{children}</InfoPageLayout>
 }
 
-function InfoPageLayout({ children, onNavigate }) {
+function InfoPageLayout({ children }) {
   return (
     <div className="info-page-shell">
-      <Navbar onNavigate={onNavigate} />
+      
       <main className="info-page-content">
         {children}
       </main>
-      <Footer />
+    
     </div>
   )
 }
@@ -66,6 +64,9 @@ function LoginWrapper() {
 
 function RegisterWrapper() {
   return <Register />
+}
+function FAQWrapper() {
+  return <FAQ />
 }
 
 function DashboardWrapper() {
