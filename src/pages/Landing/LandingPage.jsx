@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { HiArrowRight, HiChevronLeft, HiChevronRight } from 'react-icons/hi2'
-import Navbar from '../../components/layout/Navbar'
+import Navbar from '../../components/layout/LandingPageNavbar'
 import Footer from '../../components/ui/Footer'
 
 function LandingPage({ onNavigate }) {
@@ -315,7 +315,7 @@ function LandingPage({ onNavigate }) {
         </div>
       </section>
 
-      <Footer />
+ <Footer />
     </div>
   )
 }

@@ -18,8 +18,9 @@ function AppRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPageWrapper />} />
-        <Route path="/our-story" element={<OurStory />} />
+        <Route path="/our-story" element={ <OurStoryWrapper/> } />
         <Route path="/team" element={<PageWrapper><Team /></PageWrapper>} />
+          <Route path="/blog" element={ <BlogWrapper /> } />
         <Route path="/products" element={<PageWrapper><Products /></PageWrapper>} />
         <Route path="/pricing" element={<PageWrapper><Pricing /></PageWrapper>} />
         <Route path="/faq" element={<FAQWrapper/>} />
@@ -39,14 +40,16 @@ function PageWrapper({ children }) {
   return <InfoPageLayout onNavigate={navigate}>{children}</InfoPageLayout>
 }
 
-function InfoPageLayout({ children }) {
+function InfoPageLayout({ children, onNavigate  }) {
+  
+   
   return (
     <div className="info-page-shell">
-      
+        <Navbar onNavigate={onNavigate} />
       <main className="info-page-content">
         {children}
       </main>
-    
+         
     </div>
   )
 }
@@ -57,16 +60,21 @@ function LandingPageWrapper() {
   }
   return <LandingPage onNavigate={navigate} />
 }
-
-function LoginWrapper() {
-  return <Login />
+function OurStoryWrapper() {
+  const navigate = (route) => {
+    window.location.href = route ? `/${route}` : '/'
+  }
+  return <OurStory onNavigate={navigate} />
 }
 
-function RegisterWrapper() {
-  return <Register />
-}
 function FAQWrapper() {
   return <FAQ />
+}
+ 
+  
+ 
+function BlogWrapper() {
+  return <Blog/>
 }
 
 function DashboardWrapper() {
