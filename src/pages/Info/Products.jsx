@@ -1,5 +1,6 @@
 import { HiArrowLeft, HiCreditCard, HiScale, HiChartPie, HiCurrencyDollar, HiShieldCheck, HiGlobeAlt, HiDeviceTablet } from 'react-icons/hi2'
 import Card from '../../components/ui/Card'
+import Footer from '../../components/ui/Footer'
 
 function Products() {
   const products = [
@@ -54,6 +55,8 @@ function Products() {
   ]
 
   return (
+    <>
+   
     <div className="info-page-container">
       <div className="info-hero">
         <a href="/" className="back-link"><HiArrowLeft /> Back to Home</a>
@@ -98,6 +101,8 @@ function Products() {
         </div>
       </section>
     </div>
+    <Footer />
+     </>
   )
 }
 

@@ -5,7 +5,8 @@ import {
   HiShieldCheck,
   HiChartBar,
 } from "react-icons/hi2";
-
+import Navbar from "../../components/layout/Navbar";
+import Footer from "../../components/ui/Footer";
 function OurStory({ onNavigate }) {
   const navigate = (route) => {
     if (onNavigate) onNavigate(route);
@@ -72,6 +73,8 @@ function OurStory({ onNavigate }) {
   ];
 
   return (
+    <>
+   <Navbar onNavigate={onNavigate} />
     <div className="min-h-screen bg-white text-slate-900">
       <div className="relative py-8 px-4">
         <button
@@ -218,6 +221,8 @@ function OurStory({ onNavigate }) {
         </div>
       </section>
     </div>
+    <Footer />
+       </>
   );
 }
 

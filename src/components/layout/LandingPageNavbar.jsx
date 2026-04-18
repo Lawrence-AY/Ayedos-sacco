@@ -231,7 +231,7 @@ function Navbar({ onNavigate }) {
         ? '#ffffff'   
         : scrolled
           ? '#0f2b3d'  
-          : '#0f2b3d' 
+          : '#ffffff'  
   }}
            onClick={() => onNavigate && onNavigate('/')}>Home</a>
         </div>
@@ -241,7 +241,7 @@ function Navbar({ onNavigate }) {
           className="nav-dropdown"
           style={{
             color:
-              theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : '#0f2b3d',
+              theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
           }}
         >
           <button
@@ -267,7 +267,7 @@ function Navbar({ onNavigate }) {
           className="nav-dropdown"
           style={{
             color:
-              theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : '#0f2b3d',
+              theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
           }}
         >
           <button
@@ -296,7 +296,7 @@ function Navbar({ onNavigate }) {
           className="nav-dropdown"
           style={{
             color:
-              theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : '#0f2b3d',
+              theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
           }}
         >
           <button
@@ -331,7 +331,7 @@ function Navbar({ onNavigate }) {
             href="#contact"
             style={{
               color:
-                theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : '#0f2b3d',
+                theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
             }}
             onClick={(e) => handleNavClick(e, "contact")}
           >
@@ -343,7 +343,7 @@ function Navbar({ onNavigate }) {
           className="nav-auth-buttons"
           style={{
             color:
-              theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : '#0f2b3d',
+              theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
           }}
         >
           <button
@@ -358,14 +358,13 @@ function Navbar({ onNavigate }) {
           className="toggle text-base-content ml-3"
           style={{
             color:
-       theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : '#0f2b3d',
+              theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
           }}
         >
           <input
             type="checkbox"
             checked={theme === "dark"}
             onChange={toggleTheme}
-            
           />
           <HiSun />
           <HiMoon />
