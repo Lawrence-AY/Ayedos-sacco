@@ -24,7 +24,7 @@ function AppRoutes() {
         <Route path="/products" element={<PageWrapper><Products /></PageWrapper>} />
         <Route path="/pricing" element={<PageWrapper><Pricing /></PageWrapper>} />
         <Route path="/faq" element={<FAQWrapper/>} />
-        <Route path="/guides" element={<PageWrapper><Guides /></PageWrapper>} />
+        <Route path="/guides" element={ <Guides/>}  />   
         <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
         <Route path="/dashboard/:role" element={<DashboardWrapper />} />
         <Route path="*" element={<Navigate to="/" replace />} />
