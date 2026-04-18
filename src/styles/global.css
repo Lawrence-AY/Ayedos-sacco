@@ -1610,12 +1610,12 @@ tbody tr:last-child td {
 .faq-categories {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 10px;
 }
 
 .faq-category h2 {
   font-size: 1.4rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: var(--color-secondary);
 }
 
@@ -1944,7 +1944,7 @@ tbody tr:last-child td {
   }
 
   .info-page-container {
-    padding: 0 22px 40px;
+   /* padding: 0 22px 40px;*/
   }
 }
 

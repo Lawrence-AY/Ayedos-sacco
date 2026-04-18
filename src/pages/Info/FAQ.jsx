@@ -17,7 +17,8 @@ function FAQ({ onNavigate }) {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.attributeName === 'data-theme') {
-          const newTheme = document.documentElement.getAttribute('data-theme') || 'light'
+          const newTheme =
+            document.documentElement.getAttribute('data-theme') || 'light'
           setTheme(newTheme)
         }
       })
@@ -26,23 +27,19 @@ function FAQ({ onNavigate }) {
     return () => observer.disconnect()
   }, [])
 
-  const bgClass = (lightClass, darkClass) => {
-    return theme === 'dark' ? darkClass : lightClass
-  }
-
   const faqs = [
     {
       category: 'General',
       questions: [
-        { q: 'What is Ayedous SACCO?', a: 'Ayedous SACCO is a comprehensive financial management platform designed specifically for Savings and Credit Cooperatives. We provide tools for managing member accounts, savings, shares, dividends, and loans.' },
-        { q: 'Who can use Ayedous?', a: 'Our platform is designed for SACCOs of all sizes, from small community cooperatives to large regional SACCOs. We serve both employee-based and non-employee member organizations.' },
-        { q: 'Is my data secure?', a: 'Yes, we use bank-grade 256-bit encryption and are fully compliant with Kenyan data protection regulations. Our servers are hosted in secure data centers with 24/7 monitoring.' }
+        { q: 'What is Ayedos SACCO?', a: 'Ayedos SACCO is a comprehensive financial management platform designed specifically for Savings and Credit Cooperatives. We provide tools for managing member accounts, savings, shares, dividends, and loans.' },
+        { q: 'Who can use Ayedos?', a: 'Our platform is designed for SACCOs of all sizes, from small community cooperatives to large regional SACCOs. We serve both employee-based and non-employee member organizations.' },
+       // { q: 'Is my data secure?', a: 'Yes, we use bank-grade 256-bit encryption and are fully compliant with Kenyan data protection regulations. Our servers are hosted in secure data centers with 24/7 monitoring.' }
       ]
     },
     {
       category: 'Account & Login',
       questions: [
-        { q: 'How do I register as a member?', a: 'Click the Register button on the homepage, fill in your details, and complete the verification process. Your employer may provide you with a registration code.' },
+        { q: 'How do I register as a member?', a: 'Click the Get Started button on the navbar, fill in your details, and complete the verification process.' },
         { q: 'I forgot my password, how do I reset it?', a: 'Click "Forgot Password" on the login page, enter your registered email, and follow the reset instructions sent to your inbox.' },
         { q: 'Can I have multiple accounts?', a: 'Each member is typically associated with one account. If you have multiple memberships across different SACCOs, you will need separate credentials for each.' }
       ]
@@ -52,7 +49,7 @@ function FAQ({ onNavigate }) {
       questions: [
         { q: 'How do I make a deposit?', a: 'Log in to your member portal, go to "Make Deposit", and follow the prompts. You can use mobile money, bank transfer, or cash at designated agents.' },
         { q: 'How long do withdrawals take?', a: 'Mobile money withdrawals are processed within minutes. Bank transfers typically take 1-2 business days. Cash withdrawals require visiting a designated agent.' },
-        { q: 'What are the transaction limits?', a: 'Daily limits vary by membership level and verification status. Standard accounts have a KSh 100,000 daily limit, which can be increased upon request.' }
+       // { q: 'What are the transaction limits?', a: 'Daily limits vary by membership level and verification status. Standard accounts have a KSh 100,000 daily limit, which can be increased upon request.' }
       ]
     },
     {
@@ -79,67 +76,106 @@ function FAQ({ onNavigate }) {
     setOpenIndex(openIndex === index ? null : index)
   }
 
+  let counter = 0
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar onNavigate={onNavigate} />
 
-      <main className={`flex-1 ${bgClass('bg-gray-50', 'bg-black')}`}>
-        <div className="info-page-container">
-          <div className={`info-hero ${bgClass('bg-white', 'bg-gray-900')}`}>
-            <h1>Frequently Asked Questions</h1>
-            <p>Find answers to common questions about Ayedous SACCO</p>
+      <main className={`flex-1 ${theme === 'dark' ? 'bg-black' : 'bg-gray-50'}`}>
+        <div className="max-w-4xl mx-auto px-4 py-16">
+
+          {/* Header */}
+          <div className="text-center mb-12 mt-10">
+            <div className="text-3xl md:text-5xl font-bold">
+              Frequently Asked Questions
+            </div>
+            <div className="mt-4 text-gray-500">
+              Find answers to common questions about Ayedos SACCO
+            </div>
           </div>
 
-          <section className="info-section">
-            <div className="faq-categories">
-              {faqs.map((category, catIndex) => (
-                <div key={catIndex} className="faq-category">
-                  <h2 className={theme === 'dark' ? 'text-blue-400' : 'text-blue-700'}>
-                    {category.category}
-                  </h2>
-                  <div className="faq-list">
-                    {category.questions.map((item, qIndex) => {
-                      const globalIndex = catIndex * 10 + qIndex
-                      return (
+          {/* FAQ */}
+          {faqs.map((category, catIndex) => (
+            <div key={catIndex} className="mb-10">
+              <div className="text-xl font-semibold mb-4">
+                {category.category}
+              </div>
+
+              <div className="space-y-3">
+                {category.questions.map((item, qIndex) => {
+                  const index = counter++
+                  const isOpen = openIndex === index
+
+                  return (
+                    <div
+                      key={qIndex}
+                      className={`rounded-xl border transition ${
+                        theme === 'dark'
+                          ? 'bg-gray-800 border-gray-700'
+                          : 'bg-white border-gray-200'
+                      }`}
+                    >
+                      {/* Question */}
+                      <button
+                        onClick={() => toggleFaq(index)}
+                        className="w-full flex items-center justify-between p-4 text-left"
+                      >
+                        <span className="font-medium">
+                          {item.q}
+                        </span>
+
+                        <HiChevronDown
+                          className={`transition-transform duration-300 ${
+                            isOpen ? 'rotate-180' : ''
+                          }`}
+                        />
+                      </button>
+
+                      {/* Answer */}
+                      <div
+                        className={`overflow-hidden transition-all duration-300 ${
+                          isOpen ? 'max-h-40 px-4 pb-4' : 'max-h-0'
+                        }`}
+                      >
                         <div
-                          key={qIndex}
-                          className={`faq-item-wrapper ${openIndex === globalIndex ? 'open' : ''} ${
-                            theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white'
+                          className={`text-sm ${
+                            theme === 'dark'
+                              ? 'text-gray-300'
+                              : 'text-gray-600'
                           }`}
                         >
-                          <button
-                            className={`faq-question ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}
-                            onClick={() => toggleFaq(globalIndex)}
-                          >
-                            <span>{item.q}</span>
-                            <HiChevronDown className="faq-chevron" />
-                          </button>
-                          <div className="faq-answer">
-                            <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>
-                              {item.a}
-                            </p>
-                          </div>
+                          {item.a}
                         </div>
-                      )
-                    })}
-                  </div>
-                </div>
-              ))}
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
             </div>
+          ))}
+
+          {/* CTA */}
+          <section
+            className={`mt-16 rounded-2xl p-8 text-center ${
+              theme === 'dark' ? 'bg-[#8cc63f]' : 'bg-[#8cc63f] text-white'
+            }`}
+          >
+            <div className="text-2xl font-bold mb-2">
+              Still Have Questions?
+            </div>
+            <div className="mb-6">
+              Can't find what you're looking for? Our support team is here to help.
+            </div>
+
+            <button
+              onClick={() => navigate('contact')}
+              className="border p-3 rounded-xl shadow-none"
+            >
+              Contact Support
+            </button>
           </section>
 
-          <section className={`info-cta ${theme === 'dark' ? 'bg-gray-800' : 'bg-blue-900'}`}>
-            <h2>Still Have Questions?</h2>
-            <p>Can't find what you're looking for? Our support team is here to help.</p>
-            <div className="cta-buttons">
-              <button
-                onClick={() => navigate('contact')}
-                className="btn-primary"
-              >
-                Contact Support
-              </button>
-            </div>
-          </section>
         </div>
       </main>
 
