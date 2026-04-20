@@ -109,13 +109,7 @@ function Navbar({ onNavigate }) {
     setSearchOpen(false);
   };
 
-  const handleNavLink = (e, route) => {
-    e.preventDefault();
-    if (onNavigate) onNavigate(route);
-    setMobileMenuOpen(false);
-    setDropdownOpen(null);
-    setSearchOpen(false);
-  };
+ 
 
   const toggleDropdown = (menu) => {
     setDropdownOpen(dropdownOpen === menu ? null : menu);
@@ -249,13 +243,13 @@ function Navbar({ onNavigate }) {
             <div className="nav-dropdown-menu">
               <a
                 href="/our-story"
-                onClick={(e) => handleNavLink(e, "our-story")}
+                 
               >
                 Our Story
               </a>
               <a
                 href="/our-ideology"
-                onClick={(e) => handleNavLink(e, "our-ideology")}
+                 
               >
                 Our Ideology
               </a>
@@ -279,13 +273,8 @@ function Navbar({ onNavigate }) {
           </button>
           {dropdownOpen === "services" && (
             <div className="nav-dropdown-menu">
-              <a
-                href="#services"
-                onClick={(e) => handleNavClick(e, "services")}
-              >
-                All Services
-              </a>
-              <a href="#" onClick={(e) => handleNavLink(e, "products")}>
+              
+              <a href="/products"  >
                 Products
               </a>
             </div>
@@ -308,13 +297,13 @@ function Navbar({ onNavigate }) {
           </button>
           {dropdownOpen === "resources" && (
             <div className="nav-dropdown-menu">
-              <a href="/faq" onClick={(e) => handleNavLink(e, "faq")}>
+              <a href="/faq"  >
                 FAQ
               </a>
-              <a href="/guides" onClick={(e) => handleNavLink(e, "guides")}>
+              <a href="/guides"  >
                 Guides
               </a>
-              <a href="/blog" onClick={(e) => handleNavLink(e, "blog")}>
+              <a href="/blog" >
                 Blog
               </a>
             </div>
