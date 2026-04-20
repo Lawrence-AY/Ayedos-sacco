@@ -5,12 +5,61 @@ import {
   HiShieldCheck,
   HiChartBar,
 } from "react-icons/hi2";
+import { useEffect, useRef } from "react";
 import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/ui/Footer";
 function OurStory({ onNavigate }) {
   const navigate = (route) => {
     if (onNavigate) onNavigate(route);
   };
+
+  const containerRef = useRef();
+
+  useEffect(() => {
+    // Add animation styles
+    if (!document.getElementById("timeline-styles")) {
+      const style = document.createElement("style");
+      style.id = "timeline-styles";
+      style.textContent = `
+        @keyframes fillDot {
+          0% {
+            box-shadow: inset 0 0 0 8px var(--color-accent), 0 0 0 2px white;
+          }
+          100% {
+            box-shadow: inset 0 0 0 0px var(--color-accent), 0 0 0 2px white;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+
+              // Animate the dot
+              const dot = entry.target.querySelector(".timeline-dot");
+              if (dot) {
+                dot.style.animation = "fillDot 0.8s ease-out forwards";
+              }
+            }, entry.target.dataset.delay);
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+
+    const items = containerRef.current?.querySelectorAll(".timeline-item");
+    if (items) {
+      items.forEach((item) => observer.observe(item));
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const timeline = [
     {
@@ -77,14 +126,14 @@ function OurStory({ onNavigate }) {
       <Navbar onNavigate={onNavigate} />
       <div className="  text-slate-900">
         {/* Who We Are */}
-        <section className="h-screen py-20 px-4 bg-white">
+        <section className="h-screen pt-24 pb-20 px-4 bg-white">
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col bg-white items-center">
               <div>
-                <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
+                <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 text-center">
                   What makes us different
                 </h1>
-                <p className="text-xl text-slate-600 leading-[2.5]">
+                <p className="text-xl text-slate-600 leading-[2.5] max-w-4xl mx-auto">
                   Ayedos SACCO is a leading provider of comprehensive financial
                   management solutions for Savings and Credit Cooperatives
                   across East Africa. We combine deep industry expertise with
@@ -94,12 +143,12 @@ function OurStory({ onNavigate }) {
               </div>
               <div className="h-80 w-full gap-2.5 rounded-3xl border border-slate-200 bg-white p-1 shadow-xl overflow-hidden flex">
                 <img
-                  src="/about-us.png"
+                  src="/about-us.jpg"
                   alt="Ayedos SACCO Story"
                   className="w-1/2 h-full object-cover rounded-2xl"
                 />
                 <img
-                  src="/about-two.png"
+                  src="/about-three.jpg"
                   alt="Ayedos SACCO Story"
                   className="w-1/2 h-full object-cover rounded-2xl"
                 />
@@ -120,22 +169,62 @@ function OurStory({ onNavigate }) {
               </p>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="relative" ref={containerRef}>
+              <div
+                className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full"
+                style={{ backgroundColor: "var(--color-accent)" }}
+              ></div>
               {timeline.map((item, index) => (
                 <div
                   key={index}
-                  className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl transition hover:-translate-y-1"
+                  className="timeline-item flex items-center mb-12 opacity-0 translate-y-4 transition-all duration-700 ease-out"
+                  data-delay={index * 200}
                 >
-                  <div
-                    className="font-bold text-lg mb-3"
-                    style={{ color: "var(--color-accent)" }}
-                  >
-                    {item.year}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-4 text-slate-900">
-                    {item.title}
-                  </h3>
-                  <p className="text-slate-600">{item.description}</p>
+                  {index % 2 === 0 ? (
+                    <>
+                      <div className="w-1/2 text-right pr-8">
+                        <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-xl hover:-translate-y-1 transition-transform">
+                          <div
+                            className="font-bold text-lg mb-3"
+                            style={{ color: "var(--color-accent)" }}
+                          >
+                            {item.year}
+                          </div>
+                          <h3 className="text-xl font-semibold mb-4 text-slate-900">
+                            {item.title}
+                          </h3>
+                          <p className="text-slate-600">{item.description}</p>
+                        </div>
+                      </div>
+                      <div
+                        className="w-4 h-4 rounded-full z-10 border-2 border-white flex-shrink-0 timeline-dot"
+                        style={{ backgroundColor: "var(--color-accent)" }}
+                      ></div>
+                      <div className="w-1/2"></div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="w-1/2"></div>
+                      <div
+                        className="w-4 h-4 rounded-full z-10 border-2 border-white flex-shrink-0 timeline-dot"
+                        style={{ backgroundColor: "var(--color-accent)" }}
+                      ></div>
+                      <div className="w-1/2 text-left pl-8">
+                        <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-xl hover:-translate-y-1 transition-transform">
+                          <div
+                            className="font-bold text-lg mb-3"
+                            style={{ color: "var(--color-accent)" }}
+                          >
+                            {item.year}
+                          </div>
+                          <h3 className="text-xl font-semibold mb-4 text-slate-900">
+                            {item.title}
+                          </h3>
+                          <p className="text-slate-600">{item.description}</p>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               ))}
             </div>
@@ -143,44 +232,71 @@ function OurStory({ onNavigate }) {
         </section>
 
         {/* Our Values */}
-        <section className="h-screen py-20 px-4 bg-white">
+        <section
+          className="h-screen py-20 px-4"
+          style={{ backgroundColor: "var(--color-secondary)" }}
+        >
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
                 Our Values
               </h2>
-              <p className="text-slate-600 mt-4">
+              <p className="text-black mt-4">
                 The principles that guide everything we do
               </p>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-3">
-              {values.map((value, index) => {
-                const Icon = value.icon;
-                return (
-                  <div
-                    key={index}
-                    className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-xl transition hover:-translate-y-1 text-center"
-                  >
+            <div className="flex flex-col items-center gap-8">
+              <div className="flex gap-8">
+                {values.slice(0, 2).map((value, index) => {
+                  const Icon = value.icon;
+                  return (
                     <div
-                      className="mb-6"
-                      style={{ color: "var(--color-accent)" }}
+                      key={index}
+                      className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-xl transition hover:-translate-y-1 text-center flex-1 max-w-sm"
                     >
-                      <Icon className="w-12 h-12 mx-auto" />
+                      <div
+                        className="mb-6"
+                        style={{ color: "var(--color-accent)" }}
+                      >
+                        <Icon className="w-12 h-12 mx-auto" />
+                      </div>
+                      <h3 className="text-xl font-semibold mb-4 text-slate-900">
+                        {value.title}
+                      </h3>
+                      <p className="text-slate-600">{value.description}</p>
                     </div>
-                    <h3 className="text-xl font-semibold mb-4 text-slate-900">
-                      {value.title}
-                    </h3>
-                    <p className="text-slate-600">{value.description}</p>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
+              <div className="flex justify-center">
+                {values.slice(2, 3).map((value, index) => {
+                  const Icon = value.icon;
+                  return (
+                    <div
+                      key={index + 2}
+                      className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-xl transition hover:-translate-y-1 text-center max-w-sm"
+                    >
+                      <div
+                        className="mb-6"
+                        style={{ color: "var(--color-accent)" }}
+                      >
+                        <Icon className="w-12 h-12 mx-auto" />
+                      </div>
+                      <h3 className="text-xl font-semibold mb-4 text-slate-900">
+                        {value.title}
+                      </h3>
+                      <p className="text-slate-600">{value.description}</p>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </section>
 
         {/* CTA */}
-        <section className="h-screen py-20 px-4 bg-slate-50 ">
+        <section className="h-[50vh] py-20 px-4 bg-white ">
           <div className="max-w-4xl mx-auto text-center rounded-[2rem] border border-slate-300 bg-white p-10 shadow-lg">
             <div className="text-3xl md:text-4xl font-bold mb-4 text-black ">
               Join Our Growing Community

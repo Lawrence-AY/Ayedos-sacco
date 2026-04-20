@@ -212,28 +212,23 @@ function Navbar({ onNavigate }) {
           )}
         </div>
 
-        
- <div
-  className="nav-dropdown mr-5"
- style={{
-    color:
-      theme === 'dark'
-        ? '#ffffff'   
-        : scrolled
-          ? '#0f2b3d'  
-          : '#ffffff'  
-  }}
->
-          <a href="/"
-           style={{
-    color:
-      theme === 'dark'
-        ? '#ffffff'   
-        : scrolled
-          ? '#0f2b3d'  
-          : '#ffffff'  
-  }}
-           onClick={() => onNavigate && onNavigate('/')}>Home</a>
+        <div
+          className="nav-dropdown mr-5"
+          style={{
+            color:
+              theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
+          }}
+        >
+          <a
+            href="/"
+            style={{
+              color:
+                theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
+            }}
+            onClick={() => onNavigate && onNavigate("/")}
+          >
+            Home
+          </a>
         </div>
 
         {/* About Dropdown */}
@@ -252,11 +247,17 @@ function Navbar({ onNavigate }) {
           </button>
           {dropdownOpen === "about" && (
             <div className="nav-dropdown-menu">
-              <a href="#about" onClick={(e) => handleNavClick(e, "about")}>
-                Overview
-              </a>
-              <a href="/our-story" onClick={(e) => handleNavLink(e, "our-story")}>
+              <a
+                href="/our-story"
+                onClick={(e) => handleNavLink(e, "our-story")}
+              >
                 Our Story
+              </a>
+              <a
+                href="/our-ideology"
+                onClick={(e) => handleNavLink(e, "our-ideology")}
+              >
+                Our Ideology
               </a>
             </div>
           )}
