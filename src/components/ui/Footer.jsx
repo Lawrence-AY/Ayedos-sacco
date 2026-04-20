@@ -48,7 +48,7 @@ const Footer = ({ onNavigate }) => {
             
             <a href="/products" onClick={(e) => handleRouteClick(e, 'products')} className="block py-1 text-white">Products</a>
             <a href="/services" className="block py-1">Services</a>
-            <a href="#security" className="block py-1">Security</a>
+       <a href="/our-ideology" className="block py-1">Our Ideology</a>
           </div>
 
           <div>

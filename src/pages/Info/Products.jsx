@@ -128,7 +128,7 @@ function Products({ onNavigate }) {
         <div className={`rounded-xl border p-6 text-center ${
           isDark ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-200'
         }`}>
-          <h3 className="text-xl font-semibold mb-4">Download Application Forms</h3>
+          <div className="text-xl font-semibold mb-4">Download Application Forms</div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => downloadForm(
