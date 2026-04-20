@@ -2,15 +2,14 @@ import {
   HiDocumentText,
   HiBookOpen,
   HiAcademicCap,
-  HiPlayCircle
+  HiPlayCircle,
+  HiArrowLeft
 } from 'react-icons/hi2'
 import { useState, useEffect, useRef } from 'react'
-import Navbar from '../../components/layout/Navbar'
-import Footer from '../../components/ui/Footer'
 
 function Guides({ onNavigate }) {
    const navigate = (route) => {
-    if (onNavigate) onNavigate(route)
+    window.location.href = route ? `/${route}` : "/";
   }
   const [theme, setTheme] = useState(() => {
     return document.documentElement.getAttribute('data-theme') || 'light'
@@ -77,20 +76,13 @@ function Guides({ onNavigate }) {
   }
 
   return (
-    <>
- 
-      <Navbar onNavigate={onNavigate} />
-    <div className={`  ${isDark ? 'bg-black' : 'bg-white'}`}>
-
-      {/* HERO - matching FAQ style */}
-      <div className="max-w-4xl mx-auto px-4  py-16 text-center">
-        <div className="text-3xl mt-10 md:text-5xl font-bold">
-          Guides & Resources
-        </div>
-        <p className={`mt-4 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-          Step-by-step guides to help you get the most out of Ayedos
-        </p>
+    <div className="info-page-container">
+      <div className="info-hero">
+        <h1>Guides & Resources</h1>
+        <p>Step-by-step guides to help you get the most out of Ayedos</p>
       </div>
+
+      <div className={`  ${isDark ? 'bg-black' : 'bg-white'}`}>
 
       {/* GUIDES GRID - matching FAQ card styling */}
       <div className="max-w-6xl mx-auto px-4 pb-16">
@@ -193,10 +185,8 @@ function Guides({ onNavigate }) {
           <button onClick={closeModal}>close</button>
         </form>
       </dialog>
-
-      <Footer />
+      </div>
     </div>
-       </>
   )
 }
 

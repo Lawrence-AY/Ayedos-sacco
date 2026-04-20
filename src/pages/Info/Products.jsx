@@ -8,12 +8,20 @@ import {
   HiGlobeAlt,
   HiDeviceTablet,
   HiBolt,
+  HiArrowLeft
 } from 'react-icons/hi2'
-import Navbar from '../../components/layout/Navbar'
-import Footer from '../../components/ui/Footer'
 import { HiAcademicCap, HiHeart, HiOfficeBuilding } from 'react-icons/hi'
 
 function Products({ onNavigate }) {
+  const navigate = (route) => {
+    if (onNavigate) {
+      onNavigate(route)
+      return
+    }
+
+    window.location.href = route ? `/${route}` : '/'
+  }
+
   const [theme, setTheme] = useState(() => {
     return document.documentElement.getAttribute('data-theme') || 'light'
   })
@@ -108,16 +116,13 @@ function Products({ onNavigate }) {
   }
 
   return (
-    <div className={`min-h-screen ${isDark ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
-      <Navbar onNavigate={onNavigate} />
-
-      {/* HERO SECTION */}
-      <div className="max-w-6xl mx-auto px-4 py-16 pb-5 text-center">
-        <div className="text-3xl md:text-5xl font-bold">Products</div>
-        <div className={`mt-4 max-w-2xl mx-auto ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-          Complete solutions for modern SACCO management
-        </div>
+    <div className="info-page-container">
+      <div className="info-hero">
+        <h1>Products</h1>
+        <p>Complete solutions for modern SACCO management</p>
       </div>
+
+      <div className={`min-h-screen ${isDark ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
   {/* DOWNLOAD FORMS SECTION */}
       <div className="max-w-6xl mx-auto px-4 pb-5 ">
         <div className={`rounded-xl border p-6 text-center ${
@@ -158,24 +163,24 @@ function Products({ onNavigate }) {
             return (
               <div
                 key={index}
-                className={`rounded-xl border transition flex flex-col ${
+                className={`rounded-xl border transition-all duration-300 hover:-translate-y-2 flex flex-col ${
                   isDark
-                    ? 'bg-gray-800 border-gray-700 hover:bg-gray-700'
-                    : 'bg-white border-gray-200 hover:shadow-md'
+                    ? 'bg-gray-800 border-gray-700 hover:bg-gray-700 hover:border-[#8cc63f]/50'
+                    : 'bg-white border-gray-200 hover:shadow-xl hover:border-[#8cc63f]/40'
                 }`}
               >
                 <div className="p-6 flex flex-col grow">
-                  <div className="mb-4 text-3xl" style={{ color: '#8cc63f' }}>
+                  <div className="mb-4 text-3xl transition-transform duration-300 group-hover:scale-110" style={{ color: '#8cc63f' }}>
                     <Icon />
                   </div>
-                  <div className="text-lg font-semibold mb-2">{product.title}</div>
+                  <div className={`text-lg font-semibold mb-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>{product.title}</div>
                   <p className={`text-sm mb-4 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                     {product.description}
                   </p>
                   <ul className="space-y-1 mb-4 text-sm">
                     {product.features.slice(0, 3).map((feature, i) => (
-                      <li key={i} className="flex items-center gap-1">
-                        <span className="text-green-500">✓</span>
+                      <li key={i} className="flex items-center gap-2">
+                        <span className="w-4 h-4 rounded-full bg-[#8cc63f]/20 flex items-center justify-center text-[#8cc63f] text-xs">✓</span>
                         <span className={isDark ? 'text-gray-300' : 'text-gray-600'}>{feature}</span>
                       </li>
                     ))}
@@ -185,10 +190,10 @@ function Products({ onNavigate }) {
                   </ul>
                   <button
                     onClick={() => openModal(product)}
-                    className="hover:underline inline-flex items-center gap-1 text-sm mt-auto"
+                    className="inline-flex items-center gap-1 text-sm mt-auto transition-all duration-300 hover:gap-2"
                     style={{ color: '#8cc63f' }}
                   >
-                    Learn more →
+                    Learn more <span>→</span>
                   </button>
                 </div>
               </div>
@@ -202,15 +207,20 @@ function Products({ onNavigate }) {
       {/* CTA SECTION */}
       <div className="py-0 mb-15">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="rounded-2xl p-8 text-center" style={{ backgroundColor: '#8cc63f', color: 'white' }}>
-            <div className="text-2xl font-bold mb-2">
+          <div className={`rounded-3xl p-10 text-center transition-all duration-300 hover:-translate-y-1 ${
+            isDark 
+              ? 'bg-gradient-to-r from-[#8cc63f]/20 to-transparent border border-[#8cc63f]/30' 
+              : 'bg-gradient-to-r from-[#8cc63f]/10 to-transparent border border-[#8cc63f]/20'
+          }`}>
+            <div className={`text-2xl font-bold mb-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>
               Need More Help?
             </div>
-            <p className="mb-6 opacity-90">
+            <p className={`mb-6 ${isDark ? 'text-gray-300' : 'text-slate-600'}`}>
               If you can't find what you're looking for, our support team is ready to assist.
             </p>
             <button
-              className="border p-3 rounded-xl shadow-none mt-3"
+              className="px-6 py-3 rounded-xl font-semibold bg-[#8cc63f] hover:bg-[#9fd858] text-slate-900 transition-all duration-300 hover:-translate-y-1 shadow-lg"
+              onClick={() => navigate('contact')}
             >
               Contact Support
             </button>
@@ -258,8 +268,7 @@ function Products({ onNavigate }) {
           <button onClick={closeModal}>close</button>
         </form>
       </dialog>
-
-      <Footer />
+      </div>
     </div>
   )
 }

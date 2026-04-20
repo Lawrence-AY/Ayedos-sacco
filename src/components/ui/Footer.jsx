@@ -1,11 +1,16 @@
- 
 const Footer = ({ onNavigate }) => {
- 
+  const logoSrc = '/logos/logo-dark.png'
 
-  
-  const logoSrc =
-   '/logos/logo-dark.png'
-  
+  const handleRouteClick = (e, route) => {
+    e.preventDefault()
+
+    if (onNavigate) {
+      onNavigate(route)
+      return
+    }
+
+    window.location.href = route ? `/${route}` : '/'
+  }
 
   return (
     <footer className="text-base-content py-10 bg-black border border-[#8cc63f]/40 ">
@@ -41,7 +46,7 @@ const Footer = ({ onNavigate }) => {
             <div className="text-white font-semibold mb-2">Platform</div>
             <div className="h-px bg-[#8cc63f] w-10 mb-3" />
             
-            <a href="/products" className="block py-1 text-white">Products</a>
+            <a href="/products" onClick={(e) => handleRouteClick(e, 'products')} className="block py-1 text-white">Products</a>
             <a href="/services" className="block py-1">Services</a>
             <a href="#security" className="block py-1">Security</a>
           </div>
@@ -49,17 +54,17 @@ const Footer = ({ onNavigate }) => {
           <div>
             <div className="text-white font-semibold mb-2">Company</div>
            <div className="h-px bg-[#8cc63f] w-10 mb-3" />
-            <a href="our-story">Our Story</a>
-            <a href="#contact" className="block py-1">Contact</a>
+            <a href="/our-story" onClick={(e) => handleRouteClick(e, 'our-story')} className="block py-1">Our Story</a>
+            <a href="/contact" onClick={(e) => handleRouteClick(e, 'contact')} className="block py-1">Contact</a>
  
           </div>
 
           <div>
             <div className="text-white font-semibold mb-2">Resources</div>
              <div className="h-px bg-[#8cc63f] w-10 mb-3" />
-            <a href="/faq" className="block py-1">FAQ</a>
-            <a href="/guides" className="block py-1">Guides</a>
-            <a href="/blog" className="block py-1">Blog</a>
+            <a href="/faq" onClick={(e) => handleRouteClick(e, 'faq')} className="block py-1">FAQ</a>
+            <a href="/guides" onClick={(e) => handleRouteClick(e, 'guides')} className="block py-1">Guides</a>
+            <a href="/blog" onClick={(e) => handleRouteClick(e, 'blog')} className="block py-1">Blog</a>
           </div>
 
         </div>

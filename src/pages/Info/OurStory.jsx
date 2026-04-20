@@ -1,18 +1,33 @@
 import {
-  HiArrowLeft,
   HiCalendar,
   HiUserGroup,
   HiShieldCheck,
   HiChartBar,
 } from "react-icons/hi2";
-import { useEffect, useRef } from "react";
-import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/ui/Footer";
+import { useState, useEffect, useRef } from "react";
 function OurStory({ onNavigate }) {
   const navigate = (route) => {
-    if (onNavigate) onNavigate(route);
+    window.location.href = route ? `/${route}` : "/";
   };
 
+  const [theme, setTheme] = useState(() => {
+    return document.documentElement.getAttribute('data-theme') || 'light'
+  })
+
+  useEffect(() => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'data-theme') {
+          const newTheme = document.documentElement.getAttribute('data-theme') || 'light'
+          setTheme(newTheme)
+        }
+      })
+    })
+    observer.observe(document.documentElement, { attributes: true })
+    return () => observer.disconnect()
+  }, [])
+
+  const isDark = theme === 'dark'
   const containerRef = useRef();
 
   useEffect(() => {
@@ -122,18 +137,16 @@ function OurStory({ onNavigate }) {
   ];
 
   return (
-    <>
-      <Navbar onNavigate={onNavigate} />
-      <div className="  text-slate-900">
+    <div className={isDark ? "text-white" : "text-slate-900"}>
         {/* Who We Are */}
-        <section className="h-screen pt-24 pb-20 px-4 bg-white">
+        <section className={`h-screen pt-24 pb-20 px-4 ${isDark ? 'bg-black' : 'bg-white'}`}>
           <div className="max-w-6xl mx-auto">
-            <div className="flex flex-col bg-white items-center">
+            <div className={`flex flex-col items-center ${isDark ? 'bg-black' : 'bg-white'}`}>
               <div>
-                <h1 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 text-center">
+                <h1 className={`text-4xl md:text-5xl font-bold mb-6 text-center ${isDark ? 'text-white' : 'text-slate-900'}`}>
                   What makes us different
                 </h1>
-                <p className="text-xl text-slate-600 leading-[2.5] max-w-4xl mx-auto">
+                <p className={`text-xl leading-[2.5] max-w-4xl mx-auto ${isDark ? 'text-gray-300' : 'text-slate-600'}`}>
                   Ayedos SACCO is a leading provider of comprehensive financial
                   management solutions for Savings and Credit Cooperatives
                   across East Africa. We combine deep industry expertise with
@@ -141,7 +154,7 @@ function OurStory({ onNavigate }) {
                   efficiently, transparently, and profitably.
                 </p>
               </div>
-              <div className="h-80 w-full gap-2.5 rounded-3xl border border-slate-200 bg-white p-1 shadow-xl overflow-hidden flex">
+              <div className={`h-80 w-full gap-2.5 rounded-3xl border p-1 shadow-xl overflow-hidden flex ${isDark ? 'border-gray-700 bg-gray-900' : 'border-slate-200 bg-white'}`}>
                 <img
                   src="/about-us.jpg"
                   alt="Ayedos SACCO Story"
@@ -158,13 +171,13 @@ function OurStory({ onNavigate }) {
         </section>
 
         {/* Our Journey */}
-        <section className="py-20 px-4 bg-slate-50">
+        <section className={`py-20 px-4 ${isDark ? 'bg-black' : 'bg-slate-50'}`}>
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+              <h2 className={`text-3xl md:text-4xl font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>
                 Our Journey
               </h2>
-              <p className="text-slate-600 mt-4">
+              <p className={`mt-4 ${isDark ? 'text-gray-300' : 'text-slate-600'}`}>
                 A timeline of growth and innovation
               </p>
             </div>
@@ -183,22 +196,26 @@ function OurStory({ onNavigate }) {
                   {index % 2 === 0 ? (
                     <>
                       <div className="w-1/2 text-right pr-8">
-                        <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-xl hover:-translate-y-1 transition-transform">
+                        <div className={`bg-white p-6 rounded-3xl border shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${
+                          isDark 
+                            ? 'border-gray-700 bg-gray-800' 
+                            : 'border-slate-200'
+                        }`}>
                           <div
                             className="font-bold text-lg mb-3"
-                            style={{ color: "var(--color-accent)" }}
+                            style={{ color: "#8cc63f" }}
                           >
                             {item.year}
                           </div>
-                          <h3 className="text-xl font-semibold mb-4 text-slate-900">
+                          <h3 className={`text-xl font-semibold mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
                             {item.title}
                           </h3>
-                          <p className="text-slate-600">{item.description}</p>
+                          <p className={isDark ? 'text-gray-300' : 'text-slate-600'}>{item.description}</p>
                         </div>
                       </div>
                       <div
                         className="w-4 h-4 rounded-full z-10 border-2 border-white flex-shrink-0 timeline-dot"
-                        style={{ backgroundColor: "var(--color-accent)" }}
+                        style={{ backgroundColor: "#8cc63f" }}
                       ></div>
                       <div className="w-1/2"></div>
                     </>
@@ -207,20 +224,24 @@ function OurStory({ onNavigate }) {
                       <div className="w-1/2"></div>
                       <div
                         className="w-4 h-4 rounded-full z-10 border-2 border-white flex-shrink-0 timeline-dot"
-                        style={{ backgroundColor: "var(--color-accent)" }}
+                        style={{ backgroundColor: "#8cc63f" }}
                       ></div>
                       <div className="w-1/2 text-left pl-8">
-                        <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-xl hover:-translate-y-1 transition-transform">
+                        <div className={`bg-white p-6 rounded-3xl border shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${
+                          isDark 
+                            ? 'border-gray-700 bg-gray-800' 
+                            : 'border-slate-200'
+                        }`}>
                           <div
                             className="font-bold text-lg mb-3"
-                            style={{ color: "var(--color-accent)" }}
+                            style={{ color: "#8cc63f" }}
                           >
                             {item.year}
                           </div>
-                          <h3 className="text-xl font-semibold mb-4 text-slate-900">
+                          <h3 className={`text-xl font-semibold mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
                             {item.title}
                           </h3>
-                          <p className="text-slate-600">{item.description}</p>
+                          <p className={isDark ? 'text-gray-300' : 'text-slate-600'}>{item.description}</p>
                         </div>
                       </div>
                     </>
@@ -233,38 +254,41 @@ function OurStory({ onNavigate }) {
 
         {/* Our Values */}
         <section
-          className="h-screen py-20 px-4"
-          style={{ backgroundColor: "var(--color-secondary)" }}
+          className={`py-20 px-4 transition-colors duration-300 ${isDark ? 'bg-black' : 'bg-slate-50'}`}
         >
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+              <h2 className={`text-3xl md:text-4xl font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>
                 Our Values
               </h2>
-              <p className="text-black mt-4">
+              <p className={isDark ? 'text-gray-300 mt-4' : 'text-slate-600 mt-4'}>
                 The principles that guide everything we do
               </p>
             </div>
 
             <div className="flex flex-col items-center gap-8">
-              <div className="flex gap-8">
+              <div className="flex gap-8 flex-wrap justify-center">
                 {values.slice(0, 2).map((value, index) => {
                   const Icon = value.icon;
                   return (
                     <div
                       key={index}
-                      className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-xl transition hover:-translate-y-1 text-center flex-1 max-w-sm"
+                      className={`rounded-3xl border p-8 shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl text-center flex-1 max-w-sm ${
+                        isDark 
+                          ? 'border-gray-700 bg-gray-800' 
+                          : 'border-slate-200 bg-white'
+                      }`}
                     >
                       <div
-                        className="mb-6"
-                        style={{ color: "var(--color-accent)" }}
+                        className="mb-6 transition-transform duration-300 hover:scale-110"
+                        style={{ color: "#8cc63f" }}
                       >
                         <Icon className="w-12 h-12 mx-auto" />
                       </div>
-                      <h3 className="text-xl font-semibold mb-4 text-slate-900">
+                      <h3 className={`text-xl font-semibold mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
                         {value.title}
                       </h3>
-                      <p className="text-slate-600">{value.description}</p>
+                      <p className={isDark ? 'text-gray-300' : 'text-slate-600'}>{value.description}</p>
                     </div>
                   );
                 })}
@@ -275,18 +299,22 @@ function OurStory({ onNavigate }) {
                   return (
                     <div
                       key={index + 2}
-                      className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-xl transition hover:-translate-y-1 text-center max-w-sm"
+                      className={`rounded-3xl border p-8 shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl text-center max-w-sm ${
+                        isDark 
+                          ? 'border-gray-700 bg-gray-800' 
+                          : 'border-slate-200 bg-white'
+                      }`}
                     >
                       <div
-                        className="mb-6"
-                        style={{ color: "var(--color-accent)" }}
+                        className="mb-6 transition-transform duration-300 hover:scale-110"
+                        style={{ color: "#8cc63f" }}
                       >
                         <Icon className="w-12 h-12 mx-auto" />
                       </div>
-                      <h3 className="text-xl font-semibold mb-4 text-slate-900">
+                      <h3 className={`text-xl font-semibold mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
                         {value.title}
                       </h3>
-                      <p className="text-slate-600">{value.description}</p>
+                      <p className={isDark ? 'text-gray-300' : 'text-slate-600'}>{value.description}</p>
                     </div>
                   );
                 })}
@@ -296,34 +324,32 @@ function OurStory({ onNavigate }) {
         </section>
 
         {/* CTA */}
-        <section className="h-[50vh] py-20 px-4 bg-white ">
-          <div className="max-w-4xl mx-auto text-center rounded-[2rem] border border-slate-300 bg-white p-10 shadow-lg">
-            <div className="text-3xl md:text-4xl font-bold mb-4 text-black ">
+        <section className={`py-20 px-4 transition-colors duration-300 ${isDark ? 'bg-black' : 'bg-white'}`}>
+          <div className="max-w-4xl mx-auto text-center rounded-[2rem] border p-10 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+            style={{
+              backgroundColor: isDark ? '#1a1a1a' : 'white',
+              borderColor: isDark ? '#8cc63f/30' : '#e2e8f0'
+            }}
+          >
+            <div className={`text-3xl md:text-4xl font-bold mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
               Join Our Growing Community
             </div>
-            <div className="text-xl text-slate-600 mb-7">
+            <div className={`text-xl mb-7 ${isDark ? 'text-gray-300' : 'text-slate-600'}`}>
               Become part of a network of forward-thinking SACCOs
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={() => navigate("register")}
-                className="btn text-white transition-transform duration-300 hover:-translate-y-1 shadow-lg px-8 py-3 rounded-full"
-                style={{
-                  backgroundColor: "var(--color-accent)",
-                  boxShadow: "var(--shadow-soft)",
-                }}
-                onMouseEnter={(e) => (e.target.style.opacity = "0.9")}
-                onMouseLeave={(e) => (e.target.style.opacity = "1")}
+                className="px-8 py-3 rounded-full font-semibold bg-[#8cc63f] hover:bg-[#9fd858] text-slate-900 transition-all duration-300 hover:-translate-y-1 shadow-lg"
               >
                 Get Started
               </button>
               <button
                 onClick={() => navigate("contact")}
-                className="btn transition-transform duration-300 hover:-translate-y-1 px-8 py-3 rounded-full"
+                className="px-8 py-3 rounded-full font-semibold border-2 transition-all duration-300 hover:-translate-y-1"
                 style={{
-                  borderColor: "var(--color-accent)",
-                  color: "var(--color-text)",
-                  borderWidth: "2px",
+                  borderColor: "#8cc63f",
+                  color: isDark ? "#ffffff" : "#8cc63f",
                 }}
               >
                 Contact Us
@@ -331,9 +357,7 @@ function OurStory({ onNavigate }) {
             </div>
           </div>
         </section>
-      </div>
-      <Footer />
-    </>
+    </div>
   );
 }
 

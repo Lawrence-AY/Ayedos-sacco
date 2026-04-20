@@ -7,6 +7,7 @@ import {
   HiSun,
   HiMoon,
 } from "react-icons/hi2";
+import { runSiteSearch } from "../../utils/siteSearch";
 import "../../styles.css";
 
 function Navbar({ onNavigate }) {
@@ -94,9 +95,17 @@ function Navbar({ onNavigate }) {
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      console.log("Searching for:", searchQuery);
+      const result = runSiteSearch(searchQuery, onNavigate);
+
+      if (!result.matched) {
+        window.alert(result.message);
+        return;
+      }
+
       setSearchOpen(false);
       setSearchQuery("");
+      setMobileMenuOpen(false);
+      setDropdownOpen(null);
     }
   };
 
@@ -121,6 +130,26 @@ function Navbar({ onNavigate }) {
     setDropdownOpen(dropdownOpen === menu ? null : menu);
   };
 
+  const menuTextColor = mobileMenuOpen
+    ? theme === "dark"
+      ? "#ffffff"
+      : "#0f2b3d"
+    : theme === "dark"
+      ? "#ffffff"
+      : scrolled
+        ? "#0f2b3d"
+        : "#ffffff";
+
+  const searchIconColor = mobileMenuOpen
+    ? theme === "dark"
+      ? "#ffffff"
+      : "#0f2b3d"
+    : theme === "dark"
+      ? "#ffffff"
+      : scrolled
+        ? "#0f2b3d"
+        : "#ffffff";
+
   // Logo logic based on theme and scroll state
   let logoSrc;
   if (theme === "dark") {
@@ -142,6 +171,7 @@ function Navbar({ onNavigate }) {
         className="mobile-menu-toggle"
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         aria-label="Toggle menu"
+        style={{ color: menuTextColor }}
       >
         {mobileMenuOpen ? <HiXMark /> : <HiBars3 />}
       </button>
@@ -151,16 +181,18 @@ function Navbar({ onNavigate }) {
         <div
           className="nav-search-wrapper"
           style={{
-            color:
-              theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
+            color: menuTextColor,
           }}
         >
           {searchOpen ? (
             <form onSubmit={handleSearch} className="nav-search-form">
               <input
                 style={{
-                  color:
-                    theme === "dark"
+                  color: mobileMenuOpen
+                    ? theme === "dark"
+                      ? "#ffffff"
+                      : "#0f2b3d"
+                    : theme === "dark"
                       ? "#ffffff"
                       : scrolled
                         ? "#0f2b3d"
@@ -190,22 +222,12 @@ function Navbar({ onNavigate }) {
               onClick={() => setSearchOpen(true)}
               aria-label="Search"
               style={{
-                color:
-                  theme === "dark"
-                    ? "#ffffff"
-                    : scrolled
-                      ? "#0f2b3d"
-                      : "#ffffff",
+                color: searchIconColor,
               }}
             >
               <HiMagnifyingGlass
                 style={{
-                  color:
-                    theme === "dark"
-                      ? "#ffffff"
-                      : scrolled
-                        ? "#0f2b3d"
-                        : "#ffffff",
+                  color: searchIconColor,
                 }}
               />
             </button>
@@ -215,15 +237,13 @@ function Navbar({ onNavigate }) {
         <div
           className="nav-dropdown mr-5"
           style={{
-            color:
-              theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
+            color: menuTextColor,
           }}
         >
           <a
             href="/"
             style={{
-              color:
-                theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
+              color: menuTextColor,
             }}
             onClick={() => onNavigate && onNavigate("/")}
           >
@@ -235,13 +255,13 @@ function Navbar({ onNavigate }) {
         <div
           className="nav-dropdown"
           style={{
-            color:
-              theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
+            color: menuTextColor,
           }}
         >
           <button
             className="nav-dropdown-toggle"
             onClick={() => toggleDropdown("about")}
+            style={{ color: menuTextColor }}
           >
             About <HiChevronDown />
           </button>
@@ -267,13 +287,13 @@ function Navbar({ onNavigate }) {
         <div
           className="nav-dropdown"
           style={{
-            color:
-              theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
+            color: menuTextColor,
           }}
         >
           <button
             className="nav-dropdown-toggle"
             onClick={() => toggleDropdown("services")}
+            style={{ color: menuTextColor }}
           >
             Services <HiChevronDown />
           </button>
@@ -296,13 +316,13 @@ function Navbar({ onNavigate }) {
         <div
           className="nav-dropdown"
           style={{
-            color:
-              theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
+            color: menuTextColor,
           }}
         >
           <button
             className="nav-dropdown-toggle"
             onClick={() => toggleDropdown("resources")}
+            style={{ color: menuTextColor }}
           >
             Resources <HiChevronDown />
           </button>
@@ -324,17 +344,15 @@ function Navbar({ onNavigate }) {
         <div
           className="nav-dropdown"
           style={{
-            color:
-              theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
+            color: menuTextColor,
           }}
         >
           <a
-            href="#contact"
+            href="/contact"
             style={{
-              color:
-                theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
+              color: menuTextColor,
             }}
-            onClick={(e) => handleNavClick(e, "contact")}
+            onClick={(e) => handleNavLink(e, "contact")}
           >
             Contact
           </a>
@@ -343,8 +361,7 @@ function Navbar({ onNavigate }) {
         <div
           className="nav-auth-buttons"
           style={{
-            color:
-              theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
+            color: menuTextColor,
           }}
         >
           <button
@@ -358,8 +375,7 @@ function Navbar({ onNavigate }) {
         <label
           className="toggle text-base-content ml-3"
           style={{
-            color:
-              theme === "dark" ? "#ffffff" : scrolled ? "#0f2b3d" : "#ffffff",
+            color: menuTextColor,
           }}
         >
           <input

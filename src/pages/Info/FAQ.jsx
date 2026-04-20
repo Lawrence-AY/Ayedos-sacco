@@ -1,12 +1,10 @@
-import { HiChevronDown } from 'react-icons/hi2'
+import { HiChevronDown, HiArrowLeft } from 'react-icons/hi2'
 import { useState, useEffect } from 'react'
-import Navbar from '../../components/layout/Navbar'
-import Footer from '../../components/ui/Footer'
 import '../../styles.css'
 
 function FAQ({ onNavigate }) {
   const navigate = (route) => {
-    if (onNavigate) onNavigate(route)
+    window.location.href = route ? `/${route}` : "/";
   }
 
   const [theme, setTheme] = useState(() => {
@@ -79,27 +77,21 @@ function FAQ({ onNavigate }) {
   let counter = 0
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar onNavigate={onNavigate} />
+    <div className="info-page-container">
+      <div className="info-hero">
+        <h1>Frequently Asked Questions</h1>
+        <p>Find answers to common questions about Ayedos SACCO</p>
+      </div>
 
       <main className={`flex-1 ${theme === 'dark' ? 'bg-black' : 'bg-gray-50'}`}>
         <div className="max-w-4xl mx-auto px-4 py-16">
 
-          {/* Header */}
-          <div className="text-center mb-12 mt-10">
-            <div className="text-3xl md:text-5xl font-bold">
-              Frequently Asked Questions
-            </div>
-            <div className="mt-4 text-gray-500">
-              Find answers to common questions about Ayedos SACCO
-            </div>
-          </div>
-
           {/* FAQ */}
           {faqs.map((category, catIndex) => (
             <div key={catIndex} className="mb-10">
-              <div className="text-xl font-semibold mb-4">
-                {category.category}
+              <div className="text-xl font-semibold mb-4 flex items-center gap-2">
+                <span className="w-8 h-px bg-[#8cc63f]"></span>
+                <span className={theme === 'dark' ? 'text-white' : 'text-slate-900'}>{category.category}</span>
               </div>
 
               <div className="space-y-3">
@@ -110,24 +102,24 @@ function FAQ({ onNavigate }) {
                   return (
                     <div
                       key={qIndex}
-                      className={`rounded-xl border transition ${
+                      className={`rounded-xl border transition-all duration-300 ${
                         theme === 'dark'
-                          ? 'bg-gray-800 border-gray-700'
-                          : 'bg-white border-gray-200'
+                          ? 'bg-gray-800 border-gray-700 hover:border-[#8cc63f]/50'
+                          : 'bg-white border-gray-200 hover:border-[#8cc63f]/40 hover:shadow-lg'
                       }`}
                     >
                       {/* Question */}
                       <button
                         onClick={() => toggleFaq(index)}
-                        className="w-full flex items-center justify-between p-4 text-left"
+                        className="w-full flex items-center justify-between p-4 text-left hover:bg-opacity-50 transition-colors duration-200"
                       >
-                        <span className="font-medium">
+                        <span className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>
                           {item.q}
                         </span>
 
                         <HiChevronDown
-                          className={`transition-transform duration-300 ${
-                            isOpen ? 'rotate-180' : ''
+                          className={`transition-all duration-300 ${
+                            isOpen ? 'rotate-180 text-[#8cc63f]' : 'text-slate-400'
                           }`}
                         />
                       </button>
@@ -157,20 +149,22 @@ function FAQ({ onNavigate }) {
 
           {/* CTA */}
           <section
-            className={`mt-16 rounded-2xl p-8 text-center ${
-              theme === 'dark' ? 'bg-[#8cc63f]' : 'bg-[#8cc63f] text-white'
+            className={`mt-16 rounded-3xl p-10 text-center transition-all duration-300 hover:-translate-y-1 ${
+              theme === 'dark' 
+                ? 'bg-gradient-to-r from-[#8cc63f]/20 to-transparent border border-[#8cc63f]/30' 
+                : 'bg-gradient-to-r from-[#8cc63f]/10 to-transparent border border-[#8cc63f]/20'
             }`}
           >
-            <div className="text-2xl font-bold mb-2">
+            <div className={`text-2xl font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>
               Still Have Questions?
             </div>
-            <div className="mb-6">
+            <div className={`mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-slate-600'}`}>
               Can't find what you're looking for? Our support team is here to help.
             </div>
 
             <button
               onClick={() => navigate('contact')}
-              className="border p-3 rounded-xl shadow-none"
+              className="px-6 py-3 rounded-xl font-semibold bg-[#8cc63f] hover:bg-[#9fd858] text-slate-900 transition-all duration-300 hover:-translate-y-1 shadow-lg"
             >
               Contact Support
             </button>
@@ -178,8 +172,6 @@ function FAQ({ onNavigate }) {
 
         </div>
       </main>
-
-      <Footer />
     </div>
   )
 }

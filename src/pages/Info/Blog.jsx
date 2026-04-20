@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
-import { HiUser, HiCalendar, HiArrowRight } from 'react-icons/hi2'
-import Navbar from '../../components/layout/Navbar'
-import Footer from '../../components/ui/Footer'
+import { HiArrowRight } from 'react-icons/hi2'
 
 function Blog({ onNavigate }) {
+  const navigate = (route) => {
+    window.location.href = route ? `/${route}` : "/";
+  }
+
   const [theme, setTheme] = useState(() => {
     return document.documentElement.getAttribute('data-theme') || 'light'
   })
@@ -88,16 +90,13 @@ function Blog({ onNavigate }) {
   }
 
   return (
-    <div className={`min-h-screen ${isDark ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'}`}>
-      <Navbar onNavigate={onNavigate} />
-
-      {/* HERO SECTION */}
-      <div className="max-w-6xl mx-auto px-4 py-1  text-center">
-        <div className="text-3xl mt-20 md:text-5xl font-bold">Blog</div>
-        <div className={`mt-2 max-w-2xl mx-auto ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-          Insights and updates from the Ayedos team
-        </div>
+    <div className="info-page-container">
+      <div className="info-hero">
+        <h1>Blog</h1>
+        <p>Insights and updates from the Ayedos team</p>
       </div>
+
+      <div className={`min-h-screen ${isDark ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'}`}>
 
       {/* CATEGORY FILTER */}
       <div className="max-w-6xl mx-auto mt-2 px-4 mb-8">
@@ -203,7 +202,7 @@ function Blog({ onNavigate }) {
               Subscribe to our newsletter for the latest insights and updates
             </div>
             <button
-              onClick={() => onNavigate && onNavigate('contact')}
+              onClick={() => (onNavigate ? onNavigate('contact') : navigate('contact'))}
               className="border border-white px-4 py-2 rounded-xl hover:bg-white hover:text-black transition"
             >
               Subscribe
@@ -247,8 +246,7 @@ function Blog({ onNavigate }) {
           <button onClick={closeModal}>close</button>
         </form>
       </dialog>
-
-      <Footer />
+      </div>
     </div>
   )
 }
