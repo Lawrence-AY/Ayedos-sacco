@@ -32,9 +32,9 @@ function AppRoutes() {
         <Route
           path="/products"
           element={
-            <PageWrapper>
+        
               <Products />
-            </PageWrapper>
+        
           }
         />
         <Route
