@@ -170,7 +170,7 @@ function OurStory({ onNavigate }) {
                   className="w-1/2 h-full object-cover rounded-2xl"
                 />
                 <img
-                  src="/about-three.jpg"
+                  src="/story-one.jpg"
                   alt="Ayedos SACCO Story"
                   className="w-1/2 h-full object-cover rounded-2xl"
                 />

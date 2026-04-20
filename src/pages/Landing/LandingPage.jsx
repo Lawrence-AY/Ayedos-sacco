@@ -89,9 +89,13 @@ function LandingPage({ onNavigate }) {
                     AYEDOS SACCO
                   </div>
                   <p className=" text-center text-lg md:text-xl text-white/90 mb-10   leading-relaxed  mx-auto">
-                    A modern office-based financial system for savings, shares,
-                    dividends, and member administration with a clean
-                    banking-grade experience.
+                    Take charge of your financial future with a SACCO built on
+                    trust, growth, and opportunity. Save smarter, access
+                    affordable loans faster, and be part of a community that
+                    supports your goals every step of the way. With secure
+                    systems, flexible solutions, and a commitment to your
+                    success, we’re more than a SACCO—we’re your partner in
+                    building a stronger, more confident tomorrow.
                   </p>
                   <div className="flex flex-row sm:flex-row gap-4 justify-center pt-[10%] sm:pt-[5%]">
                     <button
