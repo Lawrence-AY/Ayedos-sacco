@@ -126,7 +126,7 @@ function Navbar({ onNavigate }) {
   if (theme === "dark") {
     logoSrc = "/logos/logo-dark.png";
   } else {
-    logoSrc = scrolled ? "/logos/logo-light.png" : "/logos/logo-dark.png";
+    logoSrc = scrolled ? "/logos/logo-light.png" : "/logos/logo-light.png";
   }
 
   return (
@@ -195,7 +195,7 @@ function Navbar({ onNavigate }) {
                     ? "#ffffff"
                     : scrolled
                       ? "#0f2b3d"
-                      : "#ffffff",
+                      :"#0f2b3d",
               }}
             >
               <HiMagnifyingGlass
@@ -205,7 +205,7 @@ function Navbar({ onNavigate }) {
                       ? "#ffffff"
                       : scrolled
                         ? "#0f2b3d"
-                        : "#ffffff",
+                        : "#0f2b3d",
                 }}
               />
             </button>
@@ -303,7 +303,7 @@ function Navbar({ onNavigate }) {
             className="nav-dropdown-toggle"
             onClick={() => toggleDropdown("resources")}
           >
-            Resources <HiChevronDown />
+            Resources <HiChevronDown /> 
           </button>
           {dropdownOpen === "resources" && (
             <div className="nav-dropdown-menu">

@@ -21,7 +21,7 @@ function AppRoutes() {
         <Route path="/our-story" element={ <OurStoryWrapper/> } />
         <Route path="/team" element={<PageWrapper><Team /></PageWrapper>} />
           <Route path="/blog" element={ <BlogWrapper /> } />
-        <Route path="/products" element={<PageWrapper><Products /></PageWrapper>} />
+        <Route path="/products" element={<Products />} />
         <Route path="/pricing" element={<PageWrapper><Pricing /></PageWrapper>} />
         <Route path="/faq" element={<FAQWrapper/>} />
         <Route path="/guides" element={ <Guides/>}  />   

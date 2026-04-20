@@ -41,17 +41,17 @@ const Footer = ({ onNavigate }) => {
             <div className="text-white font-semibold mb-2">Platform</div>
             <div className="h-px bg-[#8cc63f] w-10 mb-3" />
             
-            <a href="#" className="block py-1 text-white">Products</a>
-            <a href="#services" className="block py-1">Services</a>
+            <a href="/products" className="block py-1 text-white">Products</a>
+            <a href="/services" className="block py-1">Services</a>
             <a href="#security" className="block py-1">Security</a>
           </div>
 
           <div>
             <div className="text-white font-semibold mb-2">Company</div>
            <div className="h-px bg-[#8cc63f] w-10 mb-3" />
-            <a href="#">Our Story</a>
+            <a href="our-story">Our Story</a>
             <a href="#contact" className="block py-1">Contact</a>
-            <a href="#" className="block py-1">Team</a>
+ 
           </div>
 
           <div>

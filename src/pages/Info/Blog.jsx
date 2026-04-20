@@ -169,7 +169,7 @@ function Blog({ onNavigate }) {
                   : 'bg-white border-gray-200 hover:shadow-md'
               }`}
             >
-              <div className="p-6 flex flex-col flex-grow">
+              <div className="p-6 flex flex-col grow">
                 <span
                   className="text-xs font-medium px-2 py-1 rounded self-start mb-3"
                   style={{ backgroundColor: '#8cc63f20', color: '#8cc63f' }}
@@ -177,7 +177,7 @@ function Blog({ onNavigate }) {
                   {post.category}
                 </span>
                 <div className="text-lg font-semibold mb-2">{post.title}</div>
-                <div className={`text-sm mb-4 flex-grow ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                <div className={`text-sm mb-4 grow ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                   {post.excerpt}
                 </div>
                  
