@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { HiArrowRight, HiChevronLeft, HiChevronRight } from "react-icons/hi2";
+import { HiArrowRight, HiChevronLeft, HiChevronRight, HiXMark } from "react-icons/hi2";
 import Navbar from "../../components/layout/LandingPageNavbar";
 import Footer from "../../components/ui/Footer";
 
@@ -15,6 +15,10 @@ function LandingPage({ onNavigate }) {
     "/landingphoto2.png",
     "/hero-aye.png",
   ];
+
+  // Modal state
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState({ title: "", description: "" });
 
   // Theme state (synchronised with data-theme on <html>)
   const [theme, setTheme] = useState(() => {
@@ -44,6 +48,29 @@ function LandingPage({ onNavigate }) {
     return () => clearInterval(timer);
   }, []);
 
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [modalOpen]);
+
+  // Close modal on ESC key
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") setModalOpen(false);
+    };
+    if (modalOpen) {
+      window.addEventListener("keydown", handleEsc);
+    }
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, [modalOpen]);
+
   const goToSlide = (index) => setCurrentSlide(index);
   const nextSlide = () =>
     setCurrentSlide((prev) => (prev + 1) % heroImages.length);
@@ -57,11 +84,95 @@ function LandingPage({ onNavigate }) {
     return theme === "dark" ? darkClass : lightClass;
   };
 
+  // Get modal description based on card title
+  const getModalDescription = (title) => {
+    const descriptions = {
+      "Financial Growth":
+        "Our SACCO provides a robust environment for your savings to earn competitive dividends while maintaining security. With disciplined saving plans and investment opportunities, you can steadily build wealth and achieve long-term financial goals. Join to unlock your financial growth potential. Together, we grow stronger through shared prosperity and transparent financial practices.",
+      "Community Trust":
+        "We put members first, ensuring transparency in all our operations, clear communication, and fair policies. Trust is the cornerstone of our cooperative, built through consistent ethical practices and a member-driven approach. Experience a community where everyone's financial well-being matters. Join us to be part of a trusted network that values integrity and shared success.",
+      "Flexible Solutions":
+        "We offer customizable loan products, affordable interest rates, and repayment schedules designed to fit your unique financial situation. Whether it's emergency, education, or business expansion, our flexible solutions empower you to access funds when you need them without unnecessary burden. Experience financial freedom with products built around your life.",
+    };
+    return (
+      descriptions[title] ||
+      "Join a financial community built on trust, transparency, and shared prosperity. Take control of your financial future with Ayedos SACCO."
+    );
+  };
+
+  const openModal = (title) => {
+    setModalContent({
+      title,
+      description: getModalDescription(title),
+    });
+    setModalOpen(true);
+  };
+
+  const closeModal = () => setModalOpen(false);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar onNavigate={onNavigate} />
 
-      {/* HERO CAROUSEL - remains mostly the same, overlay adapts slightly */}
+      {/* MODAL */}
+      {modalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-all duration-300"
+          onClick={closeModal}
+        >
+          <div
+            className={`relative max-w-md w-full rounded-2xl shadow-2xl transform transition-all duration-300 scale-100 ${
+              theme === "dark"
+                ? "bg-black border border-[#8cc63f]/40 text-white"
+                : "bg-white border border-gray-200"
+            }`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 p-1 rounded-full hover:bg-white/10 transition-colors"
+              aria-label="Close modal"
+            >
+              <HiXMark size={24} className={theme === "dark" ? "text-white/70 hover:text-white" : "text-gray-500 hover:text-gray-700"} />
+            </button>
+
+            {/* Modal Content */}
+            <div className="p-6 pt-8">
+              <h3 className={`text-2xl font-bold mb-3 pr-6 ${bgClass("text-slate-800", "text-white")}`}>
+                {modalContent.title}
+              </h3>
+              <div className="h-px w-12 bg-[#8cc63f] mb-4"></div>
+              <p className={`text-base leading-relaxed mb-6 ${bgClass("text-slate-600", "text-slate-300")}`}>
+                {modalContent.description}
+              </p>
+              <div className="flex items-center justify-between gap-4 flex-wrap">
+                <button
+                  onClick={() => {
+                    closeModal();
+                    navigate("register");
+                  }}
+                  className="btn btn-sm bg-[#8cc63f] hover:bg-[#9fd858] text-white border-none shadow-md transition-all duration-300 hover:-translate-y-0.5"
+                >
+                  Become a Member
+                </button>
+                <button
+                  onClick={closeModal}
+                  className={`btn btn-sm border ${
+                    theme === "dark"
+                      ? "border-white/20 text-white/80 hover:bg-white/10"
+                      : "border-gray-300 text-slate-600 hover:bg-gray-100"
+                  }`}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* HERO CAROUSEL */}
       <section className="relative w-full h-screen overflow-hidden">
         <div className="relative w-full h-full">
           {heroImages.map((image, index) => (
@@ -81,14 +192,14 @@ function LandingPage({ onNavigate }) {
                 className={`absolute inset-0 ${
                   theme === "dark"
                     ? "bg-black/40"
-                    : "bg-gradient-to-r from-black/30 via-black/20 to-black/30"
+                    : "bg-linear-to-r from-black/30 via-black/20 to-black/30"
                 }`}
               >
                 <div className="text-center max-w-3xl mx-auto h-screen pt-[62%] sm:pt-[15%]">
                   <div className=" text-center text-4xl md:text-5xl lg:text-5xl font-bold text-white mb-3">
                     AYEDOS SACCO
                   </div>
-                  <p className=" text-center text-lg md:text-xl text-white/90 mb-10   leading-relaxed  mx-auto">
+                  <p className=" text-center text-lg md:text-xl text-white/90 mb-10 leading-relaxed mx-auto">
                     Take charge of your financial future with a SACCO built on
                     trust, growth, and opportunity. Save smarter, access
                     affordable loans faster, and be part of a community that
@@ -117,7 +228,7 @@ function LandingPage({ onNavigate }) {
           ))}
         </div>
 
-        {/* Carousel controls (unchanged) */}
+        {/* Carousel controls */}
         <button
           onClick={prevSlide}
           className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
@@ -210,7 +321,7 @@ function LandingPage({ onNavigate }) {
                     }}
                   >
                     <button
-                      onClick={() => navigate("our-story")}
+                      onClick={() => openModal(item.title)}
                       className="btn btn-sm bg-[#8cc63f] hover:bg-[#9fd858] text-white border-none shadow-md"
                     >
                       Learn More
@@ -388,14 +499,14 @@ function LandingPage({ onNavigate }) {
         className={`py-24 px-4 transition-colors duration-300 ${bgClass("bg-gray-50", "bg-black")}`}
       >
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16  ">
+          <div className="text-center mb-16">
             <div
-              className={`text-center  text-4xl md:text-5xl font-bold mb-4 ${bgClass("text-slate-800", "text-white")}`}
+              className={`text-center text-4xl md:text-5xl font-bold mb-4 ${bgClass("text-slate-800", "text-white")}`}
             >
               Product Design
             </div>
             <p
-              className={`text-lg   mx-auto ${bgClass("text-slate-600", "text-slate-300")}`}
+              className={`text-lg mx-auto ${bgClass("text-slate-600", "text-slate-300")}`}
             >
               Our SACCO platform is thoughtfully designed for you. Around the
               member experience, simple to navigate and tailored to everyday
