@@ -12,6 +12,8 @@ import Blog from "../pages/Info/Blog";
 import Contact from "../pages/Info/Contact";
 import Footer from "../components/ui/Footer";
 import Navbar from "../components/layout/Navbar";
+import  TermsAndConditions from "../pages/Info/TermsAndConditions";
+import  CookiePolicy from "../pages/Info/CookiePolicy"
 
 function AppRoutes() {
   return (
@@ -26,7 +28,9 @@ function AppRoutes() {
           <Products />
           </PageWrapper>
           } />
-       
+             <Route path="/TermsAndConditions" element={<PageWrapper>< TermsAndConditions /> </PageWrapper>} />
+                <Route path="/CookiePolicy" element={<PageWrapper> <CookiePolicy /> </PageWrapper>} />
+      
         <Route path="/faq" element={<PageWrapper><FAQ /></PageWrapper>} />
         <Route path="/guides" element={<PageWrapper><Guides /></PageWrapper>} />
         <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
