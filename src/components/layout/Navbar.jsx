@@ -312,6 +312,12 @@ function Navbar({ onNavigate }) {
                 aria-current={isCurrentPath("/products") ? "page" : undefined}
               >
                 Products
+              </a>
+            </div>
+          )}
+        </div>
+
+        <div
           className="nav-dropdown"
           style={{
             color: menuTextColor,
