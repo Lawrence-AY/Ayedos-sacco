@@ -40,13 +40,13 @@ const Footer = ({ onNavigate }) => {
         </div>
 
         {/* Links */}
-        <div className="md:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="md:col-span-3  text-white grid grid-cols-2 md:grid-cols-3 gap-6">
 
           <div>
             <div className="text-white font-semibold mb-2">Platform</div>
             <div className="h-px bg-[#8cc63f] w-10 mb-3" />
             
-            <a href="/products" onClick={(e) => handleRouteClick(e, 'products')} className="block py-1 text-white">Products</a>
+            <a href="/products" className="block py-1 text-white">Products</a>
             <a href="/services" className="block py-1">Services</a>
        <a href="/our-ideology" className="block py-1">Our Ideology</a>
           </div>

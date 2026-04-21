@@ -1,10 +1,8 @@
 import Navbar from "../../components/layout/Navbar";
-import Footer from "../../components/ui/Footer";
+ 
 import { useState, useEffect,} from 'react' 
 function OurIdeology({ onNavigate }) {
-  const navigate = (route) => {
-    if (onNavigate) onNavigate(route);
-  };
+ 
 const [theme, setTheme] = useState(() => {
     return document.documentElement.getAttribute('data-theme') || 'light'
   })
@@ -21,7 +19,7 @@ const [theme, setTheme] = useState(() => {
   const isDark = theme === 'dark'
   return (
     <>
-     <div className={` ${isDark ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'}`}>
+         <div className="info-page-container">
       <Navbar onNavigate={onNavigate} />
       <div  className={`{${isDark ? 'text-gray-400' : 'text-gray-500'}}`}>
         <section className="py-24 px-4 ">
@@ -108,18 +106,11 @@ const [theme, setTheme] = useState(() => {
               </section>
             </div>
 
-            <div className="mt-16 text-center">
-              <button
-                onClick={() => navigate("register")}
-                className="btn bg-[#8cc63f] hover:bg-[#9fd858]   border-none shadow-sm px-8 py-3 rounded-full transition-all duration-300 hover:-translate-y-1"
-              >
-                Join Our Community
-              </button>
-            </div>
+     
           </div>
         </section>
       </div>
-      <Footer />
+   
       </div>
     </>
   );

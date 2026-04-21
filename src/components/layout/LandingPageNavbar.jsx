@@ -109,14 +109,7 @@ function Navbar({ onNavigate }) {
     }
   };
 
-  const handleNavClick = (e, targetId) => {
-    e.preventDefault();
-    const element = document.getElementById(targetId);
-    if (element) element.scrollIntoView({ behavior: "smooth" });
-    setMobileMenuOpen(false);
-    setDropdownOpen(null);
-    setSearchOpen(false);
-  };
+  
 
 
 
@@ -158,7 +151,10 @@ function Navbar({ onNavigate }) {
       className={`landing-navbar ${scrolled ? "scrolled" : ""}`}
     >
       <div className="brand" onClick={() => onNavigate && onNavigate("")}>
+        <a href="/">
+
         <img src={logoSrc} alt="AYEDOS SACCO" width="130" />
+        </a>
       </div>
 
       <button
@@ -341,7 +337,7 @@ function Navbar({ onNavigate }) {
             style={{
               color: menuTextColor,
             }}
-            onClick={(e) => handleNavLink(e, "contact")}
+           
           >
             Contact
           </a>
