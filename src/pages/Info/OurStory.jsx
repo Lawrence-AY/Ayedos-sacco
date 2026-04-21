@@ -65,7 +65,7 @@ function OurStory({ onNavigate }) {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     // Observe both desktop and mobile timeline items
@@ -145,11 +145,11 @@ function OurStory({ onNavigate }) {
           <div className="flex flex-col items-center">
             <div className="text-center">
               <div
-                className={`text-3xl md:text-4xl font-bold mb-3 ${
+                className={`text-4xl md:text-5xl font-bold mb-3 ${
                   isDark ? "text-white" : "text-black"
                 }`}
               >
-                What makes us different
+                The Ayedos Advantage
               </div>
               <div
                 className={`text-base text-justify md:text-xl leading-relaxed md:leading-[2.5] max-w-4xl mx-auto ${
@@ -163,8 +163,10 @@ function OurStory({ onNavigate }) {
                 efficiently, transparently, and profitably.
               </div>
             </div>
-            <div className="mt-8 w-full flex flex-col md:flex-row gap-4 rounded-3xl border
-             border-slate-200 p-1 shadow-sm overflow-hidden">
+            <div
+              className="mt-8 w-full flex flex-col md:flex-row gap-4 rounded-3xl border
+             border-slate-200 p-1 shadow-sm overflow-hidden"
+            >
               <img
                 src="/about-us.jpg"
                 alt="Ayedos SACCO Story"
@@ -191,7 +193,9 @@ function OurStory({ onNavigate }) {
             >
               Our Journey
             </div>
-            <div className={`mt-4 ${isDark ? "text-gray-400" : "text-slate-600"}`}>
+            <div
+              className={`mt-4 ${isDark ? "text-gray-400" : "text-slate-600"}`}
+            >
               A timeline of growth and innovation
             </div>
           </div>
@@ -212,7 +216,9 @@ function OurStory({ onNavigate }) {
                     <div className="w-1/2 text-right pr-8">
                       <div
                         className={`p-6 rounded-3xl border border-slate-200 shadow-sm hover:-translate-y-1 transition-transform ${
-                          isDark ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
+                          isDark
+                            ? "bg-gray-900 text-white"
+                            : "bg-gray-50 text-gray-900"
                         }`}
                       >
                         <div
@@ -229,7 +235,9 @@ function OurStory({ onNavigate }) {
                         >
                           {item.title}
                         </div>
-                        <div className={`text-sm ${isDark ? "text-gray-300" : "text-gray-600"}`}>
+                        <div
+                          className={`text-sm ${isDark ? "text-gray-300" : "text-gray-600"}`}
+                        >
                           {item.description}
                         </div>
                       </div>
@@ -250,7 +258,9 @@ function OurStory({ onNavigate }) {
                     <div className="w-1/2 text-left pl-8">
                       <div
                         className={`p-6 rounded-3xl border border-slate-200 shadow-sm hover:-translate-y-1 transition-transform ${
-                          isDark ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
+                          isDark
+                            ? "bg-gray-900 text-white"
+                            : "bg-gray-50 text-gray-900"
                         }`}
                       >
                         <div
@@ -267,7 +277,9 @@ function OurStory({ onNavigate }) {
                         >
                           {item.title}
                         </div>
-                        <div className={`text-sm ${isDark ? "text-gray-300" : "text-gray-600"}`}>
+                        <div
+                          className={`text-sm ${isDark ? "text-gray-300" : "text-gray-600"}`}
+                        >
                           {item.description}
                         </div>
                       </div>
@@ -291,7 +303,9 @@ function OurStory({ onNavigate }) {
             >
               Our Journey
             </div>
-            <div className={`mt-2 ${isDark ? "text-gray-400" : "text-slate-600"}`}>
+            <div
+              className={`mt-2 ${isDark ? "text-gray-400" : "text-slate-600"}`}
+            >
               A timeline of growth and innovation
             </div>
           </div>
@@ -316,7 +330,9 @@ function OurStory({ onNavigate }) {
                 <div className="ml-4 flex-1">
                   <div
                     className={`p-4 rounded-2xl border border-slate-200 shadow-sm ${
-                      isDark ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
+                      isDark
+                        ? "bg-gray-900 text-white"
+                        : "bg-gray-50 text-gray-900"
                     }`}
                   >
                     <div
@@ -333,7 +349,9 @@ function OurStory({ onNavigate }) {
                     >
                       {item.title}
                     </div>
-                    <div className={`text-sm ${isDark ? "text-gray-300" : "text-gray-600"}`}>
+                    <div
+                      className={`text-sm ${isDark ? "text-gray-300" : "text-gray-600"}`}
+                    >
                       {item.description}
                     </div>
                   </div>
@@ -355,7 +373,9 @@ function OurStory({ onNavigate }) {
             >
               Our Values
             </div>
-            <div className={`mt-4 ${isDark ? "text-gray-400" : "text-gray-600"}`}>
+            <div
+              className={`mt-4 ${isDark ? "text-gray-400" : "text-gray-600"}`}
+            >
               The principles that guide everything we do
             </div>
           </div>
@@ -367,13 +387,20 @@ function OurStory({ onNavigate }) {
                 <div
                   key={index}
                   className={`rounded-3xl border border-slate-200 p-6 shadow-sm transition hover:-translate-y-1 text-center flex-1 ${
-                    isDark ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
+                    isDark
+                      ? "bg-gray-900 text-white"
+                      : "bg-gray-50 text-gray-900"
                   }`}
                 >
                   <div className="mb-4 transition-transform duration-300 hover:scale-110 inline-block">
-                    <Icon className="w-12 h-12 mx-auto" style={{ color: "#8cc63f" }} />
+                    <Icon
+                      className="w-12 h-12 mx-auto"
+                      style={{ color: "#8cc63f" }}
+                    />
                   </div>
-                  <div className="text-xl font-semibold mb-3">{value.title}</div>
+                  <div className="text-xl font-semibold mb-3">
+                    {value.title}
+                  </div>
                   <div className={isDark ? "text-gray-300" : "text-gray-600"}>
                     {value.description}
                   </div>
@@ -398,7 +425,9 @@ function OurStory({ onNavigate }) {
           >
             Join Our Growing Community
           </div>
-          <div className={`text-base md:text-xl mb-6 ${isDark ? "text-gray-300" : "text-slate-600"}`}>
+          <div
+            className={`text-base md:text-xl mb-6 ${isDark ? "text-gray-300" : "text-slate-600"}`}
+          >
             Become part of a network of forward-thinking SACCOs
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
