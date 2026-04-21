@@ -298,11 +298,11 @@ function Navbar({ onNavigate }) {
           }}
         >
           <button
-            className={getDropdownButtonClassName(["/products", "/pricing"])}
+            className={getDropdownButtonClassName(["/products"])}
             onClick={() => toggleDropdown("services")}
             style={{ color: menuTextColor }}
             aria-current={
-              isActiveSection(["/products", "/pricing"]) ? "page" : undefined
+              isActiveSection(["/products"]) ? "page" : undefined
             }
           >
             Services <HiChevronDown />
@@ -315,13 +315,6 @@ function Navbar({ onNavigate }) {
                 aria-current={isCurrentPath("/products") ? "page" : undefined}
               >
                 Products
-              </a>
-              <a
-                href="/pricing"
-                className={getNavLinkClassName("/pricing")}
-                aria-current={isCurrentPath("/pricing") ? "page" : undefined}
-              >
-                Pricing
               </a>
             </div>
           )}

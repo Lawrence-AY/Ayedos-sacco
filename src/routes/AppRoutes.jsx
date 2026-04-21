@@ -6,7 +6,6 @@ import Register from "../pages/Auth/Register";
 import OurStory from "../pages/Info/OurStory";
 import OurIdeology from "../pages/Info/OurIdeology";
 import Products from "../pages/Info/Products";
-import Pricing from "../pages/Info/Pricing";
 import FAQ from "../pages/Info/FAQ";
 import Guides from "../pages/Info/Guides";
 import Blog from "../pages/Info/Blog";
@@ -27,14 +26,6 @@ function AppRoutes() {
           <Products />
           </PageWrapper>
           } />
-        <Route
-          path="/pricing"
-          element={
-            <PageWrapper>
-              <Pricing />
-            </PageWrapper>
-          }
-        />
         <Route path="/faq" element={<PageWrapper><FAQ /></PageWrapper>} />
         <Route path="/guides" element={<PageWrapper><Guides /></PageWrapper>} />
         <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
