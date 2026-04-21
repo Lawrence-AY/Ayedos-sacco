@@ -26,6 +26,7 @@ function AppRoutes() {
           <Products />
           </PageWrapper>
           } />
+       
         <Route path="/faq" element={<PageWrapper><FAQ /></PageWrapper>} />
         <Route path="/guides" element={<PageWrapper><Guides /></PageWrapper>} />
         <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />

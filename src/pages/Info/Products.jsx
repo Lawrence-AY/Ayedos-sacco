@@ -24,6 +24,7 @@ function Products({ onNavigate }) {
         'Maximum amount: KSh 50,000',
         'Interest per month: 1%',
         'Processing time: 24hrs after application',
+        'Processing Fee: 1%',
         'Maximum repayment period : 1 year',
         'Waiting period: 3 months membership',
         'Guarantors: Not required'
@@ -45,6 +46,7 @@ function Products({ onNavigate }) {
         'Maximum amount: KSh 100,000',
         'Interest per month: 1%',
         'Processing time: 2 days after application',
+        'Processing Fee: 1%',
         'Maximum repayment period: 2 years',
         'Waiting period: 6 months membership',
         'Guarantors: 2 required'
@@ -66,6 +68,7 @@ function Products({ onNavigate }) {
         'Maximum amount: KSh 100,000',
         'Interest per month: 1%',
         'Processing time: 3-5 days after application',
+        'Processing Fee: 1%',
         'Maximum repayment period: 2 years',
         'Waiting period: 6 months membership',
         'Guarantors: 2 required'
@@ -87,6 +90,7 @@ function Products({ onNavigate }) {
         'Maximum amount: KSh 250,000',
         'Interest per month: 1.5%',
         'Processing time: 5-10 days after application',
+        'Processing Fee: 1%',
         'Maximum repayment period: 6 years',
         'Waiting period: 1 year membership',
         'Guarantors: 3 required'
@@ -190,13 +194,13 @@ function Products({ onNavigate }) {
   }
 
   return (
-    <div className="info-page-container">
-      <div className="info-hero">
-        <h1>Products</h1>
-        <p>Complete solutions for modern SACCO management</p>
+    <div className={`info-page-container `}>
+      <div className="info-hero mb-0     ">
+        <div className={`text-4xl font-semibold`}>Products</div>
+        <div className={`text-xl font-semibold`}>Complete solutions for modern SACCO management</div>
       </div>
 
-      <div className={`min-h-screen ${isDark ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
+      <div className={`min-h-screen ${isDark ? '  text-white' : '  text-gray-900'}`}>
       {/* DOWNLOAD FORMS SECTION */}
       <div className="max-w-6xl mx-auto px-4 pb-5 ">
         <div className={`rounded-xl border p-6 text-center ${
@@ -224,6 +228,16 @@ function Products({ onNavigate }) {
             >
              Loan Application Form
             </button>
+              <button
+              onClick={() => downloadForm(
+                '/forms/AYEDOS SACCO LOAN POLICY.pdf',
+                'AYEDOS_SACCO_LOAN_POLICY.pdf'
+              )}
+              className="px-6 py-2 rounded-lg font-medium transition-colors"
+              style={{ backgroundColor: '#8cc63f', color: 'white' }}
+            >
+            Loan Policy
+            </button>
           </div>
            
         </div>
@@ -234,8 +248,8 @@ function Products({ onNavigate }) {
         <div
           className={`grid gap-6 rounded-3xl border p-6 md:grid-cols-[1.15fr_0.85fr] ${
             isDark
-              ? 'border-[#8cc63f]/25 bg-gradient-to-br from-gray-900 via-black to-gray-950'
-              : 'border-[#8cc63f]/20 bg-gradient-to-br from-white via-[#f8fff0] to-[#eef7e2]'
+              ? 'border-[#8cc63f]/25 bg-linear-to-br from-gray-900 via-black to-gray-950'
+              : 'border-[#8cc63f]/20 bg-linear-to-br from-white via-[#f8fff0] to-[#eef7e2]'
           }`}
         >
           <div>
@@ -280,7 +294,7 @@ function Products({ onNavigate }) {
                   type="number"
                   min="1000"
                   max={selectedCalculatorProduct.maxAmount}
-                  step="1000"
+                   
                   value={loanAmount}
                   onChange={(event) => setLoanAmount(Number(event.target.value))}
                   className={`w-full rounded-2xl border px-4 py-3 outline-none transition ${
@@ -411,8 +425,8 @@ function Products({ onNavigate }) {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className={`rounded-3xl p-10 text-center transition-all duration-300 hover:-translate-y-1 ${
             isDark 
-              ? 'bg-gradient-to-r from-[#8cc63f]/20 to-transparent border border-[#8cc63f]/30' 
-              : 'bg-gradient-to-r from-[#8cc63f]/10 to-transparent border border-[#8cc63f]/20'
+              ? 'bg-linear-to-r from-[#8cc63f]/20 to-transparent border border-[#8cc63f]/30' 
+              : 'bg-linear-to-r from-[#8cc63f]/10 to-transparent border border-[#8cc63f]/20'
           }`}>
             <div className={`text-2xl font-bold mb-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>
               Need More Help?

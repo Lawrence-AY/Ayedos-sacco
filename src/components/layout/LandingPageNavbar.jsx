@@ -298,7 +298,7 @@ function Navbar({ onNavigate }) {
           }}
         >
           <button
-            className={getDropdownButtonClassName(["/products"])}
+            className={getDropdownButtonClassName(["/products",])}
             onClick={() => toggleDropdown("services")}
             style={{ color: menuTextColor }}
             aria-current={
@@ -316,6 +316,7 @@ function Navbar({ onNavigate }) {
               >
                 Products
               </a>
+             
             </div>
           )}
         </div>

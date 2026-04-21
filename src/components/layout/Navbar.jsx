@@ -313,6 +313,7 @@ function Navbar({ onNavigate }) {
               >
                 Products
               </a>
+             
             </div>
           )}
         </div>
