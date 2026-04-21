@@ -108,16 +108,7 @@ function Navbar({ onNavigate }) {
       setDropdownOpen(null);
     }
   };
-
-  const handleNavClick = (e, targetId) => {
-    e.preventDefault();
-    const element = document.getElementById(targetId);
-    if (element) element.scrollIntoView({ behavior: "smooth" });
-    setMobileMenuOpen(false);
-    setDropdownOpen(null);
-    setSearchOpen(false);
-  };
-
+ 
  
 
   const toggleDropdown = (menu) => {
@@ -126,13 +117,13 @@ function Navbar({ onNavigate }) {
 
   const menuTextColor = mobileMenuOpen
     ? theme === "dark"
-      ? "#ffffff"
+      ? "#0f2b3d"
       : "#0f2b3d"
     : theme === "dark"
       ? "#ffffff"
       : scrolled
         ? "#0f2b3d"
-        : "#ffffff";
+        : "#0f2b3d";
 
   const searchIconColor = mobileMenuOpen
     ? theme === "dark"
@@ -158,7 +149,9 @@ function Navbar({ onNavigate }) {
       className={`landing-navbar ${scrolled ? "scrolled" : ""}`}
     >
       <div className="brand" onClick={() => onNavigate && onNavigate("")}>
+       <a href="/">
         <img src={logoSrc} alt="AYEDOS SACCO" width="130" />
+        </a> 
       </div>
 
       <button
@@ -341,7 +334,7 @@ function Navbar({ onNavigate }) {
             style={{
               color: menuTextColor,
             }}
-            onClick={(e) => handleNavLink(e, "contact")}
+         
           >
             Contact
           </a>

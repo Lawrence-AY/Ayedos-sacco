@@ -22,8 +22,11 @@ function AppRoutes() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/our-story" element={<PageWrapper><OurStory /></PageWrapper>} />
-        <Route path="/our-ideology" element={<PageWrapper><OurIdeology /></PageWrapper>} />
-        <Route path="/products" element={<PageWrapper><Products /></PageWrapper>} />
+        <Route path="/our-ideology" element={<PageWrapper><OurIdeology /></PageWrapper>  } />
+        <Route path="/products" element={<PageWrapper>
+          <Products />
+          </PageWrapper>
+          } />
         <Route
           path="/pricing"
           element={
