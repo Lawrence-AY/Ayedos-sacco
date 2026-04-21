@@ -2,7 +2,7 @@ import { HiChevronDown, HiArrowLeft } from 'react-icons/hi2'
 import { useState, useEffect } from 'react'
 import '../../styles.css'
 
-function FAQ({ onNavigate }) {
+function FAQ() {
   const navigate = (route) => {
     window.location.href = route ? `/${route}` : "/";
   }
@@ -151,8 +151,8 @@ function FAQ({ onNavigate }) {
           <section
             className={`mt-16 rounded-3xl p-10 text-center transition-all duration-300 hover:-translate-y-1 ${
               theme === 'dark' 
-                ? 'bg-gradient-to-r from-[#8cc63f]/20 to-transparent border border-[#8cc63f]/30' 
-                : 'bg-gradient-to-r from-[#8cc63f]/10 to-transparent border border-[#8cc63f]/20'
+                ? 'bg-linear-to-r from-[#8cc63f]/20 to-transparent border border-[#8cc63f]/30' 
+                : 'bg-linear-to-r from-[#8cc63f]/10 to-transparent border border-[#8cc63f]/20'
             }`}
           >
             <div className={`text-2xl font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>

@@ -48,14 +48,14 @@ const Footer = ({ onNavigate }) => {
             
             <a href="/products" className="block py-1 text-white">Products</a>
             <a href="/services" className="block py-1">Services</a>
-       <a href="/our-ideology" className="block py-1">Our Ideology</a>
           </div>
 
           <div>
             <div className="text-white font-semibold mb-2">Company</div>
            <div className="h-px bg-[#8cc63f] w-10 mb-3" />
-            <a href="/our-story" onClick={(e) => handleRouteClick(e, 'our-story')} className="block py-1">Our Story</a>
-            <a href="/contact" onClick={(e) => handleRouteClick(e, 'contact')} className="block py-1">Contact</a>
+            <a href="/our-story"   className="block py-1">Our Story</a>
+       <a href="/our-ideology" className="block py-1">Our Ideology</a>
+            <a href="/contact"  className="block py-1">Contact</a>
  
           </div>
 
@@ -64,7 +64,10 @@ const Footer = ({ onNavigate }) => {
              <div className="h-px bg-[#8cc63f] w-10 mb-3" />
             <a href="/faq" onClick={(e) => handleRouteClick(e, 'faq')} className="block py-1">FAQ</a>
             <a href="/guides" onClick={(e) => handleRouteClick(e, 'guides')} className="block py-1">Guides</a>
-            <a href="/blog" onClick={(e) => handleRouteClick(e, 'blog')} className="block py-1">Blog</a>
+ 
+            <a href="/blog"   className="block py-1">Blog</a>
+            <a href="/TermsAndConditions"   className="block py-1">Terms And Conditions</a>
+            <a href="/CookiePolicy"   className="block py-1">Cookies Policy</a>
           </div>
 
         </div>
