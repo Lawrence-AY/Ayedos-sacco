@@ -1,116 +1,176 @@
 import Navbar from "../../components/layout/Navbar";
- 
-import { useState, useEffect,} from 'react' 
+
+import { useState, useEffect } from "react";
 function OurIdeology({ onNavigate }) {
- 
-const [theme, setTheme] = useState(() => {
-    return document.documentElement.getAttribute('data-theme') || 'light'
-  })
+  const [theme, setTheme] = useState(() => {
+    return document.documentElement.getAttribute("data-theme") || "light";
+  });
 
   useEffect(() => {
     const observer = new MutationObserver(() => {
-      const newTheme = document.documentElement.getAttribute('data-theme') || 'light'
-      setTheme(newTheme)
-    })
-    observer.observe(document.documentElement, { attributes: true })
-    return () => observer.disconnect()
-  }, [])
+      const newTheme =
+        document.documentElement.getAttribute("data-theme") || "light";
+      setTheme(newTheme);
+    });
+    observer.observe(document.documentElement, { attributes: true });
+    return () => observer.disconnect();
+  }, []);
 
-  const isDark = theme === 'dark'
+  const isDark = theme === "dark";
   return (
     <>
-         <div className="info-page-container">
-      <Navbar onNavigate={onNavigate} />
-      <div  className={`{${isDark ? 'text-gray-400' : 'text-gray-500'}}`}>
-        <section className="py-24 px-4 ">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-16">
-              <div className="text-sm uppercase tracking-[0.3em]   mb-3">
-                Our Core Ideology
+      <div className="info-page-container">
+        <Navbar onNavigate={onNavigate} />
+        <div className={`{${isDark ? "text-gray-400" : "text-gray-500"}}`}>
+          <section className="py-24 px-4 ">
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-16">
+                <div className="text-4xl md:text-5xl font-bold  ">
+                  Our Philosophy
+                </div>
+                <div className="text-lg text-slate-600 mt-4">
+                  Ayedos SACCO exists to deliver exceptional financial
+                  experiences for members, communities, and stakeholders through
+                  trust, innovation, and integrity.
+                </div>
               </div>
-              <div className="text-4xl md:text-5xl font-bold  ">
-                About Our Philosophy
-              </div>
-              <div className="text-lg text-slate-600 mt-4">
-                Ayedos SACCO exists to deliver exceptional financial experiences
-                for members, communities, and stakeholders through trust,
-                innovation, and integrity.
-              </div>
-            </div>
 
-            <div className="space-y-16">
-              <section className={` ${isDark ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} rounded-3xl shadow-sm p-10`}>
-                <div className={`${isDark ? '  text-white' : ' text-gray-900'} text-3xl font-semibold   mb-4`}>
-                  Vision
-                </div>
-                <div className="text-lg text-slate-600 leading-8">
-                  To be the leading experience-driven financial services partner
-                  in our region, where every member feels valued, empowered, and
-                  inspired.
-                </div>
-                <div className="text-slate-600 leading-8 mt-4">
-                  We aim to create "wow" moments for all our stakeholders,
-                  fostering loyalty, trust, and a sense of shared achievement.
-                </div>
-              </section>
+              <div className="space-y-16">
+                <section
+                  className={` ${isDark ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"} rounded-3xl shadow-sm p-10`}
+                >
+                  <div
+                    className={`${isDark ? "  text-white" : " text-gray-900"} text-3xl font-semibold   mb-4`}
+                  >
+                    Vision
+                  </div>
+                  <div className="text-lg text-slate-600 leading-8">
+                    To become a leading digital financial infrastructure
+                    provider in Africa, through secure, innovative, and
+                    compliant technology.
+                  </div>
+                </section>
 
-             <section className={` ${isDark ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} rounded-3xl shadow-sm p-10`}>
-                <div className="text-3xl font-semibold   mb-4">
-                  Mission
-                </div>
-                <div className="text-lg text-slate-600 leading-8">
-                  We deliver innovative financial solutions that support the
-                  well-being and prosperity of our members and communities.
-                </div>
-                <div className="text-slate-600 leading-8 mt-4">
-                  Our approach is creative, responsive, and rooted in
-                  exceptional service so that every member can thrive with
-                  confidence.
-                </div>
-              </section>
+                <section
+                  className={` ${isDark ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"} rounded-3xl shadow-sm p-10`}
+                >
+                  <div className="grid gap-10 lg:grid-cols-2 items-center">
+                    <div>
+                      <div className="text-3xl font-semibold   mb-4">
+                        Mission
+                      </div>
+                      <div className="text-lg text-slate-600 leading-8">
+                        To design and operate trusted financial platforms that:
+                        <ul className="mt-4 space-y-2">
+                          <li>
+                            • Enable seamless access to investment and credit
+                            opportunities
+                          </li>
+                          <li>
+                            • Digitize and tokenize real-world assets, starting
+                            with mortgages and fixed income instruments
+                          </li>
+                          <li>
+                            • Deliver secure, compliant, and user-friendly
+                            financial solutions
+                          </li>
+                          <li>
+                            • Provide financial inclusion by lowering barriers
+                            to entry for individuals and institutions
+                          </li>
+                          <li>
+                            • Partner with regulators, financial institutions,
+                            and technology providers to build a resilient
+                            financial ecosystem
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div className="hidden lg:block">
+                      <img
+                        src="/ideology.jpg"
+                        alt="Our Mission"
+                        className="w-full h-auto rounded-2xl shadow-lg object-cover"
+                      />
+                    </div>
+                  </div>
+                </section>
 
-<section className={` ${isDark ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} rounded-3xl shadow-sm p-10`}>
+                <section
+                  className={` ${isDark ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"} rounded-3xl shadow-sm p-10`}
+                >
                   <div className="text-3xl font-semibold   mb-8">
-                  Core Values
-                </div>
-                <div className="grid gap-8 md:grid-cols-2">
-                  <div>
-                    <div className="text-xl font-semibold mb-3">Passion</div>
-                    <div className="text-slate-600 leading-7">
-                      We love what we do and bring enthusiasm to every
-                      interaction, committed to delivering excellence.
+                    Our Principles
+                  </div>
+                  <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <div
+                      className={`p-6 rounded-lg transition-all duration-300 hover:shadow-lg ${isDark ? "bg-gray-800" : "bg-white"}`}
+                    >
+                      <div className="text-xl font-semibold mb-3 text-[#8cc63f]">
+                        Integrity
+                      </div>
+                      <div
+                        className={isDark ? "text-gray-400" : "text-slate-600"}
+                      >
+                        We act honestly and ethically in all our dealings.
+                      </div>
+                    </div>
+                    <div
+                      className={`p-6 rounded-lg transition-all duration-300 hover:shadow-lg ${isDark ? "bg-gray-800" : "bg-white"}`}
+                    >
+                      <div className="text-xl font-semibold mb-3 text-[#8cc63f]">
+                        Accountability
+                      </div>
+                      <div
+                        className={isDark ? "text-gray-400" : "text-slate-600"}
+                      >
+                        We take responsibility for our actions and their
+                        outcomes.
+                      </div>
+                    </div>
+                    <div
+                      className={`p-6 rounded-lg transition-all duration-300 hover:shadow-lg ${isDark ? "bg-gray-800" : "bg-white"}`}
+                    >
+                      <div className="text-xl font-semibold mb-3 text-[#8cc63f]">
+                        Customer-Centricity
+                      </div>
+                      <div
+                        className={isDark ? "text-gray-400" : "text-slate-600"}
+                      >
+                        Our customers are at the heart of everything we do.
+                      </div>
+                    </div>
+                    <div
+                      className={`p-6 rounded-lg transition-all duration-300 hover:shadow-lg ${isDark ? "bg-gray-800" : "bg-white"}`}
+                    >
+                      <div className="text-xl font-semibold mb-3 text-[#8cc63f]">
+                        Efficiency
+                      </div>
+                      <div
+                        className={isDark ? "text-gray-400" : "text-slate-600"}
+                      >
+                        We strive for timely and effective service delivery.
+                      </div>
+                    </div>
+                    <div
+                      className={`p-6 rounded-lg transition-all duration-300 hover:shadow-lg ${isDark ? "bg-gray-800" : "bg-white"}`}
+                    >
+                      <div className="text-xl font-semibold mb-3 text-[#8cc63f]">
+                        Confidentiality
+                      </div>
+                      <div
+                        className={isDark ? "text-gray-400" : "text-slate-600"}
+                      >
+                        We protect your personal and financial information with
+                        care.
+                      </div>
                     </div>
                   </div>
-                  <div>
-                    <div className="text-xl font-semibold mb-3">Teamwork</div>
-                    <div className="text-slate-600 leading-7">
-                      We collaborate closely, valuing every voice and working
-                      together to produce exceptional outcomes.
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xl font-semibold mb-3">Integrity</div>
-                    <div className="text-slate-600 leading-7">
-                      We honour our commitments and earn trust by always doing
-                      the right thing, consistently and transparently.
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xl font-semibold mb-3">Innovation</div>
-                    <div className="text-slate-600 leading-7">
-                      We challenge the status quo, embrace new ideas, and shape
-                      the future with creative solutions.
-                    </div>
-                  </div>
-                </div>
-              </section>
+                </section>
+              </div>
             </div>
-
-     
-          </div>
-        </section>
-      </div>
-   
+          </section>
+        </div>
       </div>
     </>
   );
