@@ -7,10 +7,12 @@ import {
   HiSun,
   HiMoon,
 } from "react-icons/hi2";
+import { useLocation } from "react-router-dom";
 import { runSiteSearch } from "../../utils/siteSearch";
 import "../../styles.css";
 
 function Navbar({ onNavigate }) {
+  const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
@@ -114,6 +116,14 @@ function Navbar({ onNavigate }) {
   const toggleDropdown = (menu) => {
     setDropdownOpen(dropdownOpen === menu ? null : menu);
   };
+
+  const currentPath = location.pathname;
+  const isCurrentPath = (path) => currentPath === path;
+  const isActiveSection = (paths) => paths.some((path) => currentPath === path);
+  const getNavLinkClassName = (path) =>
+    isCurrentPath(path) ? "nav-link-active" : "";
+  const getDropdownButtonClassName = (paths) =>
+    isActiveSection(paths) ? "nav-dropdown-toggle nav-link-active" : "nav-dropdown-toggle";
 
   const menuTextColor = mobileMenuOpen
     ? theme === "dark"
@@ -229,6 +239,8 @@ function Navbar({ onNavigate }) {
         >
           <a
             href="/"
+            className={getNavLinkClassName("/")}
+            aria-current={isCurrentPath("/") ? "page" : undefined}
             style={{
               color: menuTextColor,
             }}
@@ -246,9 +258,12 @@ function Navbar({ onNavigate }) {
           }}
         >
           <button
-            className="nav-dropdown-toggle"
+            className={getDropdownButtonClassName(["/our-story", "/our-ideology"])}
             onClick={() => toggleDropdown("about")}
             style={{ color: menuTextColor }}
+            aria-current={
+              isActiveSection(["/our-story", "/our-ideology"]) ? "page" : undefined
+            }
           >
             About <HiChevronDown />
           </button>
@@ -256,13 +271,15 @@ function Navbar({ onNavigate }) {
             <div className="nav-dropdown-menu">
               <a
                 href="/our-story"
-                 
+                className={getNavLinkClassName("/our-story")}
+                aria-current={isCurrentPath("/our-story") ? "page" : undefined}
               >
                 Our Story
               </a>
               <a
                 href="/our-ideology"
-                 
+                className={getNavLinkClassName("/our-ideology")}
+                aria-current={isCurrentPath("/our-ideology") ? "page" : undefined}
               >
                 Our Ideology
               </a>
@@ -278,17 +295,30 @@ function Navbar({ onNavigate }) {
           }}
         >
           <button
-            className="nav-dropdown-toggle"
+            className={getDropdownButtonClassName(["/products", "/pricing"])}
             onClick={() => toggleDropdown("services")}
             style={{ color: menuTextColor }}
+            aria-current={
+              isActiveSection(["/products", "/pricing"]) ? "page" : undefined
+            }
           >
             Services <HiChevronDown />
           </button>
           {dropdownOpen === "services" && (
             <div className="nav-dropdown-menu">
-              
-              <a href="/products"  >
+              <a
+                href="/products"
+                className={getNavLinkClassName("/products")}
+                aria-current={isCurrentPath("/products") ? "page" : undefined}
+              >
                 Products
+              </a>
+              <a
+                href="/pricing"
+                className={getNavLinkClassName("/pricing")}
+                aria-current={isCurrentPath("/pricing") ? "page" : undefined}
+              >
+                Pricing
               </a>
             </div>
           )}
@@ -302,21 +332,36 @@ function Navbar({ onNavigate }) {
           }}
         >
           <button
-            className="nav-dropdown-toggle"
+            className={getDropdownButtonClassName(["/faq", "/guides", "/blog"])}
             onClick={() => toggleDropdown("resources")}
             style={{ color: menuTextColor }}
+            aria-current={
+              isActiveSection(["/faq", "/guides", "/blog"]) ? "page" : undefined
+            }
           >
             Resources <HiChevronDown /> 
           </button>
           {dropdownOpen === "resources" && (
             <div className="nav-dropdown-menu">
-              <a href="/faq"  >
+              <a
+                href="/faq"
+                className={getNavLinkClassName("/faq")}
+                aria-current={isCurrentPath("/faq") ? "page" : undefined}
+              >
                 FAQ
               </a>
-              <a href="/guides"  >
+              <a
+                href="/guides"
+                className={getNavLinkClassName("/guides")}
+                aria-current={isCurrentPath("/guides") ? "page" : undefined}
+              >
                 Guides
               </a>
-              <a href="/blog" >
+              <a
+                href="/blog"
+                className={getNavLinkClassName("/blog")}
+                aria-current={isCurrentPath("/blog") ? "page" : undefined}
+              >
                 Blog
               </a>
             </div>
@@ -331,6 +376,8 @@ function Navbar({ onNavigate }) {
         >
           <a
             href="/contact"
+            className={getNavLinkClassName("/contact")}
+            aria-current={isCurrentPath("/contact") ? "page" : undefined}
             style={{
               color: menuTextColor,
             }}
