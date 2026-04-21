@@ -154,7 +154,7 @@ function LandingPage({ onNavigate }) {
             <div
               className={`text-4xl md:text-5xl font-bold mb-4 ${bgClass("text-slate-800", "text-white")}`}
             >
-              Why Choose Ayedos
+              Choose Ayedos
             </div>
             <p
               className={`text-lg ${bgClass("text-slate-600", "text-slate-300")}`}
@@ -170,43 +170,49 @@ function LandingPage({ onNavigate }) {
                 title: "Financial Growth",
                 description:
                   "Your savings work for you through competitive dividends and smart financial solutions designed for long-term stability.",
-                icon: "💰",
               },
               {
                 title: "Community Trust",
                 description:
                   "We prioritize integrity, open communication, and member-first decisions in everything we do.",
-                icon: "🤝",
               },
               {
                 title: "Flexible Solutions",
                 description:
                   "Access affordable and flexible loan options tailored to your needs — when you need them most.",
-                icon: "⚡",
               },
             ].map((item, index) => (
               <div
                 key={index}
-                className={`group card transition-all duration-300 hover:-translate-y-2 ${
-                  theme === "dark"
-                    ? "bg-black border-[#8cc63f]/40 hover:border-[#8cc63f]/80 shadow-lg"
-                    : "bg-white border border-gray-200 shadow-md hover:shadow-xl"
-                }`}
+                className={`group card transition-all duration-300 hover:-translate-y-2 ${bgClass(
+                  "bg-white border border-gray-200 shadow-md hover:shadow-xl",
+                  "bg-black border-[#8cc63f]/40 hover:border-[#8cc63f]/80 shadow-lg",
+                )}`}
               >
-                <div className="card-body">
-                  <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                    {item.icon}
-                  </div>
+                <div className="card-body p-8">
                   <div
-                    className={`card-title text-xl ${bgClass("text-slate-800", "text-white")}`}
+                    className={`card-title text-2xl mb-4 ${bgClass("text-slate-800", "text-white")}`}
                   >
                     {item.title}
                   </div>
-                  <p className={bgClass("text-slate-600", "text-slate-300")}>
+                  <p
+                    className={`leading-relaxed mb-6 ${bgClass("text-slate-600", "text-slate-300")}`}
+                  >
                     {item.description}
                   </p>
-                  <div className="card-actions justify-start mt-4 pt-4 border-t border-gray-200 dark:border-[#8cc63f]/20">
-                    <button className="btn btn-sm bg-[#8cc63f] hover:bg-[#9fd858] text-slate-900 border-none shadow-md">
+                  <div
+                    className="card-actions justify-start mt-auto pt-4 border-t"
+                    style={{
+                      borderTopColor:
+                        theme === "dark"
+                          ? "rgba(139, 198, 63, 0.2)"
+                          : "#e5e7eb",
+                    }}
+                  >
+                    <button
+                      onClick={() => navigate("our-story")}
+                      className="btn btn-sm bg-[#8cc63f] hover:bg-[#9fd858] text-white border-none shadow-md"
+                    >
                       Learn More
                     </button>
                   </div>
@@ -231,35 +237,29 @@ function LandingPage({ onNavigate }) {
             >
               Our Services
             </div>
-            <p
-              className={`text-lg ${bgClass("text-slate-600", "text-white/80")}`}
-            >
-              Everything you need to run a SACCO efficiently, designed with
-              polished precision and care.
-            </p>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
             {[
               {
                 title: "Savings",
-                icon: "💰",
-                desc: "Structured savings plans to build discipline and long-term wealth.",
+                image: "/savings.jpg",
+                desc: "Build a strong financial foundation with structured savings plans designed to encourage consistency and discipline. Whether you’re saving for a goal or preparing for the future, our SACCO provides a safe, supportive environment to help your money grow steadily over time.",
               },
               {
                 title: "Loans & Credit",
-                icon: "📊",
-                desc: "Flexible financing designed for members and their families.",
+                image: "/loan-two.jpg",
+                desc: "Access flexible and affordable financing tailored to meet the needs of our members and their families. From personal needs to business growth, our loan products are designed with fair terms, quick processing, and a focus on empowering your financial progress.",
               },
               {
                 title: "Investments",
-                icon: "📈",
-                desc: "Collective opportunities that grow wealth through smart choices.",
+                image: "/invest.jpg",
+                desc: "Grow your wealth through carefully selected collective investment opportunities. By pooling resources, members benefit from diversified ventures that are professionally managed, helping you achieve higher returns and long-term financial security.",
               },
               {
-                title: "Education",
-                icon: "🏦",
-                desc: "Clear guidance so members make confident financial decisions.",
+                title: "Financial Education",
+                image: "/educatiion.jpg",
+                desc: "Make informed financial decisions with confidence through our ongoing guidance and resources. We equip our members with practical knowledge on saving, borrowing, and investing, ensuring you have the tools to build and sustain your financial well-being.",
               },
             ].map((service, i) => (
               <div
@@ -271,13 +271,15 @@ function LandingPage({ onNavigate }) {
                 }`}
               >
                 <div
-                  className={`relative h-40 overflow-hidden flex items-center justify-center ${
+                  className={`relative h-40 overflow-hidden ${
                     theme === "dark" ? "bg-black" : "bg-white"
                   }`}
                 >
-                  <span className="text-6xl group-hover:scale-110 transition-transform duration-300">
-                    {service.icon}
-                  </span>
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
                 <div className="p-6 text-center">
                   <div
@@ -286,7 +288,7 @@ function LandingPage({ onNavigate }) {
                     {service.title}
                   </div>
                   <p
-                    className={`text-sm ${bgClass("text-slate-600", "text-white/70")}`}
+                    className={`text-sm leading-relaxed ${bgClass("text-slate-600", "text-white/70")}`}
                   >
                     {service.desc}
                   </p>
@@ -303,7 +305,7 @@ function LandingPage({ onNavigate }) {
       >
         <div className="max-w-6xl mx-auto">
           <div
-            className={`rounded-3xl p-10 md:p-16 shadow-xl backdrop-blur-sm ${
+            className={`rounded-3xl p-10 md:p-16 shadow-sm backdrop-blur-sm ${
               theme === "dark"
                 ? "border border-[#8cc63f]/40 bg-black"
                 : "border border-[#8cc63f]/30 bg-white"
@@ -313,7 +315,7 @@ function LandingPage({ onNavigate }) {
               <div className="space-y-8">
                 <div>
                   <p className="text-sm uppercase tracking-widest font-semibold text-[#8cc63f] mb-4">
-                    ✨ Your Financial Growth Starts Here
+                    Your Financial Growth Starts Here
                   </p>
                   <div
                     className={`text-4xl md:text-5xl font-bold leading-tight ${bgClass("text-slate-800", "text-white")}`}
@@ -329,7 +331,7 @@ function LandingPage({ onNavigate }) {
                   and prosperity.
                 </p>
                 <button
-                  className="btn btn-lg bg-[#8cc63f] hover:bg-[#9fd858] text-slate-900 border-none shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                  className="btn btn-lg bg-[#8cc63f] hover:bg-[#9fd858] text-white border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                   onClick={() => navigate("register")}
                 >
                   Become a Member Today
@@ -339,19 +341,19 @@ function LandingPage({ onNavigate }) {
               <div className="grid gap-6 sm:grid-cols-2">
                 {[
                   {
-                    title: "💾 Savings",
+                    title: " Savings",
                     text: "Secure your future with consistent, disciplined savings.",
                   },
                   {
-                    title: "💳 Affordable Loans",
+                    title: " Affordable Loans",
                     text: "Access smart credit with friendly repayment terms.",
                   },
                   {
-                    title: "📊 Real Returns",
+                    title: " Real Returns",
                     text: "Grow wealth through cooperative dividends.",
                   },
                   {
-                    title: "👥 Member Power",
+                    title: " Member Power",
                     text: "Benefit from shared trust and financial control.",
                   },
                 ].map((item, index) => (
@@ -390,13 +392,14 @@ function LandingPage({ onNavigate }) {
             <div
               className={`text-center  text-4xl md:text-5xl font-bold mb-4 ${bgClass("text-slate-800", "text-white")}`}
             >
-              Product Design Snapshot
+              Product Design
             </div>
             <p
               className={`text-lg   mx-auto ${bgClass("text-slate-600", "text-slate-300")}`}
             >
-              A polished visual preview of the user experience that Ayedos
-              provides to its members.
+              Our SACCO platform is thoughtfully designed for you. Around the
+              member experience, simple to navigate and tailored to everyday
+              financial needs. Save, borrow, and grow with confidence!
             </p>
           </div>
 
@@ -436,14 +439,7 @@ function LandingPage({ onNavigate }) {
                     : "border border-gray-200 bg-white"
                 }`}
               >
-                <div
-                  className={`h-48 flex items-center justify-center transition-all duration-300 ${
-                    theme === "dark" ? "bg-black" : "bg-white"
-                  }`}
-                >
-                  <span className="text-4xl">📱</span>
-                </div>
-                <div className="p-8">
+                <div className="p-12">
                   <div
                     className={`text-2xl font-semibold mb-3 ${bgClass("text-slate-800", "text-white")}`}
                   >
