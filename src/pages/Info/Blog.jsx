@@ -96,10 +96,10 @@ function Blog({ onNavigate }) {
         <p>Insights and updates from the Ayedos team</p>
       </div>
 
-      <div className={`min-h-screen ${isDark ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'}`}>
+      <div className={`  ${isDark ? 'bg-black text-white' : '  text-gray-900'}`}>
 
       {/* CATEGORY FILTER */}
-      <div className="max-w-6xl mx-auto mt-2 px-4 mb-8">
+      <div className="max-w-6xl mx-auto mt-2 px-4 mb-2">
         <div className="flex flex-wrap gap-2 justify-center">
           {categories.map((cat) => (
             <button

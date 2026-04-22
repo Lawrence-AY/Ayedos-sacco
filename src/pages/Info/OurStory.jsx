@@ -80,20 +80,15 @@ function OurStory({ onNavigate }) {
       year: "2018",
       title: "Foundation",
       description:
-        "Ayedos SACCO was established with a vision to revolutionize cooperative financial management in Kenya.",
+        "AYEDOS SACCO was established with a vision to revolutionize cooperative financial management in Kenya.",
     },
     {
       year: "2019",
       title: "First Members",
       description:
-        "Onboarded our first 50 member organizations across Nairobi and surrounding counties.",
+        "Onboarded our employees and educated them on value of saving.",
     },
-    {
-      year: "2020",
-      title: "Digital Platform Launch",
-      description:
-        "Launched our comprehensive digital platform enabling online member management and real-time transactions.",
-    },
+    
     {
       year: "2022",
       title: "Expansion",
@@ -104,13 +99,13 @@ function OurStory({ onNavigate }) {
       year: "2024",
       title: "Market Leader",
       description:
-        "Became the preferred SACCO management solution for over 200 organizations with 50,000+ active members.",
+        "Became the preferred SACCO management solution.",
     },
     {
-      year: "2025",
-      title: "Innovation",
+      year: "2026",
+      title: "Going Public",
       description:
-        "Introduced AI-powered analytics and automated compliance reporting features.",
+        "Opening up the SACCO for the public to join.",
     },
   ];
 
@@ -149,14 +144,14 @@ function OurStory({ onNavigate }) {
                   isDark ? "text-white" : "text-black"
                 }`}
               >
-                The Ayedos Advantage
+                The AYEDOS SACCO Advantage
               </div>
               <div
-                className={`text-base text-justify md:text-xl leading-relaxed md:leading-[2.5] max-w-4xl mx-auto ${
+                className={`text-base text-justify md:text-lg leading-relaxed md:leading-[2.5] max-w-4xl mx-auto ${
                   isDark ? "text-gray-300" : "text-gray-700"
                 }`}
               >
-                Ayedos SACCO is a leading provider of comprehensive financial
+                AYEDOS SACCO is a leading provider of comprehensive financial
                 management solutions for Savings and Credit Cooperatives across
                 East Africa. We combine deep industry expertise with
                 cutting-edge technology to empower SACCOs to operate more
@@ -412,7 +407,7 @@ function OurStory({ onNavigate }) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-4">
+      <section className="py-0 px-4">
         <div
           className={`max-w-4xl mx-auto text-center rounded-[2rem] border border-slate-300 p-6 md:p-10 shadow-sm ${
             isDark ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
