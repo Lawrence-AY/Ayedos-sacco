@@ -238,7 +238,7 @@ function OurStory({ onNavigate }) {
                       </div>
                     </div>
                     <div
-                      className="w-4 h-4 rounded-full z-10 border-2 border-white flex-shrink-0 timeline-dot"
+                      className="w-4 h-4 rounded-full z-10 border-2 border-white shrink-0 timeline-dot"
                       style={{ backgroundColor: "#8cc63f" }}
                     ></div>
                     <div className="w-1/2"></div>
@@ -247,7 +247,7 @@ function OurStory({ onNavigate }) {
                   <>
                     <div className="w-1/2"></div>
                     <div
-                      className="w-4 h-4 rounded-full z-10 border-2 border-white flex-shrink-0 timeline-dot"
+                      className="w-4 h-4 rounded-full z-10 border-2 border-white shrink-0 timeline-dot"
                       style={{ backgroundColor: "#8cc63f" }}
                     ></div>
                     <div className="w-1/2 text-left pl-8">
@@ -319,7 +319,7 @@ function OurStory({ onNavigate }) {
                 data-delay={index * 150}
               >
                 <div
-                  className="w-4 h-4 rounded-full border-2 border-white flex-shrink-0 mt-1 timeline-dot"
+                  className="w-4 h-4 rounded-full border-2 border-white shrink-0 mt-1 timeline-dot"
                   style={{ backgroundColor: "#8cc63f" }}
                 ></div>
                 <div className="ml-4 flex-1">
@@ -409,7 +409,7 @@ function OurStory({ onNavigate }) {
       {/* CTA Section */}
       <section className="py-0 px-4">
         <div
-          className={`max-w-4xl mx-auto text-center rounded-[2rem] border border-slate-300 p-6 md:p-10 shadow-sm ${
+          className={`max-w-4xl mx-auto text-center rounded-4xl border border-slate-300 p-6 md:p-10 shadow-sm ${
             isDark ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
           }`}
         >
@@ -426,12 +426,17 @@ function OurStory({ onNavigate }) {
             Become part of a network of forward-thinking SACCOs
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="">
+
             <button
               onClick={() => navigate("register")}
               className="px-8 py-3 rounded-full font-semibold bg-[#8cc63f] hover:bg-[#9fd858] text-slate-900 transition-all duration-300 hover:-translate-y-1 shadow-lg"
-            >
+              >
               Get Started
             </button>
+              </a>
+            <a href="/contact">
+
             <button
               onClick={() => navigate("contact")}
               className="px-8 py-3 rounded-full font-semibold border-2 transition-all duration-300 hover:-translate-y-1"
@@ -439,9 +444,10 @@ function OurStory({ onNavigate }) {
                 borderColor: "var(--color-accent, #8cc63f)",
                 borderWidth: "2px",
               }}
-            >
+              >
               Contact Us
             </button>
+              </a>
           </div>
         </div>
       </section>
