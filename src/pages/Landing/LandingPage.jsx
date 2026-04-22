@@ -96,7 +96,7 @@ function LandingPage({ onNavigate }) {
     };
     return (
       descriptions[title] ||
-      "Join a financial community built on trust, transparency, and shared prosperity. Take control of your financial future with Ayedos SACCO."
+      "Join a financial community built on trust, transparency, and shared prosperity. Take control of your financial future with AYEDOS SACCO."
     );
   };
 
@@ -265,7 +265,7 @@ function LandingPage({ onNavigate }) {
             <div
               className={`text-4xl md:text-5xl font-bold mb-4 ${bgClass("text-slate-800", "text-white")}`}
             >
-              Choose Ayedos
+              Choose AYEDOS SACCO
             </div>
             <p
               className={`text-lg ${bgClass("text-slate-600", "text-slate-300")}`}

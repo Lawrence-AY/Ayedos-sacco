@@ -7,7 +7,7 @@ import {
 } from 'react-icons/hi2'
 import { useState, useEffect, useRef } from 'react'
 
-function Guides({ onNavigate }) {
+function Guides( ) {
    const navigate = (route) => {
     window.location.href = route ? `/${route}` : "/";
   }
@@ -74,18 +74,25 @@ function Guides({ onNavigate }) {
     modalRef.current?.close()
     setSelectedGuide(null)
   }
+   // Helper for dynamic background classes
+  const bgClass = (lightClass, darkClass) => {
+    return theme === "dark" ? darkClass : lightClass;
+  };
 
   return (
     <div className="info-page-container">
-      <div className="info-hero">
+      <div className={`info-hero mb-1`}>
         <h1>Guides & Resources</h1>
-        <p>Step-by-step guides to help you get the most out of Ayedos</p>
+        <p
+              className={`text-lg ${bgClass("text-slate-600", "text-slate-300")}`}
+            >
+              Step-by-step guides to help you get the most out of Ayedos</p>
       </div>
 
-      <div className={`  ${isDark ? 'bg-black' : 'bg-white'}`}>
+      <div className={`  ${isDark ? 'bg-black' : ' '}`}>
 
       {/* GUIDES GRID - matching FAQ card styling */}
-      <div className="max-w-6xl mx-auto px-4 pb-16">
+      <div className="max-w-6xl mx-auto px-4 pb-6">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {guides.map((guide, index) => {
             const Icon = guide.icon
@@ -134,7 +141,7 @@ function Guides({ onNavigate }) {
       </div>
 
       {/* HELP SECTION - matching FAQ's green CTA */}
-      <div className="py-0 mb-15">
+      <div className="py-0 mb-5">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="rounded-2xl p-8 text-center" style={{ backgroundColor: '#8cc63f', color: 'white' }}>
             <h2 className="text-2xl font-bold mb-2">
