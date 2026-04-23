@@ -30,8 +30,8 @@ function FAQ() {
       category: 'General',
       questions: [
         { q: 'What is Ayedos SACCO?', a: 'Ayedos SACCO is a comprehensive financial management platform designed specifically for Savings and Credit Cooperatives. We provide tools for managing member accounts, savings, shares, dividends, and loans.' },
-        { q: 'Who can use Ayedos?', a: 'Our platform is designed for SACCOs of all sizes, from small community cooperatives to large regional SACCOs. We serve both employee-based and non-employee member organizations.' },
-       // { q: 'Is my data secure?', a: 'Yes, we use bank-grade 256-bit encryption and are fully compliant with Kenyan data protection regulations. Our servers are hosted in secure data centers with 24/7 monitoring.' }
+        { q: 'Who can use Ayedos?', a: 'We serve both employee-based and non-employee member organizations.' },
+       
       ]
     },
     {
@@ -46,8 +46,8 @@ function FAQ() {
       category: 'Transactions',
       questions: [
         { q: 'How do I make a deposit?', a: 'Log in to your member portal, go to "Make Deposit", and follow the prompts. You can use mobile money, bank transfer, or cash at designated agents.' },
-        { q: 'How long do withdrawals take?', a: 'Mobile money withdrawals are processed within minutes. Bank transfers typically take 1-2 business days. Cash withdrawals require visiting a designated agent.' },
-       // { q: 'What are the transaction limits?', a: 'Daily limits vary by membership level and verification status. Standard accounts have a KSh 100,000 daily limit, which can be increased upon request.' }
+        { q: 'How long do withdrawals take?', a: 'Mobile money withdrawals are processed instantly. Bank transfers typically take 1-2 business days.' },
+       
       ]
     },
     {
@@ -55,14 +55,14 @@ function FAQ() {
       questions: [
         { q: 'When are dividends paid?', a: 'Dividends are typically distributed annually after the AGM. The exact timing is announced by your SACCO board and depends on financial performance.' },
         { q: 'How are dividends calculated?', a: 'Dividends are calculated based on your share capital at the end of the financial year. The rate is determined by the board and approved by members at the AGM.' },
-        { q: 'Can I transfer my shares?', a: 'Yes, share transfers are allowed subject to SACCO rules. You need to submit a transfer request through your member portal or visit your SACCO office.' }
+        { q: 'Can I transfer my shares?', a: 'Yes, share transfers are allowed subject to SACCO rules. You need to submit a transfer request through your member portal.' }
       ]
     },
     {
       category: 'Loans',
       questions: [
         { q: 'How do I apply for a loan?', a: 'Log in to your member portal, navigate to "Loans", and select "Apply". Complete the application form and submit required documents. You\'ll be notified of the decision within 5-7 business days.' },
-        { q: 'What is the maximum loan amount?', a: 'Loan limits depend on your share capital, contribution history, and credit score. Typically, members can borrow up to 3x their share capital.' },
+        { q: 'What is the maximum loan amount?', a: 'Loan limits depend on your share capital, contribution history, and credit score. ' },
         { q: 'Can I repay my loan early?', a: 'Yes, you can make early repayments without penalty. Contact your SACCO for the exact payoff amount.' }
       ]
     }
