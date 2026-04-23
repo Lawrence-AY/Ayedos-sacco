@@ -152,9 +152,8 @@ function OurStory({ onNavigate }) {
                 }`}
               >
                 AYEDOS SACCO is a leading provider of comprehensive financial
-                management solutions for Savings and Credit Cooperatives across
-                East Africa. We combine deep industry expertise with
-                cutting-edge technology to empower SACCOs to operate more
+                management solutions. We combine deep industry expertise with
+                cutting-edge technology to empower our members to operate more
                 efficiently, transparently, and profitably.
               </div>
             </div>

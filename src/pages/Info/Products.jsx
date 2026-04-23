@@ -255,6 +255,7 @@ function Products({ onNavigate }) {
                 Membership Application Form
               </button>
               <button
+              hidden
                 onClick={() =>
                   downloadForm(
                     "/forms/AYEDOS SACCO Loan application form.pdf",
