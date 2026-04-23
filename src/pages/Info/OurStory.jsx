@@ -88,7 +88,7 @@ function OurStory({ onNavigate }) {
       description:
         "Onboarded our employees and educated them on value of saving.",
     },
-    
+
     {
       year: "2022",
       title: "Expansion",
@@ -98,14 +98,12 @@ function OurStory({ onNavigate }) {
     {
       year: "2024",
       title: "Market Leader",
-      description:
-        "Became the preferred SACCO management solution.",
+      description: "Became the preferred SACCO management solution.",
     },
     {
       year: "2026",
       title: "Going Public",
-      description:
-        "Opening up the SACCO for the public to join.",
+      description: "Opening up the SACCO for the public to join.",
     },
   ];
 
@@ -426,27 +424,25 @@ function OurStory({ onNavigate }) {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="">
-
-            <button
-              onClick={() => navigate("register")}
-              className="px-8 py-3 rounded-full font-semibold bg-[#8cc63f] hover:bg-[#9fd858] text-slate-900 transition-all duration-300 hover:-translate-y-1 shadow-lg"
+              <button
+                onClick={() => navigate("register")}
+                className="px-8 py-3 rounded-full font-semibold bg-[#8cc63f] hover:bg-[#9fd858] text-slate-900 transition-all duration-300 hover:-translate-y-1 shadow-lg"
               >
-              Get Started
-            </button>
-              </a>
+                Get Started
+              </button>
+            </a>
             <a href="/contact">
-
-            <button
-              onClick={() => navigate("contact")}
-              className="px-8 py-3 rounded-full font-semibold border-2 transition-all duration-300 hover:-translate-y-1"
-              style={{
-                borderColor: "var(--color-accent, #8cc63f)",
-                borderWidth: "2px",
-              }}
+              <button
+                onClick={() => navigate("contact")}
+                className="px-8 py-3 rounded-full font-semibold border-2 transition-all duration-300 hover:-translate-y-1"
+                style={{
+                  borderColor: "var(--color-accent, #8cc63f)",
+                  borderWidth: "2px",
+                }}
               >
-              Contact Us
-            </button>
-              </a>
+                Contact Us
+              </button>
+            </a>
           </div>
         </div>
       </section>
