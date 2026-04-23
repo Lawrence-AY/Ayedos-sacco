@@ -136,7 +136,9 @@ function Products({ onNavigate }) {
   const [calculatorProductId, setCalculatorProductId] = useState(
     products[0].id,
   );
-  const [loanAmount, setLoanAmount] = useState(products[0].maxAmount / 2);
+  const [loanAmount, setLoanAmount] = useState(
+    String(products[0].maxAmount / 2),
+  );
   const [repaymentMonths, setRepaymentMonths] = useState(
     products[0].defaultRepaymentMonths,
   );
@@ -145,12 +147,19 @@ function Products({ onNavigate }) {
     products.find((product) => product.id === calculatorProductId) ??
     products[0];
 
+  const clampLoanAmount = (value, maxAmount) => {
+    const numericValue = Number(value);
+
+    if (!Number.isFinite(numericValue) || numericValue <= 0) {
+      return "";
+    }
+
+    return String(Math.min(Math.max(numericValue, 1000), maxAmount));
+  };
+
   useEffect(() => {
     setLoanAmount((currentAmount) =>
-      Math.min(
-        Math.max(currentAmount, 1000),
-        selectedCalculatorProduct.maxAmount,
-      ),
+      clampLoanAmount(currentAmount, selectedCalculatorProduct.maxAmount),
     );
     setRepaymentMonths((currentMonths) =>
       Math.min(
@@ -158,7 +167,11 @@ function Products({ onNavigate }) {
         selectedCalculatorProduct.maxRepaymentMonths,
       ),
     );
-  }, [selectedCalculatorProduct]);
+  }, [
+    calculatorProductId,
+    selectedCalculatorProduct.maxAmount,
+    selectedCalculatorProduct.maxRepaymentMonths,
+  ]);
 
   const loanSummary = useMemo(() => {
     const principal = Number(loanAmount) || 0;
@@ -329,12 +342,23 @@ function Products({ onNavigate }) {
                     Loan amount
                   </span>
                   <input
-                    type="number"
-                    min="1000"
-                    max={selectedCalculatorProduct.maxAmount}
+                    type="text"
+                    inputMode="numeric"
                     value={loanAmount}
-                    onChange={(event) =>
-                      setLoanAmount(Number(event.target.value))
+                    onChange={(event) => {
+                      const nextValue = event.target.value;
+
+                      if (/^\d*$/.test(nextValue)) {
+                        setLoanAmount(nextValue);
+                      }
+                    }}
+                    onBlur={() =>
+                      setLoanAmount((currentAmount) =>
+                        clampLoanAmount(
+                          currentAmount,
+                          selectedCalculatorProduct.maxAmount,
+                        ),
+                      )
                     }
                     className={`w-full rounded-2xl border px-4 py-3 outline-none transition ${
                       isDark
