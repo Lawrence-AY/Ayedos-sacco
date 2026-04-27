@@ -77,26 +77,26 @@ function OurStory({ onNavigate }) {
 
   const timeline = [
     {
-      year: "2018",
+      year: "June, 2024",
       title: "Foundation",
       description:
-        "AYEDOS SACCO was established with a vision to revolutionize cooperative financial management in Kenya.",
+        "AYEDOS SACCO was established and launchedwith a vision to revolutionize cooperative financial management in Kenya.",
     },
     {
-      year: "2019",
+      year: "July, 2024",
       title: "First Members",
       description:
         "Onboarded our employees and educated them on value of saving.",
     },
 
     {
-      year: "2022",
+      year: "September2024",
       title: "Expansion",
       description:
         "Expanded services to include loan management, dividend distribution, and regulatory compliance tools.",
     },
     {
-      year: "2024",
+      year: "2025",
       title: "Market Leader",
       description: "Became the preferred SACCO management solution.",
     },

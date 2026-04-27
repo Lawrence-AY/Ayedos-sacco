@@ -13,11 +13,12 @@ import Footer from "../components/ui/Footer";
 import Navbar from "../components/layout/Navbar";
 import  TermsAndConditions from "../pages/Info/TermsAndConditions";
 import  CookiePolicy from "../pages/Info/CookiePolicy"
-import { navigateToRoute } from "../utils/webappRoutes";
+import TawkTo from "../components/ui/Tawkto";
 
 function AppRoutes() {
   return (
     <BrowserRouter>
+    <TawkTo />
       <Routes>
         <Route path="/" element={<LandingPageWrapper />} />
         <Route path="/login" element={<AuthRedirect mode="login" />} />
