@@ -218,12 +218,12 @@ function LandingPage({ onNavigate }) {
                     </button>
                     <button
                       className="btn btn-lg bg-white/20 hover:bg-white/30 text-white border-white/30 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-42"
-                      onClick={() => navigate("our-story")}
+                      onClick={() => navigate("/our-story")}
                     >
                       Learn More
                     </button>
                   </div>
-                  <p className="mt-5 text-sm text-white/80">
+                  {/* <p className="mt-5 text-sm text-white/80">
                     Already have an account?{" "}
                     <button
                       type="button"
@@ -232,7 +232,7 @@ function LandingPage({ onNavigate }) {
                     >
                       Log in
                     </button>
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>
