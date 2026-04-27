@@ -1,8 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LandingPage from "../pages/Landing/LandingPage";
-import Login from "../pages/Auth/Login";
-import Register from "../pages/Auth/Register";
+import AuthRedirect from "../pages/Auth/AuthRedirect";
 import OurStory from "../pages/Info/OurStory";
 import OurIdeology from "../pages/Info/OurIdeology";
 import Products from "../pages/Info/Products";
@@ -14,14 +13,15 @@ import Footer from "../components/ui/Footer";
 import Navbar from "../components/layout/Navbar";
 import  TermsAndConditions from "../pages/Info/TermsAndConditions";
 import  CookiePolicy from "../pages/Info/CookiePolicy"
+import { navigateToRoute } from "../utils/webappRoutes";
 
 function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPageWrapper />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<AuthRedirect mode="login" />} />
+        <Route path="/register" element={<AuthRedirect mode="register" />} />
         <Route path="/our-story" element={<PageWrapper><OurStory /></PageWrapper>} />
         <Route path="/our-ideology" element={<PageWrapper><OurIdeology /></PageWrapper>  } />
         <Route path="/products" element={<PageWrapper>
@@ -42,7 +42,6 @@ function AppRoutes() {
             </PageWrapper>
           }
         />
-        <Route path="/dashboard/:role" element={<DashboardWrapper />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
@@ -50,9 +49,7 @@ function AppRoutes() {
 }
 
 function PageWrapper({ children }) {
-  const navigate = (route) => {
-    window.location.href = route ? `/${route}` : "/";
-  };
+  const navigate = (route) => navigateToRoute(route);
   return <InfoPageLayout onNavigate={navigate}>{children}</InfoPageLayout>;
 }
 
@@ -67,14 +64,8 @@ function InfoPageLayout({ children, onNavigate }) {
 }
 
 function LandingPageWrapper() {
-  const navigate = (route) => {
-    window.location.href = route ? `/${route}` : "/";
-  };
+  const navigate = (route) => navigateToRoute(route);
   return <LandingPage onNavigate={navigate} />;
-}
-
-function DashboardWrapper() {
-  return <></>;
 }
 
 export default AppRoutes;

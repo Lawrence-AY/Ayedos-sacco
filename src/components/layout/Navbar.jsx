@@ -387,6 +387,12 @@ function Navbar({ onNavigate }) {
           }}
         >
           <button
+            className="btn btn-ghost p-4"
+            onClick={() => onNavigate && onNavigate("login")}
+          >
+            Log in
+          </button>
+          <button
             className="btn btn-outline border-[#8cc63f] p-4"
             onClick={() => onNavigate && onNavigate("register")}
           >

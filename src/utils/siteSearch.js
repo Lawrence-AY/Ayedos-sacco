@@ -76,24 +76,6 @@ const SEARCH_INDEX = [
     ],
   },
   {
-    route: "pricing",
-    label: "Pricing",
-    terms: [
-      "pricing",
-      "price",
-      "cost",
-      "plans",
-      "plan",
-      "transparent pricing",
-      "choose your plan",
-      "starter",
-      "professional",
-      "enterprise",
-      "talk to sales",
-      "still have questions",
-    ],
-  },
-  {
     route: "faq",
     label: "FAQ",
     terms: [
@@ -216,7 +198,7 @@ export function runSiteSearch(query, onNavigate) {
     return {
       matched: false,
       message:
-        "No matching page found. Try Home, Our Story, Products, Pricing, FAQ, Guides, Blog, Contact, Login, or Register.",
+        "No matching page found. Try Home, Our Story, Products, FAQ, Guides, Blog, Contact, Login, or Register.",
     };
   }
 

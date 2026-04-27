@@ -47,7 +47,8 @@ const Footer = ({ onNavigate }) => {
             <div className="h-px bg-[#8cc63f] w-10 mb-3" />
             
             <a href="/products" className="block py-1 text-white">Products</a>
-            <a href="/services" className="block py-1">Services</a>
+            <a href="/register" onClick={(e) => handleRouteClick(e, 'register')} className="block py-1">Get Started</a>
+            <a href="/login" onClick={(e) => handleRouteClick(e, 'login')} className="block py-1">Log in</a>
           </div>
 
           <div>
