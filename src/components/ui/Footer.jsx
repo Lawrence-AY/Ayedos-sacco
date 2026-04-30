@@ -47,7 +47,7 @@ const Footer = ({ onNavigate }) => {
             <div className="h-px bg-[#8cc63f] w-10 mb-3" />
             
             <a href="/products" className="block py-1 text-white">Products</a>
-            <a href="/services" className="block py-1">Services</a>
+            <a href="/services" className="block py-1">Services </a>
           </div>
 
           <div>
