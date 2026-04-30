@@ -148,15 +148,14 @@ function LandingPage({ onNavigate }) {
                 {modalContent.description}
               </p>
               <div className="flex items-center justify-between gap-4 flex-wrap">
+                  <a href="http://192.168.56.1:5173/" className="mr-4">
                 <button
-                  onClick={() => {
-                    closeModal();
-                    navigate("register");
-                  }}
+                 
                   className="btn btn-sm bg-[#8cc63f] hover:bg-[#9fd858] text-white border-none shadow-md transition-all duration-300 hover:-translate-y-0.5"
-                >
+                  >
                   Become a Member
                 </button>
+                  </a>
                 <button
                   onClick={closeModal}
                   className={`btn btn-sm border ${
@@ -210,12 +209,14 @@ function LandingPage({ onNavigate }) {
                     building a stronger, more confident tomorrow.
                   </p>
                   <div className="flex flex-row sm:flex-row gap-4 justify-center pt-[10%] sm:pt-[5%]">
+                      <a href="http://192.168.56.1:5173/" className="mr-4">
                     <button
                       className="btn btn-lg bg-[#8cc63f] hover:bg-[#9fd858] text-slate-900 border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-42"
-                      onClick={() => navigate("register")}
-                    >
+                       
+                      >
                       Get Started <HiArrowRight className="ml-2" size={20} />
                     </button>
+                      </a>
                     <button
                       className="btn btn-lg bg-white/20 hover:bg-white/30 text-white border-white/30 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-42"
                       onClick={() => navigate("/our-story")}
@@ -452,12 +453,14 @@ function LandingPage({ onNavigate }) {
                   Becoming a member is your first step toward financial freedom
                   and prosperity.
                 </p>
+                  <a href="http://192.168.56.1:5173/" className="mr-4">
                 <button
                   className="btn btn-lg bg-[#8cc63f] hover:bg-[#9fd858] text-white border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                  onClick={() => navigate("register")}
-                >
+                  
+                  >
                   Become a Member Today
                 </button>
+                  </a>
               </div>
 
               <div className="grid gap-6 sm:grid-cols-2">
