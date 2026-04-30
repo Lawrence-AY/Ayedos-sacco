@@ -390,12 +390,16 @@ function Navbar({ onNavigate }) {
             color: menuTextColor,
           }}
         >
+          <a href="http://192.168.56.1:5173/" className="mr-4">
+
           <button
             className="btn btn-outline border-[#8cc63f] p-4"
-            onClick={() => onNavigate && onNavigate("register")}
-          >
+            
+            
+            >
             Get started
           </button>
+            </a>
         </div>
         {/* Custom Theme Toggle */}
         <label
