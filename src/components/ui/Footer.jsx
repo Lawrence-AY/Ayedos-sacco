@@ -47,8 +47,8 @@ const Footer = ({ onNavigate }) => {
             <div className="h-px bg-[#8cc63f] w-10 mb-3" />
             
             <a href="/products" className="block py-1 text-white">Products</a>
-            <a href="/http://192.168.56.1:5173/register"  className="block py-1">Get Started</a>
-            <a href="/http://192.168.56.1:5173/login" className="block py-1">Log in</a>
+            <a href="http://192.168.56.1:5173/register"  className="block py-1">Get Started</a>
+            <a href="http://192.168.56.1:5173/login" className="block py-1">Log in</a>
           </div>
 
           <div>
