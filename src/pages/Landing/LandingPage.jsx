@@ -3,6 +3,12 @@ import { HiArrowRight, HiChevronLeft, HiChevronRight, HiXMark } from "react-icon
 import Navbar from "../../components/layout/LandingPageNavbar";
 import Footer from "../../components/ui/Footer";
 
+const HERO_IMAGES = [
+  "/landingphoto.png",
+  "/landingphoto2.png",
+  "/hero-aye.png",
+];
+
 function LandingPage({ onNavigate }) {
   const navigate = (route) => {
     if (onNavigate) onNavigate(route);
@@ -10,11 +16,6 @@ function LandingPage({ onNavigate }) {
 
   // Carousel state
   const [currentSlide, setCurrentSlide] = useState(0);
-  const heroImages = [
-    "/landingphoto.png",
-    "/landingphoto2.png",
-    "/hero-aye.png",
-  ];
 
   // Modal state
   const [modalOpen, setModalOpen] = useState(false);
@@ -43,7 +44,7 @@ function LandingPage({ onNavigate }) {
   // Auto-rotate carousel
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+      setCurrentSlide((prev) => (prev + 1) % HERO_IMAGES.length);
     }, 6000);
     return () => clearInterval(timer);
   }, []);
@@ -73,10 +74,10 @@ function LandingPage({ onNavigate }) {
 
   const goToSlide = (index) => setCurrentSlide(index);
   const nextSlide = () =>
-    setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    setCurrentSlide((prev) => (prev + 1) % HERO_IMAGES.length);
   const prevSlide = () =>
     setCurrentSlide(
-      (prev) => (prev - 1 + heroImages.length) % heroImages.length,
+      (prev) => (prev - 1 + HERO_IMAGES.length) % HERO_IMAGES.length,
     );
 
   // Helper for dynamic background classes
@@ -174,7 +175,7 @@ function LandingPage({ onNavigate }) {
       {/* HERO CAROUSEL */}
       <section className="relative w-full h-screen overflow-hidden">
         <div className="relative w-full h-full">
-          {heroImages.map((image, index) => (
+          {HERO_IMAGES.map((image, index) => (
             <div
               key={index}
               className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
@@ -218,11 +219,21 @@ function LandingPage({ onNavigate }) {
                       </a>
                     <button
                       className="btn btn-lg bg-white/20 hover:bg-white/30 text-white border-white/30 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-42"
-                      onClick={() => navigate("our-story")}
+                      onClick={() => navigate("/our-story")}
                     >
                       Learn More
                     </button>
                   </div>
+                  {/* <p className="mt-5 text-sm text-white/80">
+                    Already have an account?{" "}
+                    <button
+                      type="button"
+                      className="font-semibold text-[#8cc63f]"
+                      onClick={() => navigate("login")}
+                    >
+                      Log in
+                    </button>
+                  </p> */}
                 </div>
               </div>
             </div>
@@ -243,7 +254,7 @@ function LandingPage({ onNavigate }) {
           <HiChevronRight size={24} />
         </button>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
-          {heroImages.map((_, index) => (
+          {HERO_IMAGES.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}

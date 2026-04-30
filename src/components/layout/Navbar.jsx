@@ -388,6 +388,12 @@ function Navbar({ onNavigate }) {
         >
             <a href="http://192.168.56.1:5173/" className="mr-4">
           <button
+            className="btn btn-ghost p-4"
+            onClick={() => onNavigate && onNavigate("login")}
+          >
+            Log in
+          </button>
+          <button
             className="btn btn-outline border-[#8cc63f] p-4"
             
             >
