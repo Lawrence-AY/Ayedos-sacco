@@ -148,7 +148,7 @@ function LandingPage({ onNavigate }) {
                 {modalContent.description}
               </p>
               <div className="flex items-center justify-between gap-4 flex-wrap">
-                  <a href="http://192.168.56.1:5173/" className="mr-4">
+                  <a href="http://192.168.1.40:5173/" className="mr-4">
                 <button
                  
                   className="btn btn-sm bg-[#8cc63f] hover:bg-[#9fd858] text-white border-none shadow-md transition-all duration-300 hover:-translate-y-0.5"
@@ -209,7 +209,7 @@ function LandingPage({ onNavigate }) {
                     building a stronger, more confident tomorrow.
                   </p>
                   <div className="flex flex-row sm:flex-row gap-4 justify-center pt-[10%] sm:pt-[5%]">
-                      <a href="http://192.168.56.1:5173/" className="mr-4">
+                      <a href="http://192.168.1.40:5173/" className="mr-4">
                     <button
                       className="btn btn-lg bg-[#8cc63f] hover:bg-[#9fd858] text-slate-900 border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-42"
                        
@@ -453,7 +453,7 @@ function LandingPage({ onNavigate }) {
                   Becoming a member is your first step toward financial freedom
                   and prosperity.
                 </p>
-                  <a href="http://192.168.56.1:5173/" className="mr-4">
+                  <a href="http://192.168.1.40:5173/" className="mr-4">
                 <button
                   className="btn btn-lg bg-[#8cc63f] hover:bg-[#9fd858] text-white border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                   
