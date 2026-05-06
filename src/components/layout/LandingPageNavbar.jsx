@@ -390,7 +390,7 @@ function Navbar({ onNavigate }) {
             color: menuTextColor,
           }}
         >
-          <a href="http://192.168.1.40:5173/" className="mr-4">
+          <a href="https://ayedos-webapp.vercel.app/" className="mr-4">
 
           <button
             className="btn btn-ghost p-4"

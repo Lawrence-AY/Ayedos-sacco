@@ -242,7 +242,7 @@ function Products({ onNavigate }) {
               Download Application Forms
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
+              <button hidden
                 onClick={() =>
                   downloadForm(
                     "/forms/AYEDOS SACCO - Membership application Form.pdf",
