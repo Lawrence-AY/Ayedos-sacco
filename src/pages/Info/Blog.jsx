@@ -205,7 +205,7 @@ function Blog({ onNavigate }) {
               onClick={() => (onNavigate ? onNavigate('contact') : navigate('contact'))}
               className="border border-white px-4 py-2 rounded-xl hover:bg-white hover:text-black transition"
             >
-              Subscribe
+              Subscribe here
             </button>
           </div>
         </div>
