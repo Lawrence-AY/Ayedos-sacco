@@ -196,10 +196,12 @@ function LandingPage({ onNavigate }) {
                 }`}
               >
                 <div className="text-center max-w-3xl mx-auto h-screen pt-[62%] sm:pt-[15%]">
-                  <div className=" text-center text-4xl md:text-5xl lg:text-5xl font-bold text-white mb-3">
-                    AYEDOS SACCO
-                  </div>
-                  <p className=" text-center text-lg md:text-xl text-white/90 mb-10 leading-relaxed mx-auto">
+          <div
+  className="font-pirulen text-center text-4xl md:text-5xl lg:text-5xl text-white mb-3"
+>
+  AYEDOS SACCO
+</div>
+                  <p className="font-gotham-regular text-center text-lg md:text-xl text-white/90 mb-10 leading-relaxed mx-auto">
                     Take charge of your financial future with a SACCO built on
                     trust, growth, and opportunity. Save smarter, access
                     affordable loans faster, and be part of a community that
@@ -275,7 +277,7 @@ function LandingPage({ onNavigate }) {
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div
-              className={`text-4xl md:text-5xl font-bold mb-4 ${bgClass("text-slate-800", "text-white")}`}
+              className={`text-4xl md:text-4xl font-gotham-bold font-bold mb-4 ${bgClass("text-slate-800", "text-white")}`}
             >
               Choose AYEDOS SACCO
             </div>

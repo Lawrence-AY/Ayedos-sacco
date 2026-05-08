@@ -3,14 +3,15 @@
 @import "tailwindcss";
 @plugin "daisyui";
 :root {
-  font-family: var(--font-body);
-  line-height: 1.5;
-  font-weight: 400;
-   
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+ font-family: var(--font-body);
+ line-height: 1.5;
+ font-weight: 400;
+ 
+ font-synthesis: none;
+ text-rendering: optimizeLegibility;
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
+ 
 }
  
 * {
@@ -305,7 +306,7 @@ a {
 .landing-copy h1,
 .topbar h1 {
   margin-top: 10px;
-  font-size: clamp(2rem, 4vw, 3.6rem);
+ /* font-size: clamp(2rem, 4vw, 3.6rem);*/
   line-height: 1.08;
 }
 
@@ -2134,4 +2135,17 @@ tbody tr:last-child td {
   .info-cta {
     padding: 40px 24px;
   }
+  /* FONT UTILITIES */
+}
+.font-gotham-bold {
+  font-family: "Gotham Bold";
+}
+.font-gotham-regular {
+  font-family: "Gotham Regular";
+}
+.font-gotham-medium {
+  font-family: "Gotham Medium";
+}
+.font-pirulen {
+  font-family: "Pirulen";
 }
