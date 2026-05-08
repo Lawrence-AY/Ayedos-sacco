@@ -555,45 +555,40 @@ function LandingPage({ onNavigate }) {
                 desc: "Fast access to help, FAQs, and member service tools when you need assistance.",
                 features: ["24/7 Assistance", "Knowledge Base", "Live Support"],
               },
-           ].map((item, index) => (
-  <div
-    key={index}
-    className={`group overflow-hidden rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border ${
-      theme === "dark"
-        ? "border-slate-700 bg-black text-white"
-        : "border-gray-200 bg-white"
-    }`}
-  >
-    <div className="p-10">
-      <div
-        className={`text-3xl font-semibold mb-4 ${bgClass("text-slate-800", "text-white")}`}
-      >
-        {item.title}
-      </div>
-
-      <p className="text-slate-600 dark:text-slate-400 mb-9 leading-relaxed text-[15.5px]">
-        {item.desc}
-      </p>
-
-      {/* Clean Features - Not button-like */}
-      <div className="space-y-4">
-        {item.features.map((feature, i) => (
-          <div key={i} className="flex items-start gap-3">
-            <div className="text-emerald-600 dark:text-emerald-500 mt-0.5 text-xl">
-              ✓
-            </div>
-            <span className="text-slate-700 dark:text-slate-300 text-[15.5px]">
-              {feature}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-
-    {/* Subtle bottom accent bar */}
-    <div className="h-1 bg-gradient-to-r from-green-500 to-emerald-600" />
-  </div>
-))}
+            ].map((item, index) => (
+              <div
+                key={index}
+                className={`group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${
+                  theme === "dark"
+                    ? "border border-slate-700 bg-black text-white"
+                    : "border border-gray-200 bg-white"
+                }`}
+              >
+                <div className="p-12">
+                  <div
+                    className={`text-2xl font-semibold mb-3 ${bgClass("text-slate-800", "text-white")}`}
+                  >
+                    {item.title}
+                  </div>
+                  <p
+                    className={`mb-5 leading-relaxed ${bgClass("text-slate-600", "text-slate-300")}`}
+                  >
+                    {item.desc}
+                  </p>
+                  <div className="flex flex-wrap gap-2  ">
+                    
+                    {item.features.map((feature, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1 bg-[#616e77]/10 text-[#8cc63f] text-xs font-medium rounded-full"
+                      >
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -142,7 +142,7 @@ function OurStory({ onNavigate }) {
                   isDark ? "text-white" : "text-black"
                 }`}
               >
-                The AYEDOS SACCO Advantage
+                The AYEDOS SACCO
               </div>
               <div
                 className={`text-base text-justify md:text-lg leading-relaxed md:leading-[2.5] max-w-4xl mx-auto ${
