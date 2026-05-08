@@ -6,13 +6,12 @@
   --color-secondary: #828385;
   --color-accent: #8cc63f;
   --color-background: #f5f7fa;
-  --color-text: #0f2b3d;
-  --color-muted: #607082;
+   --color-muted: #607082;
   --color-white: #ffffff;
   --shadow-soft: 0 18px 45px rgba(15, 34, 58, 0.08);
   --shadow-elevated: 0 24px 60px rgba(15, 34, 58, 0.14);
-  --font-body: Aptos, "Segoe UI Variable", "Segoe UI", Tahoma, sans-serif;
-  --font-heading: Aptos Display, Aptos, "Trebuchet MS", sans-serif;
+  --font-body:"Gotham Regular";
+  --font-heading: "Gotham Medium";
 }
 
 @layer theme {
