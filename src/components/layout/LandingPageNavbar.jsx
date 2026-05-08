@@ -340,14 +340,14 @@ function Navbar({ onNavigate }) {
           </button>
           {dropdownOpen === "resources" && (
             <div className="nav-dropdown-menu">
-              <a
-                href="/faq"
-                className={getNavLinkClassName("/faq")}
-                aria-current={isCurrentPath("/faq") ? "page" : undefined}
+                <a
+                href="/blog"
+                className={getNavLinkClassName("/blog")}
+                aria-current={isCurrentPath("/blog") ? "page" : undefined}
               >
-                FAQ
+                Blog
               </a>
-              <a
+               <a
                 href="/guides"
                 className={getNavLinkClassName("/guides")}
                 aria-current={isCurrentPath("/guides") ? "page" : undefined}
@@ -355,12 +355,14 @@ function Navbar({ onNavigate }) {
                 Guides
               </a>
               <a
-                href="/blog"
-                className={getNavLinkClassName("/blog")}
-                aria-current={isCurrentPath("/blog") ? "page" : undefined}
+                href="/faq"
+                className={getNavLinkClassName("/faq")}
+                aria-current={isCurrentPath("/faq") ? "page" : undefined}
               >
-                Blog
+                FAQ
               </a>
+             
+           
             </div>
           )}
         </div>
