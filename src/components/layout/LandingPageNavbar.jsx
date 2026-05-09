@@ -329,11 +329,11 @@ function Navbar({ onNavigate }) {
           }}
         >
           <button
-            className={getDropdownButtonClassName(["/faq", "/guides", "/blog"])}
+            className={getDropdownButtonClassName(["/blog", "/guides", "/faq" ])}
             onClick={() => toggleDropdown("resources")}
             style={{ color: menuTextColor }}
             aria-current={
-              isActiveSection(["/faq", "/guides", "/blog"]) ? "page" : undefined
+              isActiveSection(["/blog", "/guides", "/faq" ]) ? "page" : undefined
             }
           >
             Resources <HiChevronDown />

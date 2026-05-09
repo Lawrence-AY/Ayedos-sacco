@@ -220,7 +220,7 @@ function Products({ onNavigate }) {
   return (
     <div className={`info-page-container `}>
       <div className="info-hero mb-0     ">
-        <div className={`text-4xl font-semibold`}>Products</div>
+        <h1>Products</h1>
         <div className={`text-xl font-semibold`}>
           Complete solutions for modern SACCO management
         </div>
@@ -298,9 +298,9 @@ function Products({ onNavigate }) {
 
 
     {/* LOAN CALCULATOR */}
-        <div className="max-w-6xl mx-auto px-4 pb-8">
+        <div className="max-w-6xl mx-auto px-4 pb-8 ">
           <div
-            className={`grid gap-6 rounded-3xl border p-6 md:grid-cols-[1.15fr_0.85fr] ${
+            className={`grid gap-6 rounded-3xl border p-6 md:grid-cols-[1.15fr_0.85fr]overflow-hidden ${
               isDark
                 ? "border-[#8cc63f]/25 bg-linear-to-br from-gray-900 via-black to-gray-950"
                 : "border-[#8cc63f]/20 bg-linear-to-br from-white via-[#f8fff0] to-[#eef7e2]"
@@ -312,7 +312,7 @@ function Products({ onNavigate }) {
                 Loan calculator
               </div>
               <h2
-                className={`mb-2 text-2xl font-bold ${isDark ? "text-white" : "text-slate-900"}`}
+                className={`mb-2 text-2xl font-bold ${isDark ? "text-white" : "text-slate-900" }`}
               >
                 Estimate your monthly repayment
               </h2>
