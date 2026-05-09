@@ -4,9 +4,9 @@ import Navbar from "../../components/layout/LandingPageNavbar";
 import Footer from "../../components/ui/Footer";
 
 const HERO_IMAGES = [
-  "/landingphoto.png",
-  "/landingphoto2.png",
-  "/hero-aye.png",
+  "/landingpage.jpeg",
+  "/landingpage2.jpg",
+  "/landingpage3.jpg",
 ];
 
 function LandingPage({ onNavigate }) {
