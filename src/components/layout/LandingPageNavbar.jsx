@@ -392,7 +392,7 @@ function Navbar({ onNavigate }) {
             color: menuTextColor,
           }}
         >
-          <a href="https://ayedos-webapp.vercel.app/" className="mr-4">
+          <a href="https://portal.sacco.ayedos.com" className="mr-4">
 
           <button
             className="btn btn-ghost p-4"

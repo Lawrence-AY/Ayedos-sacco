@@ -148,7 +148,7 @@ function LandingPage({ onNavigate }) {
                 {modalContent.description}
               </p>
               <div className="flex items-center justify-between gap-4 flex-wrap">
-                  <a href="https://ayedos-webapp.vercel.app/" className="mr-4">
+                  <a href="https://portal.sacco.ayedos.com" className="mr-4">
                 <button
                  
                   className="btn btn-sm bg-[#8cc63f] hover:bg-[#9fd858] text-white border-none shadow-md transition-all duration-300 hover:-translate-y-0.5"
@@ -211,7 +211,7 @@ function LandingPage({ onNavigate }) {
                     building a stronger, more confident tomorrow.
                   </p>
                   <div className="flex flex-row sm:flex-row gap-4 justify-center pt-[10%] sm:pt-[5%]">
-                      <a href="https://ayedos-webapp.vercel.app/" className="mr-4">
+                      <a href="https://portal.sacco.ayedos.com" className="mr-4">
                     <button
                       className="btn btn-lg bg-[#8cc63f] hover:bg-[#9fd858] text-slate-900 border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-42"
                        
@@ -275,9 +275,9 @@ function LandingPage({ onNavigate }) {
         className={`py-20 px-4 transition-colors duration-300 ${bgClass("bg-gray-50", "bg-black")}`}
       >
         <div className="max-w-6xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-8">
             <div
-              className={`text-4xl md:text-4xl font-gotham-bold font-bold mb-4 ${bgClass("text-slate-800", "text-white")}`}
+              className={`text-4xl md:text-4xl font-gotham-bold font-semibold mb-4 ${bgClass("text-slate-800", "text-white")}`}
             >
               Choose AYEDOS SACCO
             </div>
@@ -350,21 +350,21 @@ function LandingPage({ onNavigate }) {
 
       {/* SERVICES (theme‑aware) */}
       <section
-        className={`py-24 px-4 transition-colors duration-300 ${bgClass(
+        className={`py-10 px-4 transition-colors duration-300 ${bgClass(
           "bg-white",
           "bg-black",
         )}`}
       >
         <div className="relative max-w-6xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-8">
             <div
-              className={`text-4xl md:text-5xl font-bold mb-4 ${bgClass("text-slate-800", "text-white")}`}
+              className={`text-4xl md:text-5xl font-gotham-bold mb-2 ${bgClass("text-slate-800", "text-white")}`}
             >
               Our Services
             </div>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 title: "Savings",
@@ -387,38 +387,32 @@ function LandingPage({ onNavigate }) {
                 desc: "Make informed financial decisions with confidence through our ongoing guidance and resources. We equip our members with practical knowledge on saving, borrowing, and investing, ensuring you have the tools to build and sustain your financial well-being.",
               },
             ].map((service, i) => (
+              <>
+             
               <div
                 key={i}
-                className={`group overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-2 ${
-                  theme === "dark"
-                    ? "border border-white/10 bg-white/5 backdrop-blur-xl hover:border-[#8cc63f]/60 hover:bg-white/10"
-                    : "border border-gray-200 bg-gray-50 shadow-md hover:shadow-lg hover:border-[#8cc63f]/40"
-                }`}
+                className={`group card transition-all duration-300 hover:-translate-y-2 ${bgClass(
+                  "bg-white border border-gray-200 shadow-md hover:shadow-xl",
+                  "bg-black border-[#8cc63f]/40 hover:border-[#8cc63f]/80 shadow-lg",
+                )}`}
               >
-                <div
-                  className={`relative h-40 overflow-hidden ${
-                    theme === "dark" ? "bg-black" : "bg-white"
-                  }`}
-                >
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-6 text-center">
-                  <div
-                    className={`text-xl font-semibold mb-2 ${bgClass("text-slate-800", "text-white")}`}
+                  <div className="card-body p-8">
+                  <h3
+                  
+                    className={`font-gotham-medium  text-xl   mb-4 ${bgClass("text-slate-800", "text-white")}`}
                   >
                     {service.title}
-                  </div>
+                  </h3>
                   <p
-                    className={`text-sm leading-relaxed ${bgClass("text-slate-600", "text-white/70")}`}
+                    className={`leading-relaxed mb-4 ${bgClass("text-slate-600", "text-slate-300")}`}
                   >
                     {service.desc}
                   </p>
+                  
                 </div>
               </div>
+              
+               </>
             ))}
           </div>
         </div>
@@ -455,7 +449,7 @@ function LandingPage({ onNavigate }) {
                   Becoming a member is your first step toward financial freedom
                   and prosperity.
                 </p>
-                  <a href="https://ayedos-webapp.vercel.app/" className="mr-4">
+                  <a href="https://portal.sacco.ayedos.com" className="mr-4">
                 <button
                   className="btn btn-lg bg-[#8cc63f] hover:bg-[#9fd858] text-white border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                   

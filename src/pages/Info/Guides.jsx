@@ -83,7 +83,7 @@ function Guides( ) {
     <div className="info-page-container">
       <div className={`info-hero mb-1`}>
         <h1>Guides & Resources</h1>
-        <p
+        <p 
               className={`text-lg ${bgClass("text-slate-600", "text-slate-300")}`}
             >
               Step-by-step guides to help you get the most out of Ayedos</p>
