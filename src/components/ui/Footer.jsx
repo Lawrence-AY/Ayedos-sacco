@@ -47,8 +47,8 @@ const Footer = ({ onNavigate }) => {
             <div className="h-px bg-[#8cc63f] w-10 mb-3" />
             
             <a href="/products" className="block py-1 text-white">Products</a>
-            <a href="https://ayedos-webapp.vercel.app/register"  className="block py-1">Get Started</a>
-            <a href="https://ayedos-webapp.vercel.app/login" className="block py-1">Log in</a>
+            <a href="https://portal.sacco.ayedos.com/register"  className="block py-1">Get Started</a>
+            <a href="https://portal.sacco.ayedos.com/login" className="block py-1">Log in</a>
           </div>
 
           <div>
